@@ -1,0 +1,11 @@
+	{foreach from=$data item=value name=result key=key}
+	<li>
+	<a href="./product/detail.php?id={$value.id}">
+		{if $imgArray[$value.id].fileName}
+		<p class="pl_ph"><img src="/upImage/product/{$imgArray[$value.id].fileName}" alt="{$value.name}Image"/></p>
+		{/if}
+		<h5>{$value.subName}</h5>
+		<p class="s_title">{$value.name}</p>
+	</a>
+	</li>
+	{/foreach}

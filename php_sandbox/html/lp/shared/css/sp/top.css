@@ -1,0 +1,228 @@
+@charset "utf-8";
+
+
+/*************************************
+ * トップページ
+ *************************************/
+
+@media screen and (max-width: 640px){
+
+	#top-mainvisual {
+		text-align: center;
+		width: 100%;
+	}
+	#top-mainvisual li img {
+		padding: 0 0 10px 0;
+		width: 100%;
+	}
+	#top-mainvisual ul {
+		/*margin: 0 auto;*/
+		padding: 0;
+		/*height: 190px;*/
+		overflow: hidden;
+		position: relative;
+		/*background: url("/images/top/mainvisual_bg.gif") repeat 0 0;*/
+	}
+	#top-mainvisual ul li {
+		padding: 0px 0;
+		background: url("../../../images/top/mainvisual_bg.gif") repeat 0 0;
+		background-size: 2px 400px;
+		position: absolute;
+		width: 100%;
+		top: 0;
+	}
+	#top-mainvisual-nav {
+		padding: 10px 0;
+		background: #212121;
+	}
+	#top-mainvisual-nav a {
+		padding: 0 10px;
+	}
+
+
+	/*************************************
+	 * ランキング
+	 *************************************/
+
+	.ranking table {
+		border-collapse:collapse;
+	}
+	.ranking li {
+		margin: 0 1px 1px 0;
+		padding: 10px;
+		background: #212121;
+	}
+
+
+	.ranking h3 {
+		margin-bottom: 10px;
+	}
+	.ranking .rank {
+		font-size: 1.6em;
+	}
+	.ranking .name {
+		padding-left: 10px;
+		font-size: 1.4em;
+	}
+	.ranking .img {
+		margin-bottom: 10px;
+		text-align: center;
+	}
+
+
+	/*************************************
+	 * 料金
+	 *************************************/
+
+	.price {
+		margin-bottom: 50px;
+		position: relative;
+	}
+
+	.price ul {
+		margin-top: 0px;
+	}
+
+	.price li {
+		margin: 0 1px 5px 0;
+		width: 100%;
+		background: #212121;
+	}
+	.price h4 {
+		font-size: 1.5em;
+		color: #cca6bf;
+	}
+	.price .desc {
+		color: #cca6bf;
+		position: relative;
+	}
+	.price .desc2 {
+	}
+
+
+	.price h4,
+	.price .desc,
+	.price .desc2,
+	.price .price1 {
+		padding: 15px;
+		border-bottom: 1px solid #000;
+	}
+
+	.price .price1 {
+		padding: 10px;
+		border-bottom: 1px solid #000;
+		font-size: 1.5em;
+	}
+
+	.price .left {
+		display: inline-block;
+		width: 50%;
+	}
+
+	.price .desc .left {
+		display: inline-block;
+		color: #fff;
+	}
+	.price .desc .right {
+		display: inline-block;
+		width: 50%;
+		color: #fff;
+	}
+
+
+	.price .banner {
+		padding: 30px;
+		background: #cca6bf;
+		font-size: 2em;
+		text-align: center;
+		line-height: 1.5em;
+	}
+	.price .highlight {
+		color: #cca6bf;
+	}
+
+
+	/*************************************
+	 * 写真集
+	 *************************************/
+
+	.imgs li{
+		margin-bottom: 1px;
+		/*display: inline;*/
+		/*margin-bottom: 32px;*/
+		/*float: left;*/
+	}
+	.imgs li.left {
+		/*margin-right: 32px;*/
+	}
+	.imgs img {
+		width: 100%;
+	}
+
+
+	/*************************************
+	 * お知らせ
+	 *************************************/
+
+	.news h2 {
+		/*padding-left: 0;*/
+	}
+	.news {
+		position: relative;
+	}
+	.news ul {
+		margin: 0 10px;
+	}
+	.news li {
+		margin-bottom: 40px;
+		/*float: left;*/
+		width: 100%;
+	}
+	.news .btn1 {
+		margin: 0 0 20px 0;
+		text-align: center;
+	}
+	.news .btn1 a {
+		font-size: 1.0em;
+	}
+	.news .desc {
+		min-height: 100px;
+	}
+
+	.news .date {
+		margin-bottom: 10px;
+	}
+	.news li h3 {
+		margin-bottom: 15px;
+		font-size: 1.5em;
+	}
+
+	.news li:last-child {
+		margin-right: 0px;
+	}
+
+
+
+
+	/*************************************
+	 * 回り込み解除
+	 *************************************/
+
+	.news,
+	.ranking .imgs,
+	.ranking ul,
+	.price ul{
+		zoom: 1;
+	}
+	.news:after,
+	.imgs:after,
+	.ranking ul:after,
+	.price ul:after{
+		content: ""; display: block; height: 0; visibility: hidden; clear: both;
+	}
+
+
+}
+
+
+

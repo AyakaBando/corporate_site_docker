@@ -1,0 +1,120 @@
+@charset "utf-8";
+/*
+ * extends.css
+ */
+
+@media screen and (min-width: 641px){
+
+	.contents-visual{
+		margin: 0 auto;
+		padding: 0 10px;
+		width: 980px;
+	}
+
+	.title-nav {
+		position: absolute;
+		top: 30px;
+		right: 0;
+	}
+	.title-nav a,
+	.btn1 a {
+		padding: 15px 20px 15px 50px;
+		background: #ae0a29 url("../../../images/ic/download.png") no-repeat 15px center;
+		color: #fff;
+		text-decoration: none;
+
+		border-radius: 6px;
+		-webkit-border-radius: 6px;
+		-moz-border-radius: 6px;
+
+		transition: background .1s linear, color .1s linear;
+		-webkit-transition: background .1s linear, color .1s linear;
+		-moz-transition: background .1s linear, color .1s linear;
+	}
+	.download-list .btn1 a{
+	padding: 12px 5px 12px 50px!important;
+	font-size: .86em!important;
+	display: block!important;
+}
+#fb-root{
+	display: none;
+}
+.social-btns-container{
+	background: #faf8f2;
+}
+.social-btns-section{
+	margin: 0 auto;
+	padding: 20px 0;
+	width: 980px;
+}
+.social-btns-section:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.fb-btn{
+	margin-right:15px;
+	float: left;
+}
+	.btn1 {
+		margin: 50px 0 20px;
+	}
+
+	.title-nav a:hover,
+	.btn1 a:hover {
+		background: #d13955 url("../../../images/ic/download.png") no-repeat 15px center;
+	}
+
+	#menu {
+		display: none;
+	}
+
+	table.default-tbl {
+		width: 100%;
+	}
+	table.default-tbl th {
+		padding: 10px 15px;
+		background: #212121;
+		border-bottom: 1px solid #000;
+		border-right:  1px solid #000;
+		min-width: 100px;
+		text-align: left;
+
+	}
+	table.default-tbl td {
+		padding: 10px 15px;
+		background: #212121;
+		border-bottom: 1px solid #000;
+	}
+
+
+	.overlay {
+		/*margin: 0 auto;*/
+		/*width: 1000px;*/
+		position: relative;
+		max-height: 600px;
+		overflow: hidden;
+		text-align: center;
+		position: relative;
+
+	}
+	.overlay img {
+		/*margin: 0 auto;*/
+		/*width: 1000px;*/
+	}
+	.overlay .page-desc-container {
+
+		margin: 0 auto;
+		width: 1000px;
+		background: #333;
+		/*position: relative;*/
+	}
+	.overlay .page-desc {
+		text-align: left;
+		position: absolute;
+		/* text-shadow: 2px 2px 3px rgba(0,0,0,.5); */
+	}
+	}
+	.overlay .page-desc .desc {
+		width: 380px;
+	}
+
+}

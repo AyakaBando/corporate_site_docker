@@ -1,0 +1,152 @@
+@charset "utf-8";
+/*
+ * news.css
+ * gdCMS news module
+ */
+
+
+@media screen and (max-width: 640px){
+
+/*************************************
+ * Local Contents
+ *************************************/
+.news-local-container {
+}
+
+/*************************************
+ * Navi
+ *************************************/
+.news-nav-container {
+}
+.news-nav {
+}
+
+/*************************************
+ * Body
+ *************************************/
+/*
+.news-body {
+}
+.news-detail-body {
+	margin: 0;
+	padding: 0;
+	width: 720px;
+}
+*/
+/*************************************
+ * List view
+ *************************************/
+.news-list {
+	margin: 0 0 27px 0;
+	padding: 0;
+}
+.news-list ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.news-list li {
+	padding: 15px 10px;
+	clear: both;
+	border-bottom: #212121 solid 1px;
+}
+.news-list li .title {
+	margin: 4px 0;
+	font-size: 1.2em;
+}
+.news-list .cat {
+	display:none;
+}
+.news-body .date {
+	margin-bottom: 5px;
+	float:left;
+	width:651px;
+}
+.news-body .cat {
+	float: left;
+	width: 49px;
+	display:none;
+}
+.news-body .title {
+	clear:both;
+}
+.date-section{
+	margin:10px 0 5px 10px;
+	color:#aaa;
+}
+.date-section:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+
+/*************************************
+ * Mod News List
+ *************************************/
+.mod-news-list {
+}
+
+/*************************************
+ * Index List view
+ *************************************/
+.index .mod-news-list ul{
+	margin-bottom:10px;
+}
+.index .mod-news-list .date{
+	float:left;
+}
+.index .mod-news-list .cat{
+	width:49px;
+	float:left;
+	display:none;
+}
+.index .mod-news-list .title{
+	clear:both;
+}
+
+.year-archives {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	padding: 0 0 20px 0;
+	border-bottom: 1px solid #212121;
+}
+.year-archives li {
+	display: inline;
+}
+.year-archives li a {
+	margin-right: 10px;
+	margin-bottom: 10px;
+	padding: 10px 15px;
+	line-height: 1em;
+	background: #cca6bf;
+	border-radius: 5px;
+	display: block;
+	float: left;
+}
+.year-archives li a:hover {
+	text-decoration: none;
+	color: #fff;
+	background: #b896ac;
+}
+.year-archives li a.current {
+	background: #212121;
+}
+.year-archives:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+
+
+/*************************************
+ * Detail
+ *************************************/
+
+	.news-detail-body {
+		margin: 0 10px;
+	}
+	.news-detail-body h3 {
+		margin-left: 0;
+		padding-left: 0;
+	}
+
+
+
+
+}

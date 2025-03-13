@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja" dir="ltr">
+<head profile="http://purl.org/net/uriprofile/">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="ja-JP">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="generator" content="gdCMS 3.1.10">
+<title><?php echo(PDFダウンロード.' | '.'アルミ階段・エクステリア製品 製造販売 森田アルミ工業');?></title>
+<link rel="meta" type="application/rdf+xml" href="/meta/morita.rdf">
+<link rel="alternate" type="application/rss+xml" href="/rss1.0.rdf" title="ニュース・プレス (rss1.0)">
+<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="ニュース・プレス (atom1.0)">
+<link rel="alternate" type="application/rss+xml" href="/rss2.0.xml" title="ニュース・プレス (rss2.0)">
+<link rel="alternate" type="application/rss+xml" href="/product/rss1.0.rdf" title="プロダクト情報 (rss1.0)">
+<link rel="alternate" type="application/atom+xml" href="/product/atom.xml" title="プロダクト情報 (atom1.0)">
+<link rel="alternate" type="application/rss+xml" href="/product/rss2.0.xml" title="プロダクト情報 (rss2.0)">
+
+<link rel="stylesheet" type="text/css" href="/shared/css/gateway.css">
+<link rel="stylesheet" type="text/css" href="/works/css/contact.css">
+<script language="javascript" type="text/javascript" src="/shared/swfobject/swfobject.js"></script>
+<script language="javascript" type="text/javascript" src="/shared/js/client.js"></script>
+<script language="javascript" type="text/javascript" src="/shared/js/gateway.js"></script>
+<script language="javascript" type="text/javascript" src="/shared/js/utility.js"></script>
+<script language="javascript" type="text/javascript">
+var gd = new gdGateway();
+</script>
+<script language="javascript" type="text/javascript">
+function doTableFocus( idName ){
+	var ele = document.getElementById( idName );
+	//ele.className = 'tr-focus';
+	return false;
+}
+function killTableFocus( idName ){
+	var ele = document.getElementById( idName );
+	//ele.className = '';
+	return false;
+}
+</script>
+
+</head>
+

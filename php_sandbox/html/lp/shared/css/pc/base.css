@@ -1,0 +1,74 @@
+@charset "utf-8";
+/*
+ * base.css
+ */
+
+body {
+	width: 100%;
+	height: auto;
+	font-family: "Roboto","Hiragino Kaku Gothic ProN","hiragino kaku gothic pro","ヒラギノ角ゴ Pro W3","Meiryo","メイリオ", sans-serif !important;
+	font-size: 0.813em;
+	line-height: 165%;
+	background: #fff;
+	color: #555;
+}
+table {
+	font-size: 1em;
+}
+.layout {
+	zoom:1;
+}
+.layout:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+img{
+	border: none;
+}
+
+
+/*************************************
+ * Body
+ *************************************/
+.body-container {
+	margin: 0 auto 0px auto;
+	padding: 0;
+	width: 100%;
+}
+.body {
+}
+.entry-body {
+}
+.entry-detail-body {
+}
+.section-container {
+	width: inherit;
+}
+.section {
+	margin: 0 0 38px 0;
+	clear: both;
+}
+
+/**
+ * HTML を入力できるCMS項目の wrapper
+ */
+.cms-wrapper {
+
+}
+/**
+ * CMS からテンプレートを使用した時の wrapper
+ */
+.cms-template-section {
+}
+
+
+/*************************************
+ * Local Content
+ *************************************/
+.local-container {
+	display: none;
+}
+.news-body-container .local-container {
+	display: block;
+}
+
+

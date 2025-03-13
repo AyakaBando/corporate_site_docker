@@ -1,0 +1,1073 @@
+@charset "utf-8";
+/*
+ * extends.css
+ */
+/*************************************
+ * View
+ *************************************/
+.date {
+	color: #999;
+}
+.st {
+	font-size: .8em;
+	line-height: 160%;
+}
+.rt {
+	font-size: 1.0em;
+	line-height: 160%;
+}
+.lt {
+	font-size: 1.2em;
+	line-height: 160%;
+}
+.tbl-1 {
+	width: 100%;
+}
+.tbl-1 th,.tbl-1 td {
+	padding: 10px;
+	text-align: left;
+	line-height: 160%;
+	border-bottom: #ddd 1px dotted;
+	vertical-align: top;
+}
+.tbl-1  .title {
+	margin: 0;
+	padding: 0;
+}
+.tbl-1 th {
+	margin: 0 20px 0 0;
+	color: #333;
+}
+.tbl-1 .nob {
+	border: none;
+}
+.tbl-1 ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.tbl-1 li {
+	margin: 0 5px 0 0;
+	padding: 0 4px 0 0;
+	float: left;
+	text-align: center;
+	border-right: #ddd 1px solid;
+}
+.tbl-1 li:last-child {
+	border: none;
+}
+/*************************************
+ * Banner
+ *************************************/
+.banner-section {
+	margin: 0;
+	padding: 0;
+}
+.banner-section ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.banner-section li {
+	margin: 0 0 5px 0;
+	padding: 0;
+}
+/****************
+ WAKAI * corporate *
+*****************/
+.profile-section {
+	margin: 0;
+	padding: 0;
+}
+.profile-section th {
+	vertical-align: top;
+}
+.access-section {
+	margin: 0 0 45px 0;
+	padding: 0;
+	clear: both;
+}
+.access-section:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.access-section .address {
+	margin: 0 40px 0 0;
+	padding: 0;
+	width: 270px;
+	float: left;
+}
+.access-section .address h3 {
+	color: #009b3a;
+	font-size: 1.1em;
+}
+.access-section .address ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.access-section .map {
+	margin: 8px 0 0 0;
+	padding: 0;
+	float: left;
+}
+.sub-nav {
+	padding: 8px 0;
+	border-top: #ddd 1px solid;
+	border-bottom: #ddd 1px solid;
+	clear: both;
+}
+.sub-nav:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.sub-nav .contents {
+	margin: 0 20px 0 0;
+}
+.sub-nav a {
+	color: #333;
+}
+.contact-section {
+	margin: 7px 0 0 0;
+	padding: 0;
+	float: right;
+}
+.contact-section ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.contact-section li {
+	margin: 0 0 0 10px;
+	float: left;
+}
+.contact-section li a {
+	padding: 2px 0 0 10px;
+	color: #333;
+	background: url("/images/g-nav_arr_02.png") no-repeat 0 center;
+	font-weight: bold;
+}
+/*********************
+ WAKAI * greeting *
+**********************/
+.greeting-container:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.greeting-container {
+	margin: 0;
+	padding: 0;
+	clear: both;
+}
+.greeting-container .copy {
+	margin: 0 0 30px 0;
+}
+.greeting-container .photo {
+	margin: 0 40px 30px 0;
+	padding: 0;
+	float: left;
+}
+.greeting-container .text {
+	line-height: 180%;
+	overflow: hidden;
+}
+.greeting-container .name {
+	margin: 20px 0 0 0;
+	padding: 0;
+	font-size: 1.9em;
+	text-align: right;
+}
+.greeting-container .name .post {
+	font-size: .5em;
+}
+.philosophy-container{
+	margin: 0 0 50px 0;
+}
+.philosophy-container li{
+	margin: 20px 0;
+	font-size: 1.2em;
+}
+.philosophy-copy{
+	margin: 0 0 30px 0;
+	text-align: center;
+}
+/**********************
+ WAKAI * management *
+***********************/
+.management-container {
+	margin: 0 0 50px 0;
+	padding: 0;
+}
+.management-section {
+	margin: 0 0 50px 0;
+	padding: 0;
+	clear: both;
+}
+.management-section:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.management-section .photo {
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+.management-section .text {
+	float: left;
+	width: 300px;
+}
+.management-section .name {
+	margin: 5px 0 0 0;
+	font-size: 1.1em;
+}
+.management-section .text h3 {
+	margin: 0;
+	padding: 0 0 10px 0;
+	border-bottom: #009b3a 2px solid;
+	border-top: none;
+}
+.management-section .text .service {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.management-section .text .point {
+	margin: 20px 0 0 0;
+	padding: 0;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.management-section ul {
+	margin: 20px 0 0 0;
+	padding: 0;
+	list-style: none;
+}
+.management-section li {
+	margin: 0 0 10px 0;
+	padding: 0 0 0 15px;
+	background: url("/images/g-nav_arr_02.png") no-repeat 0 center;
+}
+#Purpose .text,
+#Deliver .photo {
+	margin: 0 90px 0 0;
+}
+#Arrival .photo {
+	margin: 20px 0 0 0;
+}
+#Arrival .photo-arrival {
+	margin: 20px 90px 0 0;
+}
+#Try .photo {
+	margin: 0 50px 0 0;
+}
+#Try ul {
+	margin: 0;
+	padding: 0;
+}
+/**********************
+ WAKAI * history *
+***********************/
+.history-section {
+	margin: 0 0 30px 0;
+	padding: 0;
+}
+.history-section .tbl-1 th {
+	color: #009b3a;
+}
+/**********************
+ WAKAI * electric *
+***********************/
+.electric-container {
+	margin: 0 0 50px 0;
+	padding: 0;
+	clear: both;
+}
+.electric-container .new:after,
+.electric-container .renewal .after:after,
+.electric-container .renewal:after
+.electric-container:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.electric-container .renewal {
+	margin: 0 0 50px 0;
+	padding: 0;
+	clear: both;
+}
+.electric-container .renewal ul {
+	margin: 0 0 0 15px;
+	padding: 0;
+}
+.electric-container .renewal li {
+	margin: 0 0 5px 0;
+	padding: 0;
+}
+.electric-container .renewal .point {
+	margin: 40px 0;
+	font-size: 1.3em;
+	font-weight: bold;
+	clear: both;
+}
+.electric-container .photo {
+	margin: 0 20px 20px 0;
+	padding: 0;
+	float: left;
+}
+.electric-container .renewal .before {
+	margin: 0 20px 0 0;
+	padding: 0;
+	float: left;
+}
+.electric-container .renewal .after {
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+.electric-container .new {
+	margin: 0 0 30px 0;
+	padding: 0;
+	clear: both;
+}
+.electric-container .new .photo {
+	margin: 0 40px 30px 0;
+	padding: 0;
+	float: left;
+}
+.electric-container .new p {
+	margin: 30px 0;
+	clear: both;
+}
+.electric-container h3 {
+	margin: 10px 0 30px 0;
+}
+.electric-section h1 {
+	display: none;
+}
+.electric-container .link-section {
+	margin: 0 0 100px 0;
+}
+.electric-container .link-section .text .title {
+	margin: 0 0 20px 0;
+	padding: 0 0 0 15px;
+	font-size: 1.1em;
+	border-bottom: #15923a 1px solid;
+}
+.electric-container .link-section .text .title a {
+	display: block;
+	color: #333;
+}
+.electric-container .link-section .text .title a:hover {
+	color: #009b3a;
+	text-decoration: none;
+}
+/**********************
+ WAKAI * related *
+***********************/
+.related-section .title {
+	margin: 0 0 20px 50px;
+	padding: 0;
+}
+.electric-section .link,.related-section .link {
+	margin: 10px 0 50px 0;
+	float: right;
+	display: block;
+}
+/**********************
+ WAKAI * solution *
+***********************/
+.solution-section {
+	margin: 0 0 100px 0;
+	padding: 0;
+	clear: both;
+}
+.solution-section:after,
+.solution-section ul:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.solution-section .text {
+	margin: 0 50px 50px 0px;
+	line-height: 180%;
+	float: left;
+	width: 300px;
+}
+.solution-section .copy {
+	margin: 40px 0;
+}
+.solution-section .text-bottom,
+.solution-section .graf {
+	margin: 0 0 50px 0;
+}
+.solution-section .comment {
+	font-size: 1.25em;
+}
+.solution-section h2 {
+	margin: 0 0 10px 0;
+	padding: 10px 0 10px 20px;
+	border-bottom: #ddd 1px dotted;
+	border-left: none;
+	background: url("/images/g-nav_arr.png") no-repeat 0 center;
+}
+/**********************
+ WAKAI * about *
+***********************/
+.about-section {
+	margin: 30px 0 80px 0;
+	padding: 0;
+}
+.introduction .point,.about-section .point {
+	margin: 25px 0;
+	font-size: 1.25em;
+	font-weight: bold;
+}
+.about-section .text {
+	margin: 0 0 0 50px;
+	line-height: 200%;
+}
+.about-section .text span {
+	font-weight: bold;
+	color: #000;
+}
+/**********************
+ WAKAI * experiences *
+***********************/
+.introduction {
+	margin: 30px 0 30px 60px;
+	padding: 0;
+}
+.introduction .point {
+	margin: 25px 0;
+}
+.introduction .text {
+	margin: 0 0 15px 0;
+	padding: 0;
+	line-height: 180%;
+}
+.introduction .photo {
+	margin: 0 20px 0 0;
+	float: left;
+	border: #eee 1px solid;
+}
+.introduction .category {
+	text-align: right;
+}
+.introduction .category .name {
+	font-size: 1.3em;
+}
+/*********************
+ WAKAI * business *
+*********************/
+.business-container {
+	margin: 0 0 30px 0;
+	padding: 0;
+	clear: both;
+}
+.business-container:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.business-section {
+	margin: 30px 0;
+	padding: 0;
+	width: 320px;
+	float: left;
+}
+.business-container .left-box {
+	margin: 30px 60px 30px 0;
+	clear: both;
+}
+.business-section h2 {
+	margin: 0 0 20px 0;
+}
+.business-section .text {
+	line-height: 180%;
+}
+.business-section .reshop {
+	margin: 0 0 0 10px;
+	padding: 0 0 0 12px;
+	background: url("/images/top-arr.png") no-repeat 0 center;
+}
+/**********************
+ WAKAI * features *
+***********************/
+.features-section {
+	margin: 0 0 40px 0;
+	padding: 0;
+	clear: both;
+}
+.features-section h3 {
+	margin: 0 0 25px 0;
+	padding: 10px 0;
+	border-bottom: #009b3a 2px solid;
+	border-top: none;
+}
+.features-article {
+	margin: 10px 0 40px 15px;
+	padding: 0;
+	width: 330px;
+	float: left;
+}
+.features-section:after,.features-article:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.features-article .photo {
+	margin: 0 20px 0 0;
+	padding: 0;
+	float: left;
+}
+.features-article .text {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+/**********************
+ WAKAI * privacy *
+***********************/
+.privacy-container ul {
+	margin: 20px;
+	padding: 0;
+	list-style: decimal;
+}
+.privacy-container li {
+	margin: 10px 0;
+	padding: 0;
+}
+.privacy-section {
+	margin: 50px 0;
+	padding: 0;
+}
+/**********************
+ WAKAI * structure *
+***********************/
+.structure-section {
+	margin: 0;
+	padding: 0;
+	clear: both;
+}
+.structure-section:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.structure-section h3 {
+	margin: 0 0 25px 0;
+	padding: 10px;
+	background: #009b3a;
+	border: none;
+	color: #fff;
+	clear: both;
+	font-size: 1em;
+	-webkit-border-radius: 5px 5px; /* Safari、Google Chrome */
+	-moz-border-radius: 5px 5px;
+}
+.structure-section .structure-article {
+	margin: 0 10px 30px 10px;
+	width: 330px;
+	float: left;
+}
+.structure-section .title {
+	margin: 10px 0;
+	padding: 0;
+	font-size: 1.24em;
+	font-weight: bold;
+}
+.structure-section .title span {
+	font-size: .8em;
+	font-weight: normal;
+	line-height: 190%;
+}
+.structure-section .two-four {
+	clear: both;
+}
+.structure-section .ceiling {
+	margin: 0 0 50px 0;
+	padding: 0;
+	clear: both;
+}
+.structure-section .ceiling:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.structure-section .ceiling .photo,.structure-section .ceiling .name {
+	margin: 0 0 10px 0;
+	padding: 0;
+	font-weight: bold;
+}
+.structure-section .ceiling ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.structure-section .ceiling li {
+	margin: 0 50px 20px 0;
+	width: 180px;
+	float: left;
+}
+/**********************
+ WAKAI * system *
+***********************/
+.system-section {
+	margin: 0;
+	padding: 0;
+}
+.system-section th {
+	color: #009b3a;
+}
+/**********************
+ WAKAI * products *
+***********************/
+.products-section .thumb {
+	margin: 0 0 8px 0;
+	padding: 0;
+}
+.products-section ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	clear: both;
+}
+.products-section li {
+	margin: 0 0 50px 0;
+	padding: 0;
+	width: 175px;
+	float: left;
+}
+.products-section .link-title h2 {
+	margin: 0;
+	padding: 10px 0 10px 20px;
+	border-left: none;
+	float: right;
+	background: url("/images/g-nav_arr.png") no-repeat 0 center;
+	clear: both;
+}
+/**********************
+ WAKAI * corporate index*
+***********************/
+.corporate-list {
+	margin: 0 0 20px 0;
+	padding: 0;
+	list-style: none;
+	clear: both;
+}
+.corporate-list:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.corporate-list a {
+	margin: 0;
+	padding: 10px 10px 10px 0;
+	display: block;
+}
+.corporate-list h2 {
+	margin: 0 0 0 10px;
+	padding: 0 0 0 20px;
+	border-left: none;
+	font-weight: normal;
+	background: url("/images/g-nav_arr.png") no-repeat 0 center;
+	border-bottom: #ddd 1px dotted;
+}
+.corporate-list li {
+	margin: 0 0 30px 0;
+	padding: 5px;
+	float: left;
+	border: #ddd 1px solid;
+	width: 329px;
+	background: #fff;
+	-webkit-border-radius: 7px 7px; /* Safari、Google Chrome */
+	-moz-border-radius: 7px 7px;
+}
+.corporate-list .contents .img {
+	margin: 5px;
+	padding: 0;
+	float: left;
+}
+.corporate-list .contents .text {
+	padding: 15px 10px;
+}
+.corporate-list .left-box {
+	margin: 0 18px 30px 0;
+}
+/**********************
+ WAKAI * skill*
+***********************/
+.skill-container {
+	margin: 0;
+	padding: 0;
+	clear: both;
+}
+.skill-container:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.skill-section {
+	margin: 0 0 50px 0;
+	width: 220px;
+	float: left;
+}
+.skill-section .photo {
+	margin: 0 0 10px 0;
+	padding: 0;
+}
+.skill-section .text {
+	margin: 0 0 30px 0;
+	padding: 0;
+}
+.skill-section ul {
+	margin: 0;
+	padding: 0;
+}
+.skill-section li {
+	margin: 5px 0 5px 15px;
+	padding: 0;
+}
+.press-work-section,
+.diecast-section {
+	margin: 0 20px 0 0;
+	padding: 0;
+}
+.diecast-section li {
+	list-style: url("/images/list_01.png");
+}
+.press-work-section li {
+	list-style: url("/images/list_02.png");
+}
+.forming-section li {
+	list-style: url("/images/list_03.png");
+}
+.treatment-section {
+	margin: 0 0 30px 0;
+	clear: both;
+}
+.treatment-section .photo {
+	margin: 0 30px 30px 0;
+	float: left;
+}
+.treatment-section ul {
+	margin: 0;
+	padding: 0;
+}
+.treatment-section ul:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.treatment-section li {
+	margin: 10px 0;
+	list-style: url("/images/list_04.png");
+}
+.treatment-section .text {
+	margin: 0;
+	padding: 0;
+	clear: both;
+}
+/**********************
+ WAKAI * check-list*
+***********************/
+.check-section {
+	margin: 0 0 50px 0;
+	padding: 0;
+}
+.check-section h1 {
+	background: none;
+}
+.check-section .title {
+	margin: 0 0 50px 0;
+	text-align: center;
+}
+.check-section .text {
+	color: #000;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+.check-list {
+	margin: 30px 0;
+}
+.check-list li {
+	margin: 10px 0;
+}
+/**********************
+ WAKAI * fastening *
+***********************/
+.fastening-container{
+	margin: 0 0 30px 0;
+	padding: 0;
+	clear: both;
+}
+.fastening-container .copy{
+	margin: 0 0 50px 0;
+	padding: 0;
+	clear: both;
+}
+.fastening-container .copy .text{
+	margin: 20px 0;
+	padding: 0;
+}
+.fastening-container .contents-section{
+	margin: 0 0 50px 0;
+}
+.fastening-container .contents{
+	margin: 0 0 30px 0;
+}
+.production .image-info{
+	margin: 0 0 80px 20px;
+	padding: 0;
+}
+.production .text{
+	margin: 0 0 30px 0;
+	padding: 0;
+	clear: both;
+}
+.production .text:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.production ul{
+	margin: 0 20px 0 0;
+	padding: 0 0 0 10px;
+	float: left;
+	list-style: none;
+}
+.production li{
+	margin: 10px 0;
+	padding: 0 0 0 16px;
+	background: url("/images/list_05.png") no-repeat 0 center;
+}
+/**********************
+ WAKAI * TOP*
+***********************/
+.main-photo {
+	margin: 0 0 20px 0;
+}
+.top-box-container {
+	margin: 0 0 20px 0;
+	padding: 0;
+	clear: both;
+}
+.top-box-container h1 {
+	display: none;
+}
+.top-box-container:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.top-link-box {
+	margin: 0;
+	padding: 5px;
+	border: #ddd 1px solid;
+	width: 335px;
+	background: #fbfbfb;
+	float: left;
+	-webkit-border-radius: 7px 7px; /* Safari、Google Chrome */
+	-moz-border-radius: 7px 7px;
+}
+.top-link-box .photo{
+	margin: 20px 0 27px 0;
+}
+.top-link-box a{
+	color: #000;
+}
+.top-link-box ul {
+	margin: 20px 10px 0 0px;
+	padding: 0;
+	list-style: none;
+	float: left;
+}
+.top-link-box li {
+	margin: 0 0 10px 0;
+	padding: 0 0 0 10px;
+	background: url("/images/g-nav_arr_02.png") no-repeat 0 center;
+}
+.top-link-box h2 {
+	margin: 0 0 0 5px;
+	border-bottom: #ddd 1px dotted;
+	border-left: none;
+	background: url("/images/index_arr.png") no-repeat 0 center;
+}
+.top-link-box h2 a {
+	padding: 10px 0 8px 20px;
+	display: block;
+}
+.top-corporate-box {
+	margin: 0 0 0 5px;
+}
+.top-corporate-box ul{
+	margin: 20px 47px 0 0;
+}
+/**********************
+ TO-RAKU
+***********************/
+.toraku-section .info-article .photo-info:after,
+.toraku-section .info-article:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.toraku-section .info-article{
+	margin: 0 0 50px 0;
+	padding: 0;
+	clear: both;
+}
+.toraku-section .info-article .copy{
+	margin: 20px 0;
+}
+.toraku-section .info-article ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.toraku-section .info-article li {
+	padding: 0 10px;
+	width: 210px;
+	float: left;
+}
+.toraku-section .info-article ol {
+	margin: 0 0 0 20px;
+	padding: 0;
+	list-style: disc;
+	clear: both;
+}
+.toraku-section .info-article ol li{
+	margin: 0;
+	padding: 0;
+}
+.toraku-section .info-article li .photo {
+	text-align: center;
+}
+.toraku-section .info-article .text-info{
+	margin: 10px 0;
+	padding: 10px 0;
+	border-bottom: #b4b4b4 1px dotted;
+	border-top: #b4b4b4 1px dotted;
+	clear: both;
+}
+.toraku-section .info-article .photo-info{
+	padding: 0 0 20px 0;
+	clear: both;
+}
+.safety-section .article{
+	margin: 0 0 35px 0;
+}
+.safety-section{
+	width: 330px;
+	float: left;
+}
+.safety-section:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.life-section{
+	margin: 0 0 40px 40px;
+	padding: 0;
+}
+.code th,
+.code td{
+	padding: 4px;
+	vertical-align:top;
+	text-align: center;
+	border-bottom: #ddd 1px solid;
+	border-right: #ddd 1px solid;
+}
+.code table{
+	border-top:#ddd 1px solid;
+	border-left: #ddd 1px solid;
+}
+.code th{
+	background: #f4f4f4;
+}
+.code{
+	margin: 0 40px 0 0;
+	float: left;
+	clear: both;
+	width: 330px;
+}
+.type{
+	margin: 50px 0 30px 0;
+	float: left;
+	width: 330px;
+}
+.notes li{
+	margin: 10px 0;
+}
+/**********************
+ TO-RAKU  * howto *
+***********************/
+.howto-section{
+	margin: 0 0 30px 0;
+	padding: 0;
+	clear: both;
+}
+.preparation-section .text{
+	margin: 0 100px 0 0;
+	width: 330px;
+	float: left;
+}
+.preparation-section .photo{
+	margin: 0;
+	width: 226px;
+	float: left;
+}
+.howto-section h3{
+	margin: 0 0 20px;
+}
+.howto-article:after,
+.preparation-section:after,
+.repair-section:after,
+.howto-seciton:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.howto-article{
+	margin: 0 0px 30px 0;
+	width: 330px;
+	float: left;
+}
+.howto-article .text{
+	width: 330px;
+}
+.howto-article .photo{
+	margin: 0 0 20px 30px;
+}
+.howto-article li{
+	margin: 0 0 10px 0;
+}
+.howto-article ul{
+	margin: 20px 0 20px 15px;
+	padding: 0;
+}
+.repair-section{
+	margin: 30px 0;
+	padding: 0;
+	clear: both;
+}
+.repair-section ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.repair-section li{
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 150px;
+}
+.repair-section .arr{
+	width: 33px;
+}
+.howto-bottom-article{
+	clear: both;
+	width: 700px;
+}
+.howto-bottom-article .text{
+	clear: both;
+	width: 700px;
+}
+.masking-section{
+	margin: 20px 0;
+	padding: 0;
+	clear: both;
+}
+.masking-section .photo{
+	margin: 0 20px 0 0;
+	float: left;
+}
+.left-article{
+	margin: 0 40px 0 0;
+}
+/**********************
+ * QA
+***********************/
+.q{
+	margin: 0;
+	padding: 10px 0 10px 30px;
+	background: url("/images/q.png") no-repeat 0 0;
+	font-weight: bold;
+	color: #198541;
+}
+.a{
+	margin: 0;
+	padding: 10px 0 10px 30px;
+	background: url("/images/a.png") no-repeat 0 0;
+}
+.qa{
+	margin: 0 0 20px 0;
+	border-bottom: #ddd 1px solid;
+}

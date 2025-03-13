@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>森田アルミ工業</title>
+<meta name="description" content="森田アルミ工業">
+<meta name="Keywords" content="">
+<meta property="og:title" content="森田アルミ工業">
+<meta property="og:type" content="website">
+<meta property="og:description" content="森田アルミ工業">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="森田アルミ工業">
+<link rel="shortcut icon" href="/image/icon/favicon.ico">
+<link rel="apple-touch-icon" href="/image/icon/ios.png"/>
+<link rel="icon" href="/image/icon/ios.png">
+<link rel="stylesheet" type="text/css" href="/common/css/reset-fonts.css">
+<link rel="stylesheet" type="text/css" href="/common/css/reset-min.css">
+<link rel="stylesheet" type="text/css" href="/common/css/comp.css">
+<link rel="stylesheet" type="text/css" href="uniq.css">
+<!--[if IE]><link rel="stylesheet" href="/common/css/fontsize_ie.css" media="all" /><![endif]-->
+<!--[if lt IE 9]><script src="/common/js/html5shiv.js"></script><![endif]-->
+<link href="/common/css/bootstrap.min.css" rel="stylesheet">
+<link href="/common/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Quicksand|Source+Sans+Pro:400,200,300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+{include file="../common/header.html"}
+<section id="md_area">
+  <div id="md_area_in">
+    <h1>お問合せ</h1>
+  </div>
+  <!--/md_area_in--> 
+</section>
+<!--/md_area-->
+
+<article id="contents" class="privacy">
+  <nav id="pan">
+    <ul>
+      <li><a href="/index.php">HOME</a></li>
+      <li><span>お問合せ</span></li>
+    </ul>
+    <br class="clearfix">
+  </nav>
+  <!--/pan-->
+  
+  <div class="md002">
+    <h2 class="head">お問合せフォーム</h2>
+  </div>
+  <!--/md002-->
+{if !$smarty.post}
+  <section class="box">
+    <p class="txt02 btm10">この度は、当ホームページをご覧いただき、誠にありがとうございます。<br><span class="red02">※お急ぎの方は弊社まで直接お電話ください。</span></p>
+    <p class="txt02 btm10"><span class=" size20 bold">TEL ： 072-480-1400</span><br>
+＜営業時間　8時30分～17時30分＞</p>
+    <p class="txt02 btm20">製品カタログをご希望の場合は、<a href="/product/" class="link_a001">各製品ページ</a>よりPDF形式でダウンロードしていただくか<br>
+こちらの<a href="/catalog/" class="link_a001">「カタログ請求フォーム」</a>よりお申し込みください。<br>
+     </p>
+    
+   
+  </section>
+{/if}
+  <!--/box-->
+  <section class="box">
+<form{$form.attributes}>
+      <div class="ta01 btm50">
+
+                {if $form.errors}
+                <div style="border:double 3px #ff0000;margin-bottom:10px;background-color:#ffffff;padding:6px;">
+                {foreach from=$form.errors item=value}
+                    {$value}<br />
+                {/foreach}
+                </div>
+                {/if}
+
+        <table>
+          <tbody>
+          <tr>
+              <th>ご質問・お問合せ内容<span class="f10">※</span></th>
+              <td>
+              <p class="b01 btm5">{$form.comment.html}</p></td>
+            </tr>
+            <tr>
+              <th scope="row" class="w30">会社名<span class="f10">※</span></th>
+              <td>{$form.companyName.html}
+                <p class=" f10_2">例）株式会社○○ &nbsp;※全角文字でご入力ください</p></td>
+            </tr>
+            <tr>
+              <th scope="row">お名前<span class="f10">※</span></th>
+              <td>{$form.name.html}
+                <p class=" f10_2">例）○○ ○○ &nbsp;※全角文字でご入力ください</p></td>
+            </tr>
+            <tr>
+              <th scope="row">関連業種<span class="f10">※</span></th>
+              <td>{$form.businessCategory.html}</td>
+            </tr>
+            <tr>
+              <th scope="row">職種<span class="f10">※</span></th>
+              <td>{$form.jobCategory.html}</td>
+            </tr>
+            <tr>
+              <th scope="row">部署名</th>
+              <td>{$form.busyo.html}</td>
+            </tr>
+            <tr>
+              <th scope="row">メールアドレス<span class="f10">※</span></th>
+              <td>{$form.month.html}
+                <p class=" f10_2">例）○○○ &nbsp;※半角文字でご入力ください</p></td>
+            </tr>
+            <tr>
+              <th scope="row">確認用メールアドレス<span class="f10">※</span></th>
+              <td>{$form.monthConf.html}
+                <p class=" f10_2">例）○○○ &nbsp;※半角文字でご入力ください</p></td>
+            </tr>
+            <tr>
+              <th>郵便番号<span class="f10">※</span></th>
+              <td><p class="b01">〒&nbsp;
+                  {$form.zip1.html}
+                  &nbsp;-&nbsp;
+                  {$form.zip2.html}
+                </p></td>
+            </tr>
+            <tr>
+              <th>住所<span class="f10">※</span></th>
+              <td><p class="btm10">
+                  {$form.pref.html}
+                </p>
+                <p>
+                  {$form.address1.html}
+                </p>
+                <p class=" f10_2 btm5">市区町村名 (例：千代田区神田神保町)</p>
+                <p>
+                  {$form.address2.html}
+                </p>
+                <p class=" f10_2">番地・ビル名 (例：1-3-5)</p></td>
+            </tr>
+            <tr>
+              <th>電話番号<span class="f10">※</span></th>
+              <td><p class="b01 btm5">
+                  {$form.tel1.html}
+                  -
+                  {$form.tel2.html}
+                  -
+                  {$form.tel3.html}
+                </p>
+                <p class=" f10_2">例）○○○ &nbsp;※半角文字でご入力ください</p></td>
+            </tr>
+            <tr>
+              <th>FAX番号</th>
+              <td><p class="b01 btm5">
+                  {$form.fax1.html}
+                  -
+                  {$form.fax2.html}
+                  -
+                  {$form.fax3.html}
+                </p>
+                <p class=" f10_2">例）○○○ &nbsp;※半角文字でご入力ください</p></td>
+            </tr>
+            <tr>
+              <th scope="row">御社URL</th>
+              <td>{$form.url.html}
+                <p class=" f10_2">例）○○○ &nbsp;※半角文字でご入力ください</p></td>
+            </tr>
+           
+            <tr>
+              <th scope="row">弊社ウェブサイトに<br>
+                来られたきっかけを<br>
+                教えて下さい。</th>
+              <td>{$form.know.html}</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <!--/ta01-->
+      
+      <nav class="btn_area">
+        <ul>
+		{if !$flg}
+			<li>{$form.reset.html}</li>
+			<li>{$form.submitConf.html}</li>
+		{else}
+			<li>{$form.submitReturn.html}</li>
+			<li>{$form.submitReg.html}</li>
+		{/if}
+        </ul>
+      </nav>
+      <!--/btn_area-->
+    </form>
+  </section>
+  <!--/box--> 
+  
+</article>
+<!--/contents-->
+{include file="../common/footer.html"}
+<script src="/common/js/import.js"></script> 
+<script src="/common/js/bootstrap.min.js"></script> 
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+
+</body>
+</html>

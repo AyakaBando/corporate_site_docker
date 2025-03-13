@@ -1,0 +1,87 @@
+@charset "utf-8";
+/*
+ * base.css
+ */
+
+html{
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: auto;
+	font-family: "\30E1\30A4\30EA\30AA","\68\69\72\61\67\69\6E\6F\20\6B\61\6B\75\20\67\6F\74\68\69\63\20\70\72\6F","\4F\73\61\6B\61","\76\65\72\64\61\6E\61","\FF2D\FF33\20\FF30\30B4\30B7\30C3\30AF", sans-serif !important;
+	background: #fff;
+	font-size:0.8em;
+	color: #3e3e3e;
+}
+table {
+	font-size: 1em;
+}
+.layout {
+	margin: 0;
+	padding: 0;
+	zoom:1;
+}
+.layout:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+img{
+	border: none;
+}
+/*************************************
+ * Body
+ *************************************/
+.body-container {
+	margin: 0 auto 50px auto;
+	padding: 30px 0 0 0;
+	clear: both;
+	width: 960px;
+}
+.body-container:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.body {
+	margin: 0 30px 0 0;
+	padding: 0;
+	width: 700px;
+	float: left;
+}
+.entry-body {
+}
+.entry-detail-body {
+}
+.section-container {
+	margin: 0;
+	padding: 0;
+	width: inherit;
+}
+.section {
+	margin: 0 0 38px 0;
+	padding: 0;
+	clear: both;
+}
+
+/**
+ * HTML を入力できるCMS項目の wrapper
+ */
+.cms-wrapper {
+
+}
+/**
+ * CMS からテンプレートを使用した時の wrapper
+ */
+.cms-template-section {
+}
+
+
+/*************************************
+ * Local Content
+ *************************************/
+.local-container {
+	margin:0;
+	float: left;
+	width: 230px;
+}

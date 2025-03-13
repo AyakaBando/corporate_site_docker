@@ -1,0 +1,110 @@
+@charset "utf-8";
+// ===================================================
+// 設定
+// ===================================================
+
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
+
+// タブレット非対応の場合は値をfalseにする
+$tablet: true;
+
+// 汎用クラスを使用するか
+$use_extend_object: true;
+
+// 簡易ロールオーバーの値
+$opacity_value: .7;
+
+
+// 画像のパス
+$img_path: "../../img/";
+$img_path2: "../img/";
+
+
+// ベースフォント
+$base_font: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Verdana, sans-serif;
+$min_font: "游明朝", YuMincho, "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "HG明朝E", "MS P明朝", "MS 明朝", serif;
+$ico_font:"Font Awesome 5 Pro";
+$en_font: 'Bellefair', serif;
+
+// ページ全体の横幅
+$base_width: 1140px;
+//サイド横幅
+$side_width:230px;
+//メイン横幅
+$main_width:700px;
+
+// 要素の基本下マージン
+$base_margin_bottom: 20px;
+
+// メインカラー（ベースカラー）
+$main_color: #A3A3A3;
+
+// サブカラー
+$sub_color: #f3f3f3;
+
+// アクセントカラー
+$accent_color: #e73562;
+
+// ベーステキストカラー
+$font_color: #232323;
+
+// ベースリンクカラー
+$link_color: #111;
+$link_color_visited: #111;
+$link_color_hover: #111;
+$link_color_active: #111;
+
+
+// 角丸の初期値
+$br_value: 3px;
+
+//フォームボタン
+$submit_width:185px;
+$submit_height:45px;
+
+//イージング用
+$linear: cubic-bezier(0.250, 0.250, 0.750, 0.750);
+$ease: cubic-bezier(0.250, 0.100, 0.250, 1.000);
+$ease-in: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+$ease-out: cubic-bezier(0.000, 0.000, 0.580, 1.000);
+$ease-in-out: cubic-bezier(0.420, 0.000, 0.580, 1.000);
+// In
+$easeInQuad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
+$easeInCubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+$easeInQuart: cubic-bezier(0.895, 0.030, 0.685, 0.220);
+$easeInQuint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$easeInSine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
+$easeInExpo: cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$easeInCirc: cubic-bezier(0.600, 0.040, 0.980, 0.335);
+$easeInBack: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+// Out
+$easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$easeOutQuart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+$easeOutQuint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$easeOutSine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$easeOutExpo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$easeOutCirc: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+// In Out
+$easeInOutQuad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+$easeInOutQuart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+$easeInOutQuint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+$easeInOutSine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+$easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+$easeInOutCirc: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+$easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+
+/**以下レスポンシブグリッド用**/
+
+
+//マージンサイズ（pxサイズを単位無しで指定）
+$margin_size: 15;
+
+$screen-xs-max :767px;
+$screen-sm-max :991px;
+$screen-md-max :1299px;
+$screen-sm-min :768px;
+$screen-md-min :992px;
+$screen-lg-min :1300px;

@@ -1,0 +1,139 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* -------- Main Body Formatting -------- */
+
+html {
+	height: 100%;
+}
+
+body {
+	background-color: #FFF;
+	font-family:"ＭＳ Ｐゴシック",Osaka, Verdana, sans-serif;
+	font-size: 100%;
+	color: #000;
+}
+
+#maintopdots #middledot {
+	display: none;
+}
+
+#mainwrapper {
+	background-color: #FFF;
+	width: 100%;
+}
+
+
+/* -------- Left Side Formatting -------- */
+
+#leftside {
+	width: 220px;
+}
+
+img {
+	border: 0 none;
+}
+
+#leftside a.returnlink {
+	display: none;
+}
+
+#thicknavline {
+	display: none;
+}
+
+/* -------- Global Navigation Formatting from main site -------- */
+
+#globalNavi {
+	display: none;
+}
+
+/* -------- Right Side Formatting -------- */
+
+#rightside {
+	text-align: left;
+	width: 100%;
+}
+
+#maintitle {
+	font-size: 1.6em;
+	color: #000;
+	font-weight: bold;
+	margin: 1em 0em;
+}
+
+#topline {
+	display: none;
+}
+
+/* -------- Prefecture Table Formatting -------- */
+
+#prefecturelist {
+	display: none;
+}
+
+#subtext {
+	display: none;
+}
+
+/* ----- Address List Formatting ------ */
+
+.areatitle {
+	font-size: 0.8em;
+	line-height: 1.2em;
+	padding: 0.9em 0.9em 0.9em 2.8em;
+	text-indent: -1.7em;
+	margin: 1em 0em;
+	background-color: #EEE;
+	color: #000;
+	border-top: #E5E5E5 1px solid;
+}
+
+.prefecturetitle {
+	font-size: 0.8em;
+	margin: 1.8em 0em 1em 2.2em;
+	font-weight: normal;
+	color: #000;
+}
+
+ul.shopinfolist {
+	margin: 1em 0em 1em 3em;
+}
+
+li {
+	list-style-type: none;
+	margin: 0em 0em;
+}
+
+li.shoptitle {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+li.shopaddress, li.shoptel {
+	font-size: 1em;
+	margin-left: 1em;
+}
+
+.returntotop {
+	display: none;
+}
+
+.nostore {
+	margin-left: 5em;
+	margin-bottom: 1em;
+	font-size: 0.8em;
+	color: #000;
+}
+
+/* -------- Footer -------- */
+
+.footer {
+	clear: both;
+	font-size: 0.6em;
+	color: #000;
+	margin-left: 10px;
+	padding-bottom: 4px;
+}

@@ -1,0 +1,69 @@
+@charset "utf-8";
+// ===================================================================
+// mixinやらCSS3やら、extendも。
+// ===================================================================
+
+// border-radius
+@mixin border_radius($br_value) {
+	border-radius: $br_value;
+}
+
+//中央配置
+
+@mixin centering($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if $horizontal and $vertical {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if $horizontal {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if $vertical {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+//フォントサイズ
+@mixin font-size($s:1.4) {
+    font-size:($s * 10) + px;
+    font-size:$s + rem;
+}
+
+// 余白調整用のクラス
+@for $i from 0 through 20 {
+  .mt#{$i * 5} { margin-top: 5px * $i !important; }
+  .mb#{$i * 5} { margin-bottom: 5px * $i !important; }
+  .pt#{$i * 5} { padding-top: 5px * $i !important; }
+  .pb#{$i * 5} { padding-bottom: 5px * $i !important; }
+}
+
+@mixin responsive-visibility($parent) {
+  #{$parent} {
+    display: block !important;
+  }
+  table#{$parent}  { display: table !important; }
+  tr#{$parent}     { display: table-row !important; }
+  th#{$parent},
+  td#{$parent}     { display: table-cell !important; }
+}
+
+// [converter] $parent hack
+@mixin responsive-invisibility($parent) {
+  #{$parent} {
+    display: none !important;
+  }
+}
+
+@mixin responsive-align-center($parent) {
+  #{$parent} {
+    text-align: center !important;
+  }
+}
+
+@mixin responsive-align-right($parent) {
+  #{$parent} {
+    text-align: right !important;
+  }
+}

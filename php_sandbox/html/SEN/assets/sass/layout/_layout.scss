@@ -1,0 +1,218 @@
+@charset "utf-8";
+
+// ===================================================
+// レイアウト関係のスタイル
+// ===================================================
+
+
+/*----------------------------------------------------
+	#contents
+----------------------------------------------------*/
+.l-contents {
+	word-break: normal;
+	word-wrap: break-word;
+}
+
+/*----------------------------------------------------
+	ヘッダー
+----------------------------------------------------*/
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: -60px;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  transition: 0.6s $ease;
+	padding: 21px 0;
+  background-color: rgba(#fff, 0.9);
+  &.is-fixed{
+  	top: 0;
+  }
+  &__navi{
+    ul{
+      display: flex;
+      justify-content: center;
+    }
+    li{
+      margin: 0 30px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+      a{
+        display: inline-block;
+        letter-spacing: 1px;
+        color: $font_color;
+        font-family: $base_font;
+        transition: 0.6s ease;
+        position: relative;
+        &::before{
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          background-color: #000;
+          width: 100%;
+          height: 1px;
+          transform: scale(0, 1);
+          transform-origin: right top;
+          transition: transform .5s $ease;
+        }
+        &.is-hover{
+          color: #000;
+          &::before{
+            transform-origin: left top;
+            transform: scale(1, 1);
+          }
+        }
+      }
+    }
+  }
+}
+
+.hamburger{
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 100;
+  cursor: pointer;
+  span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family: $en_font;
+    padding-top: 35px;
+    letter-spacing: 1px;
+    transition: all 0.5s $ease;
+  }
+  &::before,&::after{
+    content: "";
+    height: 2px;
+    position: absolute;
+    left: 0;
+    background-color: $font_color;
+    transition: all 0.5s $ease;
+  }
+  &::before{
+    top: 10px;
+    width: 100%;
+  }
+  &::after{
+    top: 25px;
+    width: 70%;
+  }
+  &.is-act{
+    span{
+      opacity: 0;
+    }
+    &:before,&:after{
+    	width: 100%;
+    }
+    &:before{
+      opacity: 1;
+      transform: rotate(45deg);
+      top: 49%;
+    }
+    &:after{
+      opacity: 1;
+      transform: rotate(-45deg);
+      top: 49%;
+    }
+  }
+}
+
+
+/*----------------------------------------------------
+	#main
+----------------------------------------------------*/
+.l-main {
+  line-height: 200%;
+	p {
+		margin-bottom: $base_margin_bottom;
+	}
+}
+
+/*-----------------------------------------------------
+	フッター
+-----------------------------------------------------*/
+
+.l-footer {
+	width: 100%;
+	border-top: 1px solid #707070;
+	padding: 140px 0 15px;
+	&__in{
+		max-width: 1600px;
+		margin: auto;
+		padding: 0 30px;
+	}
+	&__row{
+		display: flex;
+		justify-content: space-between;
+	}
+	&__info{
+		.name,.mail{
+			font-family: $base_font;
+		}
+		.name{
+			margin-bottom: 10px;
+		}
+		.mail{
+		}
+	}
+	&__copyright{
+		font-family: $base_font;
+		letter-spacing: 1px;
+		padding: 15px 0;
+	}
+}
+
+
+/* スマホ
+-------------------------------------------------- */
+@media only screen and (max-width:$screen-xs-max) {
+	.l-header {
+    top: auto;
+    bottom: -60px;
+		padding: 12px 0;
+    &.is-fixed{
+      top: auto;
+      bottom: 0;
+    }
+		&__navi{
+			li{
+        margin: 0 15px;
+        a{
+          font-size: 3.2vw;
+        }
+			}
+		}
+	}
+	.l-footer {
+		padding: 60px 0 10px;
+		&__in{
+			max-width: 100%;
+			padding: 0 10px;
+		}
+		&__row{
+			display: block;
+			justify-content: space-between;
+		}
+		&__info{
+			margin-bottom: 100px;
+		}
+		&__copyright{
+			text-align: center;
+			letter-spacing: 0px;
+			padding: 15px 0;
+			font-size: 3vw;
+		}
+	}
+}
+/* タブレット
+-------------------------------------------------- */
+@media only screen and (min-width:$screen-sm-min) and (max-width:$screen-sm-max) {
+
+}

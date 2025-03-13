@@ -1,0 +1,111 @@
+<!--<div id="op">
+	<div id="progressBar"></div>
+</div>-->
+<nav id="sns_c">
+<ul>
+<li><a href="//www.facebook.com/moritaalumi" target="_blank"><img src="/common/image/sub_icon01.gif" alt=""/></a></li>
+<li><a href="//instagram.com/moritaalumi" target="_blank"><img src="/common/image/sub_icon05.gif" alt=""/></a></li>
+<li><a href="//jp.pinterest.com/moritaaluminum/" target="_blank"><img src="/common/image/sub_icon02.gif" alt=""/></a></li>
+<!-- <li><a href="//twitter.com/moritaalumi" target="_blank"><img src="/common/image/sub_icon04.gif" alt=""/></a></li> -->
+<li style="background-color: #d0cac5; display:flex; justify-content: center; align-items: center; padding-bottom: 6px;" width="35px" height="33px"><a href="//twitter.com/moritaalumi" target="_blank"><img src="/common/image/sub_icon06.gif" width="20px" height="20px" alt="" style="justify-content: center; align-items: center;"/></a></li>
+
+</ul>
+</nav>
+<!--/sns_b-->
+<header>
+<form>
+	<div id="header_in">
+		<p id="logo"><a href="/"><img src="/common/image/h_logo.gif" width="124" height="41" alt=""/></a></p>
+		<nav id="glo">
+			<ul id="glo_in">
+				<li><a href="/product/">製品情報</a></li>
+				<li><a href="/mind/">こだわり</a></li>
+				<li><a href="/company/">企業情報</a></li>
+				<li><a href="/recruit/">採用情報</a></li>
+				<li><a href="/contact/">お問合せ</a></li>
+				<li><a href="/catalog/">カタログ請求</a></li>
+			</ul>
+			<br class="clearfix">
+		</nav>
+		<!--/glo_in-->
+		<nav id="h_list">
+			<ul id="h_list_in">
+				<li class="list01"><a href="/company/accessmap.php">アクセス</a></li>
+				
+				<li class="list02"><a href="/">JP</a></li>
+				<li class="list02"><a href="/en/">EN</a></li>
+			</ul>
+			<br class="clearfix">
+		</nav>
+		<!--/h_list-->
+		<p id="log_in">
+		{*<!--ログインしていないとき-->*}
+		{if !$smarty.session.member.flg}
+		<a href="/login/" class="in01">会員ログイン</a>
+		{*<!--/ログインしていないときここまで-->*}
+		{else}
+		{*<!--ログインしているとき-->*}
+		<span class="txt03">{$smarty.session.member.name}様</span><span class="btn_c"><a href="/change/" class="change">会員情報変更</a></span><span><a href="/logout.php" class="out">ログアウト</a></span>
+		{*<!--/ログインしているときここまで-->*}
+		{/if}
+		</p>
+		<br class="clearfix">
+	</div>
+	<!--/header_in-->
+	<div id="h_sp">
+	<!--<p id="menu"><img src="/common/image/h_menu.gif" alt=""/></p>-->
+	<p id="menu"><span id="panel-btn-icon"></span></p>
+	<p id="s_logo"><a href="/"><img src="/common/image/sp_logo.gif" width="82" height="27" alt=""/></a></p>
+	
+	<br class="clearfix">
+	</div>
+	<!--/h_sp-->
+	</form>
+</header>
+<!--/header--><nav id="sp_menu">
+<ul id="sp_in">
+<li class="sp_in01 c_001"><a href="/product/">製品情報</a>
+	<!-- <span>製品情報</span> -->
+
+<!-- <ul>
+<li><a href="/product/">製品検索</a></li>
+<li><a href="/product/detail.php?id=11">pid 4M</a></li>
+<li><a href="/product/detail.php?id=5">Wally</a></li>
+<li><a href="/product/detail.php?id=23">albase</a></li>
+<li><a href="/product/detail.php?id=22">ステアーズ</a></li>
+
+</ul> -->
+</li>
+<li class="sp_in01"><a href="/mind/">こだわり</a></li>
+<li class="sp_in01 c_001"><span>企業情報</span>
+<ul>
+<li><a href="/company/">ご挨拶</a></li>
+<li><a href="/company/profile.php">会社概要・沿革</a></li>
+<li><a href="/company/accessmap.php">アクセス</a></li>
+</ul></li>
+<li class="sp_in01 c_001"><span>採用情報</span>
+<ul>
+<li><a href="/recruit/">採用コンセプト</a></li>
+<li><a href="/recruit/flow.php">募集要項</a></li>
+<li><a href="/recruit/sales/index.php">プロジェクト紹介</a></li>
+<!--<li><a href="/recruit/sales/detail.php">プロジェクト紹介【未界夢創】</a></li>
+<li><a href="/recruit/sales/detail02.php">プロジェクト紹介【m/現場リーダープロジェクト】</a></li>
+<li><a href="/recruit/sales/detail03.php">プロジェクト紹介【m/ライン化プロジェクト】</a></li>-->
+<!-- <li><a href="/recruit/profile.php">社内紹介</a></li> -->
+</ul>
+
+</li>
+<li class="sp_in01"><a href="/contact/" target="_blank">お問合せ</a></li>
+<li class="sp_in01"><a href="/catalog/" target="_blank">カタログ請求</a></li>
+<li class="sp_in01"><a href="/login/">会員ログイン</a></li>
+<li class="sp_in01"><a href="/en/">English</a></li>
+</ul>
+<div id="icon_li" class="clear_fix">
+<div><a href="//www.facebook.com/moritaalumi" target="_blank"><img src="/common/image/sp_icon01.png" alt=""/></a></div>
+<div><a href="//instagram.com/moritaalumi" target="_blank"><img src="/common/image/sp_icon02.png" alt=""/></a></div>
+<div><a href="//jp.pinterest.com/moritaaluminum/" target="_blank"><img src="/common/image/sp_icon03.png" alt=""/></a></div>
+<div class="last"><a href="//twitter.com/moritaalumi" target="_blank"><img src="/common/image/sp_icon04.png" alt=""/></a></div>
+</div>
+<!--/icon_li-->
+	</nav>
+	<!--/sp_menu--> 

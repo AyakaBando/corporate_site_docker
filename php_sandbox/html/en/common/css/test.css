@@ -1,0 +1,105 @@
+@import url(//fonts.googleapis.com/css?family=Yantramanav:400,100&subset=latin,devanagari,latin-ext);
+
+#contents .md002 h2.head{font-size: 300%;}
+#contents .non_title_top{padding-top: 69px;}
+
+.main_img{margin: 0 auto 43px;padding:69px 0 10px;}
+.main_img img{width: 100%;}
+.main_img.text_img{position: relative; overflow: hidden;}
+.main_img.text_img div.img{float: right;}
+.main_img.text_img div.img img{width: auto;}
+.main_img.text_img div.text{position: absolute; left: 0; top: 100px; z-index: 100;}
+.main_img.text_img div.text em{font-style: normal; line-height: 1.2em; font-family: 'Yantramanav', sans-serif; font-weight: 100; letter-spacing: 0.01em; font-size: 3.2em;}
+.main_img.text_img div.text hr{border: none;border-bottom: 4px #a51f2a solid;width: 34px;text-align: left;margin-left: 0px;}
+.main_img.text_img div.text span{display: inline-block; width: 320px; margin-top: 10px;}
+
+.recruit .box.gray.last ul li{ border-bottom: solid 1px #ddd; margin: 20px 0; padding-bottom:20px;}
+.recruit .box.gray.last ul li.first{margin-top:0;}
+.recruit .box.gray.last ul li.last{border:none; margin-bottom:0; padding-bottom:0;}
+.recruit table {margin-bottom: 20px;}
+
+ul.steplist{overflow: hidden;}
+ul.steplist li{padding-right: 50px; text-align: center; background: url(/common/image/y_03.png) no-repeat right;}
+ul.steplist li.last{background: none;}
+ul.steplist li i{color:#C0BBBC; font-size: 2em; border: 1px solid; border-radius: 60px; padding: 28px; margin-bottom: 20px;}
+ul.steplist li h5{font-size: 120%; font-weight: bold; padding-bottom: 8px;}
+
+.recruit_flow .tab {text-align: center;margin-bottom: 33px;}
+.recruit_flow .tab li {padding: 5px 10px;display: inline-block;cursor: pointer;background: #fff;-moz-transition: ease-in 0.2s;-o-transition: ease-in 0.2s;-webkit-transition: ease-in 0.2s;transition: ease-in 0.2s;border: solid 1px #eaeaea;font-size: 92%;}
+.recruit_flow .tab li.select {background: #333; color: #fff;}
+.recruit_flow .none_select {  display: none;  }
+
+
+
+
+
+.sales ul.steplist li{padding-right: 0; padding-bottom: 50px; margin-bottom: 50px !important; text-align: center; background: url(/common/image/y_03_btm.png) no-repeat bottom;}
+.sales ul.steplist li.last{background: none;}
+.sales ul.steplist li p.image{width: 600px; height: auto; margin: 20px auto;}
+
+.sitemap ul li{margin: 26px 0;}
+.sitemap ul li h3{font-size: 120%;}
+.sitemap ul li ul li{display: inline-block; width: auto; border-bottom: dotted 1px #ccc; padding: 3px;margin: 10px 10px 10px 0;font-size: 86%;}
+.sitemap ul li ul li a{background: url(/common/image/bg_pan.gif) no-repeat left; padding-left: 16px;}
+.sitemap ul li ul li a:hover{text-decoration: none; opacity: 0.7;}
+
+.corporate p.sine{font-size: 110%; text-align: right;}
+.corporate table.history {width: 100%;}
+.corporate table.history tbody{ width: 48%; margin: 1%; float: left; line-height: 1.8em;}
+.corporate table.history tr{margin-bottom:28px; overflow: hidden;}
+.corporate table.history th{font-weight: bold; font-size: 110%; margin-bottom: 6px; padding-bottom: 6px; border-bottom: solid 1px #ddd;}
+.corporate table.history td{font-size: 96%;}
+.corporate table.history td span.m{display: inline-block; width: 3em; float: left;}
+.corporate table.history td span.text{display: inline-block; overflow: hidden;}
+.corporate table.history tr,.corporate table.history th,.corporate table.history td{display: block;}
+
+.corporate.accessmap{text-align: center;}
+.corporate.accessmap .ggmap {position: relative;padding-bottom: 40%;padding-top: 30px;height: 0;overflow: hidden; margin: 30px 0;}
+.corporate.accessmap .ggmap p.image{position: absolute;top: 0;left: 0;width: 50%;height: 100%;}
+#contents.corporate.accessmap .ggmap p.image img{width: auto !important; height: 100% !important; margin-left: -25%;}
+.corporate.accessmap .ggmap iframe,
+.corporate.accessmap .ggmap object,
+.corporate.accessmap .ggmap embed {position: absolute;top: 0;right: 0;width: 50%;height: 100%;}
+.corporate.accessmap nav{border-top: 1px solid #ddd;border-bottom: 1px solid #ddd; padding: 30px 0; overflow: hidden;}
+.corporate.accessmap nav.btn_area{border:none; padding:0;}
+.corporate.accessmap nav ol {width: 50%; padding:0 2.5%; float: left;}
+.corporate.accessmap nav ol.end{border-left: 1px solid #ddd;}
+.corporate.accessmap nav ol li{text-align: left; font-size: 96%;}
+.corporate.accessmap nav ol h3{background: url(/common/image/bg_m02.gif) center bottom no-repeat;padding-bottom: 20px;margin-bottom: 36px;}
+
+.detail{text-align: center;}
+.detail h2{font-size: 200%;margin: 60px 0;}
+.detail p.text{width: 520px;margin: 0 auto;text-align: left;}
+
+/*for small screen */
+@media screen and (max-width: 1000px) {
+.main_img.text_img{position: relative; overflow: hidden;}
+.main_img.text_img div.img{float: none;}
+.main_img.text_img div.img img{width: 100%;}
+.main_img.text_img div.text{position: static;}
+.main_img.text_img div.text span{display: inline-block; width: 100%; margin: 10px 0 30px;}
+
+ul.steplist li{padding-right: 0; padding-bottom: 50px; margin-bottom: 50px !important; text-align: center; background: url(/common/image/y_03_btm.png) no-repeat bottom;}
+ul.steplist li.last{ margin-bottom: 0; padding-bottom: 0;}
+.recruit_flow .tab li{width: 33%; margin-right:0; padding: 5px 0; text-align: center;}
+.recruit_flow .tab li + li{margin-left: 0.5%;}
+
+.corporate table.history tbody{ width: 100%; margin: 1%; float: none; line-height: 1.8em;}
+.corporate table.history tr{margin-bottom: 0;}
+.corporate table.history th{margin-bottom: 0;padding-bottom: 0;}
+
+.corporate.accessmap nav ol {width: 100%;}
+.corporate.accessmap nav ol.end{border-left:none;margin-top:60px;}
+.corporate.accessmap .ggmap {padding-bottom: 0;padding-top: 0;height: auto;overflow: hidden; margin: 30px 0;}
+.corporate.accessmap .ggmap p.image{width: 100%;height: auto; position: static; margin-bottom: 16px;}
+#contents.corporate.accessmap .ggmap p.image img{width: 100% !important; height: auto !important; margin-left: 0;}
+.corporate.accessmap .ggmap iframe,
+.corporate.accessmap .ggmap object,
+.corporate.accessmap .ggmap embed {width: 100%;height: 300px; position: static;}
+
+.detail p,.detail p.text{width: auto;}
+.main_img.text_img div.text em{
+	display:none;}
+.main_img.text_img div.text hr{
+	display:none;}
+}

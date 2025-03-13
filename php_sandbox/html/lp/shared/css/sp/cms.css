@@ -1,0 +1,101 @@
+@charset "utf-8";
+/*
+ * cms.css
+ */
+/*************************************
+ * WYSIWYG Template
+ *************************************/
+/*
+ * width: 700px
+ */
+.grid {
+	float: left;
+	zoom: 1;/* ie */
+}
+*html .grid {/* ie6 */
+	display: inline;
+}
+.cms-grid-1 {
+	margin: 0;
+	padding: 0;
+	width: 700px;
+	zoom: 1;
+}
+.cms-grid-1 .grid {
+	margin: 0 0 0 0px;
+	padding: 0;
+	width: 700px;
+}
+.cms-grid-2 {
+	margin: 0 0 0 -20px;
+	padding: 0;
+	width: 720px;
+	zoom: 1;
+}
+.cms-grid-2 .grid {
+	margin: 0 0 0 20px;
+	padding: 0;
+	width: 340px;
+}
+.cms-grid-3 {
+	margin: 0 0 0 -20px;
+	padding: 0;
+	width: 720px;
+	zoom: 1;
+}
+.cms-grid-3 .grid {
+	margin: 0 0 0 20px;
+	padding: 0;
+	width: 220px;
+}
+.cms-grid-4 {
+	margin: 0 0 0 -20px;
+	padding: 0;
+	width: 720px;
+	zoom: 1;
+}
+.cms-grid-4 .grid {
+	margin: 0 0 0 20px;
+	padding: 0;
+	width: 160px;
+}
+.cms-grid-2-1 {
+	margin: 0;
+	padding: 0;
+	width: 700px;
+	zoom: 1;
+}
+.cms-grid-2-1 .img {
+	margin-right: 20px;
+	width: 220px;
+	float: left;
+}
+.cms-grid-2-1 .context {
+	width: 460px;
+	float: left;
+}
+.cms-grid-2-2 {
+	margin: 0;
+	padding: 0;
+	width: 700px;
+	zoom: 1;
+}
+.cms-grid-2-2 .img {
+	margin-right: 20px;
+	width: 460px;
+	float: left;
+}
+.cms-grid-2-2 .context {
+	margin-right: 0;
+	width: 220px;
+	float: left;
+}
+.cms-grid-1:after,
+.cms-grid-2:after,
+.cms-grid-3:after,
+.cms-grid-4:after,
+.cms-grid-2-1:after,
+.cms-grid-2-2:after {
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+

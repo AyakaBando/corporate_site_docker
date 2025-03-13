@@ -1,0 +1,113 @@
+<?php
+require_once( dirname(__FILE__) . '/./.queserser.DB.class.php' );
+require_once( dirname(__FILE__) . '/./.systemSearchDB.class.php' );
+/*  */
+
+/**
+ * [[機能説明]]
+ *
+ * @dateTime_Decode()
+ * @dateTime_Convert()
+ * @stringConnect_decodeArray()
+ * @stringConnection()
+ */
+class systemCategoryDB extends queserserDB
+{
+/******************************************************
+    # サブカテゴリ
+******************************************************/
+    /**
+     *品種一覧取得メソッド
+     */
+    public function CategoryList( $ls = 0, $limit = 10, $param = array(), $debFlg = null )
+    {
+        $this->ls    = $ls;
+        $this->limit = $limit;
+
+        //ソート条件
+        if( $param['sort'] && $param['cond'] )
+            $sqlOrderBy = '`' . $param['sort'] . '` ' . $param['cond'];
+        else
+            $sqlOrderBy = '`priority`, `categoryId` DESC';
+
+        //一覧取得
+        $queryStr = 
+            "SELECT `categoryId`, `bigCategoryId`, `name`, `dispFlg`, `priority` 
+               FROM `product_category` 
+              " . self::ListWhere( $param ) . "
+           ORDER BY " . $sqlOrderBy;
+        $result = $this->_setQuery( 'limitQuery', $queryStr, array() );
+
+        while( $row = $result->fetchRow( DB_FETCHMODE_ASSOC ) )
+            $data[] = $row;
+
+        return ( isset( $data ) ) ? $data : null;
+    }
+
+
+    /**
+     *品種詳細取得メソッド
+     */
+    public function CategoryDetail( $id = null, $debFlg = null )
+    {
+        $this->ls = 0;
+        $this->limit = 1;
+
+        $queryStr = "SELECT * FROM `product_category` WHERE `categoryId` = ? ";
+        $result = $this->_setQuery( 'limitQuery', $queryStr, array( $id ) );
+
+        while( $row = $result->fetchRow( DB_FETCHMODE_ASSOC ) )
+        {
+            $row['image'][1]['fileName'] = $row['fileName1'];
+            $data = $row;
+        }
+
+        return ( isset( $data ) ) ? $data : null;
+    }
+
+
+    /**
+     * #順番更新
+     */
+    public function CategorySortSave( $data = array(), $getParam, $debFlg = null )
+    {
+        foreach( (array)$data['id'] AS $key => $value )
+        {
+            $queryStr = "UPDATE `product_category` SET `priority` = ? WHERE `categoryId` = ? AND `bigCategoryId` = ? LIMIT 1";
+            $this->_setQuery( 'query', $queryStr, array( $key + 1, $value, $getParam['bigCategoryId'] ) );
+        }
+    }
+
+
+
+    /**
+     *検索条件生成メソッド
+     */
+    public function ListWhere( $param = array(), $debFlg = null )
+    {
+        if( $param['dateStart']['Y'] || $param['dateStart']['m'] || $param['dateStart']['d'] || $param['dateEnd']['Y'] || $param['dateEnd']['m'] || $param['dateEnd']['d'] )
+            $serchArray['dateLimit'] = systemSearchDB::SearchDate( $param, 'dateStart', null, 'startDate' );
+
+        if( $param['bigCategoryId'] )
+            $serchArray['bigCategoryId'] = " `bigCategoryId` = " . $param['bigCategoryId'] . " ";
+
+
+        if( $serchArray )
+        {
+            foreach( (array)$serchArray AS $key => $value )
+                $SQLSearch .= " (" . $value . " ) AND ";
+            if( $SQLSearch )
+            {
+                $SQLSearch = rtrim( $SQLSearch, " AND " );
+                $sqlWhere  = ' WHERE ( ' . $SQLSearch . ' ) ';
+            }
+        }
+
+        if( $debFlg )echo $sqlWhere;
+
+        return ( $sqlWhere ) ? $sqlWhere : null;
+    }
+
+
+}
+?>

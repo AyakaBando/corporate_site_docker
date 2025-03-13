@@ -1,0 +1,306 @@
+<?php
+require_once( dirname(__FILE__) . '/../.queserser.DB.class.php' );
+require_once( dirname(__FILE__) . '/../.systemSearchDB.class.php' );
+
+/*  */
+
+/**
+ * [[機能説明]]
+ *
+ * @dateTime_Decode()
+ * @dateTime_Convert()
+ * @stringConnect_decodeArray()
+ * @stringConnection()
+ * @stringTextConnection()
+ * @stringTextConnect_decodeArray()
+ */
+class systemContactDB extends queserserDB
+{
+    private $tableName = 'contactMail';
+    private $tableId   = 'id';
+/******************************************************
+    # ニュースリリース
+******************************************************/
+
+    /**
+     *ニュースリリース一覧取得メソッド
+     */
+    public function DataList( $ls = 0, $limit = 1, $param = array() )
+    {
+        $this->ls    = $ls;
+        $this->limit = $limit;
+
+        //ソート条件
+        if( $param['sort'] && $param['cond'] )
+            $sqlOrderBy = '`' . $param['sort'] . '` ' . $param['cond'];
+        else
+            $sqlOrderBy = '`dateTime` DESC ';
+
+        //一覧取得
+        $queryStr = 
+             "SELECT `" . $this->tableId . "`, `month`, `mailBox`, `chargePerson`, `companyName`, `status`, `dateTime` 
+                FROM `" . $this->tableName . "` 
+               " . $this->ListWhere( $param ) . "
+            ORDER BY ". $sqlOrderBy;
+        $result = $this->_setQuery( 'limitQuery', $queryStr, array() );
+
+        while( $row = $result->fetchRow( DB_FETCHMODE_ASSOC ) )
+        {
+            $queryStr = 
+                 "SELECT `id`, `ownerId`, `mailBox`, `chargePerson`, `subject`, `status`, `dateTime` 
+                    FROM `contactMail_child` 
+                   WHERE `ownerId` = ? 
+                ORDER BY `dateTime` ";
+            $cresult = $this->_setQuery( 'query', $queryStr, array( $row['id'] ) );
+
+            while( $crow = $cresult->fetchRow( DB_FETCHMODE_ASSOC ) )
+                $row['child'][$crow['ownerId']][$crow['id']] = $crow;
+
+            if( !$row['status'] ) $row['status'] = 0;
+            $row['number']  = sprintf( '%07d', $row['id'] );
+            $row['use']     = stringConnect_decodeArray( $row['use'] );
+
+            if( $row )$data[] = $row;
+        }
+
+        return ( isset( $data ) ) ? $data : null;
+    }
+
+
+    /**
+     *ニュースリリース詳細取得メソッド
+     */
+    public function Detail( $id = null, $debFlg = null )
+    {
+        //ユーザー一覧取得
+        $queryStr = 
+            "SELECT * 
+               FROM `" . $this->tableName . "` 
+              WHERE `" . $this->tableId . "` = ? LIMIT 0, 1";
+        $result = $this->_setQuery( 'query', $queryStr, array( $id ) );
+
+        while( $row = $result->fetchRow( DB_FETCHMODE_ASSOC ) )
+        {
+            $row['child'] = $this->ChildDetail( $row['id'] );
+            //$row['image'][1]['fileName'] = $row['fileName1'];
+            /*
+            $row['image'][2]['fileName'] = $row['fileName2'];
+            $row['']     = stringConnect_decodeArray( $row[''] );
+            $row['']     = stringTextConnect_decodeArray( $row[''] );
+            */
+
+            $row['number']     = sprintf( '%07d', $row['id'] );
+            $row['catalog']    = stringConnect_decodeArray( $row['catalog'] );
+            $row['know']       = stringConnect_decodeArray( $row['know'] );
+            //$row['dateTime']   = dateTime_Decode( $row['dateTime'] );
+
+            $data = $row;
+        }
+
+        return ( isset( $data ) ) ? $data : null;
+    }
+
+    /**
+     *ニュースリリース詳細取得メソッド
+     */
+    public function ChildDetail( $id = null )
+    {
+        //ユーザー一覧取得
+        $queryStr = "SELECT * FROM `contactMail_child` WHERE `id` = ? LIMIT 0, 1";
+        $result = $this->_setQuery( 'query', $queryStr, array( $id ) );
+
+        while( $row = $result->fetchRow( DB_FETCHMODE_ASSOC ) )
+        {
+            //if( $row['ownerSend'] != 1 )
+            {
+                $queryStr = 
+                     "SELECT `ownerId`, `id`, `fileName`, `baseFileName`, `priority` 
+                        FROM `contactMail_child_file` 
+                       WHERE `id` = ? 
+                    ORDER BY `priority` ";
+                $cresult = $this->_setQuery( 'query', $queryStr, array( $row['id'] ) );
+
+                while( $crow = $cresult->fetchRow( DB_FETCHMODE_ASSOC ) )
+                    $row['image'][$crow['priority']] = $crow;
+            }
+
+            $row['number']     = sprintf( '%07d', $row['ownerId'] );
+            //$row['catalog']    = stringConnect_decodeArray( $row['catalog'] );
+            //$row['know']       = stringConnect_decodeArray( $row['know'] );
+            $row['receptionDateTime']   = dateTime_Decode( $row['receptionDateTime'] );
+
+            $data = $row;
+        }
+
+        return ( isset( $data ) ) ? $data : null;
+    }
+
+
+    /**
+     * #用途順番更新
+     *//*
+    public function SortAllSave( $pastData = array(), $getData = array(), $column )
+    {
+       $this->_setQuery( 'query', "DELETE FROM `product_sort` WHERE `" . $column . "` = ? ", array( $getData[$column] ) );
+
+        foreach( (array)$pastData['id'] AS $key => $value )
+        {
+            $insertArray = array( $value, $getData[$column], $key + 1 );
+            $this->_setQuery( 'query', "INSERT `product_sort` ( `id`, `" . $column . "`, `priority` ) VALUES ( ?, ?, ? )", $insertArray );
+        }
+    }*/
+
+
+    /**
+     * #用途順番更新
+     */
+    public function MoveDir( $param )
+    {
+        //$insertArray = array( $value, $getData[$column], $key + 1 );
+        if( $param['folderId'] )
+            $upDateQuery = ", `folderId` = '" . $param['folderId'] . "' ";
+        else
+            $upDateQuery = ", `folderId` = NULL ";
+        $this->_setQuery( 'query', "UPDATE `contactMail` SET `mailBox` = '" . $param['boxId'] . "' " . $upDateQuery . " WHERE `id` = ? LIMIT 1", array( $param['id'] ) );
+        $this->_setQuery( 'query', "UPDATE `contactMail_child` SET `mailBox` = '" . $param['boxId'] . "' " . $upDateQuery . " WHERE `ownerId` = ? ", array( $param['id'] ) );
+
+    }
+
+
+
+    public function Opt( $data )
+    {
+
+        //全て表示
+        if( isset( $data['alldisp'] ) && $data['alldisp'] )
+        {
+            foreach( (array)$data['id'] AS $key => $value )
+            {
+                $idData['id']      = $value;
+                $idData['dispFlg'] = 1;
+                $this->DispChange( $this->tableName, $idData, array( 'dispFlg' => 'dispFlg', 'title' => 'name', 'id' => 'id' ) );
+            }
+        }
+        //全て非表示
+        if( isset( $data['allundisp'] ) && $data['allundisp'] )
+        {
+            foreach( (array)$data['id'] AS $key => $value )
+            {
+                $idData['id']      = $value;
+                $idData['dispFlg'] = 0;
+                $this->DispChange( $this->tableName, $idData, array( 'dispFlg' => 'dispFlg', 'title' => 'name', 'id' => 'id' ) );
+            }
+        }
+        //全て削除
+        if( isset( $data['allundell'] ) && $data['allundell'] )
+        {
+            foreach( (array)$data['id'] AS $key => $value )
+            {
+                $idData['id'] = $value;
+                //$fileName = $this->GetCulumnContents( $this->tableName, 'fileName1', 'id', $value, 1 );
+                if( $value )$this->DataDelete( $this->tableName, $idData, array( 'title' => 'name', 'id' => 'id' ) );
+                if( $fileName ) @unlink( '../../upImage/' . FILE_CATEGORY . '/' . $fileName );
+            }
+        }
+
+    }
+
+
+    public function OwnerDataDelete( $id )
+    {
+        $data = $this->Detail( $id );
+
+        $queryStr = "SELECT `fileName`, `baseFileName` FROM `contactMail_child_file` WHERE `ownerId` = ? ";
+        $result = $this->_setQuery( 'query', $queryStr, array( $row['id'] ) );
+
+        while( $row = $cresult->fetchRow( DB_FETCHMODE_ASSOC ) )
+            @unlink( './mailFile/' . $row['fileName'] );
+
+        $this->_setQuery( 'query', "DELETE FROM `" . $this->tableName . "` WHERE `id` = ? LIMIT 1", array( $id ) );
+        $this->_setQuery( 'query', "DELETE FROM `contactMail_child` WHERE `ownerId` = ? LIMIT 1", array( $id ) );
+        $this->_setQuery( 'query', "DELETE FROM `contactMail_child_file` WHERE `ownerId` = ? LIMIT 1", array( $id ) );
+
+
+        return $data['companyName'];
+    }
+
+    public function ChildDataDelete( $id )
+    {
+        $this->_setQuery( 'query', "DELETE FROM `contactMail_child` WHERE `id` = ? LIMIT 1", array( $id ) );
+
+        $queryStr = "SELECT `fileName`, `baseFileName` FROM `contactMail_child_file` WHERE `id` = ? ";
+        $result = $this->_setQuery( 'query', $queryStr, array( $id ) );
+        while( $row = $result->fetchRow( DB_FETCHMODE_ASSOC ) )
+            @unlink( './mailFile/' . $row['fileName'] );
+
+    }
+
+
+    /**
+     *検索条件生成メソッド
+     */
+    public function ListWhere( $param = array(), $debFlg = null )
+    {
+        if( $param['folderId'] )
+            $serchArray['folderId'] = " `folderId` = '" . $param['folderId'] . "' ";
+
+        if( !$param['folderId'] && $param['boxId'] )
+            $serchArray['folderId'] = " `mailBox` = '" . $param['boxId'] . "' AND ( `folderId` IS NULL OR `folderId` = 0 ) ";
+
+        if( $param['status'] )
+            $serchArray['status'] = " `status` = '" . $param['status'] . "' ";
+        if( $param['status'] === '0' )
+            $serchArray['status'] = " `status` = 0 OR `status` IS NULL ";
+
+        if( $param['freeWord'] )
+            $serchArray['freeWord'] = " `companyName` LIKE '%" . $param['freeWord'] . "%' ";
+
+        if( $param['id'] && is_array( $param['id'] ) )
+        {
+            foreach( (array)$param['id'] AS $key => $value )
+            {
+                if( $value )$serchArray['id'] .= " `id` = " . $value . " OR ";
+            }
+            if( $serchArray['id'] ) $serchArray['id'] = rtrim( $serchArray['id'], 'OR ' );
+        }
+        if( $param['id'] && !is_array( $param['id'] ) )
+            $serchArray['id'] = " `id` = " . $param['id'] . " ";
+
+//        if( $param['shopId'] )
+//            $serchArray['shopId'] = " `id` = '" . $param['shopId'] . "' ";
+/*
+        if( $param['specialProperty'] )
+            $serchArray['specialProperty'] = " `specialProperty` LIKE '%|" . $param['specialProperty'] . "|%' ";
+
+        if( $param['keyWord'] )
+        {
+            foreach( (array)$param['keyWord'] AS $key => $value )
+            {
+                if( $value )$serchArray['keyWord'] .= " `keyWord` LIKE '%|" . $key . "|%' OR ";
+            }
+            if( $serchArray['keyWord'] ) $serchArray['keyWord'] = rtrim( $serchArray['keyWord'], 'OR ' );
+        }
+
+        if( $param['freeWord'] )
+            $serchArray['freeWord'] = " ( `charge` LIKE '%" . $param['freeWord'] . "%' OR `name` LIKE '%" . $param['freeWord'] . "%' OR`guide` LIKE '%" . $param['freeWord'] . "%' OR`comment` LIKE '%" . $param['freeWord'] . "%' ) ";
+*/
+
+
+        if( $serchArray )
+        {
+            foreach( (array)$serchArray AS $key => $value )
+                $SQLSearch .= " ( " . $value . " ) AND ";
+            if( $SQLSearch )
+            {
+                $SQLSearch = rtrim( $SQLSearch, " AND " );
+                $sqlWhere  = ' WHERE ( ' . $SQLSearch . ' ) ';
+            }
+        }
+
+        if( $debFlg )echo $sqlWhere;
+
+        return ( $sqlWhere ) ? $sqlWhere : null;
+    }
+
+}
+?>

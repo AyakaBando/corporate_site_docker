@@ -1,0 +1,138 @@
+@charset "utf-8";
+
+// ===================================================
+// レイアウト関係のスタイル
+// ===================================================
+
+
+/*----------------------------------------------------
+	#contents
+----------------------------------------------------*/
+.l-contents {
+	word-break: normal;
+	word-wrap: break-word;
+}
+
+/*----------------------------------------------------
+	ヘッダー
+----------------------------------------------------*/
+.l-header {
+  width: calc(100% - 62px);
+  padding: 45px 12px 10px;
+  text-align: right;
+}
+
+
+/*----------------------------------------------------
+	#main
+----------------------------------------------------*/
+.l-main {
+  line-height: 200%;
+	p {
+		margin-bottom: $base_margin_bottom;
+	}
+}
+
+/*-----------------------------------------------------
+	フッター
+-----------------------------------------------------*/
+
+.l-footer {
+	width: 100%;
+  background: url(#{$img_path}footer/footer_bg@2x.jpg) center /cover no-repeat;
+	padding: 40px 0;
+	a{
+		transition: 0.3s $ease;
+		&.is-hover{
+			color: #999;
+		}
+	}
+	&__in{
+		padding: 0 30px;
+	}
+	&__row{
+		display: flex;
+		justify-content: space-between;
+	}
+	&__info{
+    .logo{
+      margin-bottom: 20px;
+    }
+		.name{
+			margin-bottom: 10px;
+		}
+	}
+  &__links{
+    margin-right: 200px;
+    .ttl{
+      font-size: 1.8rem;
+      font-weight: 400;
+      border-bottom: 1px solid $sub_color;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+    ul{
+      margin-bottom: 40px;
+    }
+    li{
+      line-height: 180%;
+      padding-left: 30px;
+      position: relative;
+      &::before{
+        content: '';
+        position: absolute;
+        top: 12px;
+        left: 0;
+        width: 20px;
+        border-top: 1px solid $sub_color;
+      }
+    }
+  }
+	&__copyright{
+    font-size: 1.4rem;
+	}
+}
+
+
+/* スマホ
+-------------------------------------------------- */
+@media only screen and (max-width:$screen-xs-max) {
+	.l-header {
+		padding: 15px;
+    width: 100%;
+    margin: 0 0 0 auto;
+	}
+  .l-footer{
+		padding: 60px 20px 40px;
+    &__links{
+      margin-right: 80px;
+      li{
+        line-height: 220%;
+      }
+    }
+  }
+	// .l-footer {
+	// 	&__in{
+	// 		max-width: 100%;
+	// 		padding: 0 10px;
+	// 	}
+	// 	&__row{
+	// 		display: block;
+	// 		justify-content: space-between;
+	// 	}
+	// 	&__info{
+	// 		margin-bottom: 100px;
+	// 	}
+	// 	&__copyright{
+	// 		text-align: center;
+	// 		letter-spacing: 0px;
+	// 		padding: 15px 0;
+	// 		font-size: 3vw;
+	// 	}
+	// }
+}
+/* タブレット
+-------------------------------------------------- */
+@media only screen and (min-width:$screen-sm-min) and (max-width:$screen-sm-max) {
+
+}

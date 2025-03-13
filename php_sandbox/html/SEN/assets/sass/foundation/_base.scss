@@ -1,0 +1,252 @@
+@charset "utf-8";
+
+html{
+	font-size:62.5%;
+}
+
+body {
+	background: #EAEAEA;
+	color: $font_color;
+	font-family: $min_font;
+	-webkit-text-size-adjust:100%;
+}
+
+#page {
+	position: relative;
+	font-size: 1.5rem;
+	overflow: hidden;
+	font-weight: normal;
+	opacity: 0;
+	transition: 1.8s $ease;
+	&.is-act{
+		opacity: 1;
+	}
+}
+
+@if not $tablet {
+	#page {
+		min-width: $base_width;
+	}
+	.container{
+		width: $base_width;
+	}
+}
+
+a {
+	&:link {
+		color: $link_color;
+		text-decoration: none;
+	}
+	&:visited {
+		color: $link_color_visited;
+	}
+	&:hover {
+		color: $link_color_hover;
+	}
+	&:active {
+		color: $link_color_active;
+	}
+}
+
+img {
+	line-height: 1;
+	font-size: 0;
+	vertical-align: top;
+	height: auto;
+	max-width: 100%;
+}
+
+
+table {
+	width: 100%;
+	margin: 0 auto 20px;
+	border-collapse: collapse;
+}
+th, td {
+	padding: 10px;
+	border: 1px solid #CCC;
+	vertical-align: top;
+}
+
+/*----------------------------------------------------
+	form要素
+--------------------------------------------------- */
+
+input, textarea {
+	padding:5px 7px;
+	border-radius:2px;
+	margin:0;
+	border:none;
+	background-color:#fff;
+	border: 1px solid #A7A6AA;
+}
+
+input[type="text"],
+textarea {
+	outline: none;
+	border: 1px solid #aaa;
+	transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+	box-shadow: 0 0 7px #52a8ec;
+	border: 1px solid #52a8ec;
+}
+
+input[type="radio"], input[type="checkbox"] {
+	margin-right:5px;
+	vertical-align:baseline;
+	border-style:none;
+}
+
+label {
+	margin-right:15px;
+}
+
+input[type="submit"] {
+  -webkit-appearance: none;
+}
+
+input[type="radio"] {
+	display: none;
+	+ label{
+		padding-left: 25px;
+		position: relative;
+		&::before{
+		  content: "";
+		  width: 18px;
+		  height: 18px;
+		  @include centering(false,true);
+			left: 0;
+		  -webkit-appearance: button;
+		  appearance: button;
+			-moz-appearance: none;
+		  -webkit-box-sizing: border-box;
+		  box-sizing: border-box;
+		  background-color: #FFFFFF;
+		  border: 1px solid #999999;
+		  @include border_radius(50%);
+		  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.2);
+		  vertical-align: middle;
+		  cursor: pointer;
+		  padding: 5px;
+		}
+	}
+	&:disabled {
+		+label{
+			color: #bbb;
+			&::before {
+				background-color: #ddd;
+				border-color: #ddd;
+		 	}
+		}
+	}
+	&:checked + label::after {
+	  display: block;
+	  @include centering(false,true);
+	  left: 6px;
+	  content: "";
+	  width: 6px;
+	  height: 6px;
+	  background: $main_color;
+	  @include border_radius(50%);
+	}
+}
+
+input[type="checkbox"]{
+	display: none;
+	+label{
+		padding-left: 25px;
+		position: relative;
+		&::before{
+			content: '';
+			width: 20px;
+			height: 20px;
+			@include centering(false,true);
+			left: 0;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			-webkit-appearance: button;
+			appearance: button;
+			-moz-appearance: none;
+			border: 1px solid #999;
+			background-color: #fff;
+			vertical-align: middle;
+			padding: 5px;
+			border-radius: 2px;
+		}
+	}
+	&:disabled{
+		+label{
+			color: #bbb;
+			&::before {
+				background-color: #ddd;
+				border-color: #ddd;
+		 	}
+		}
+	}
+	&:checked + label::after {
+		content: "";
+		position: absolute;
+		top: calc(50% - 4px);
+		left: 0;
+		width: 6px;
+		height: 10px;
+		border-right: 4px solid $main_color;
+		border-bottom: 4px solid $main_color;
+		transform: rotate(45deg) translateY(-50%);
+	}
+}
+
+.contactForm{
+	input,textarea{
+		padding: 10px 15px;
+		@include font-size(1.6);
+	}
+	.mwform-radio-field{
+  	display: block;
+  	margin-left: 0!important;
+  }
+}
+
+/* スマホ
+-------------------------------------------------- */
+@media only screen and (max-width:$screen-xs-max) {
+	#page {
+		min-width: 100%;
+		font-size: 1.3rem;
+	}
+	.container{
+		width: 100%;
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+  .row{
+    margin-left:-5px;
+    margin-right:-5px;
+  }
+  .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9{
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  input,textarea,select{
+    font-size:1.6rem;
+    transform: scale(.9);
+  }
+}
+/* タブレット
+-------------------------------------------------- */
+@media only screen and (min-width:$screen-sm-min) and (max-width:$screen-sm-max) {
+
+}
+/* PC(small)
+-------------------------------------------------- */
+@media only screen and (min-width:$screen-md-min) and (max-width:$screen-md-max) {
+
+}
+/* PC(large)
+-------------------------------------------------- */
+@media only screen and (min-width:$screen-lg-min) {
+
+}

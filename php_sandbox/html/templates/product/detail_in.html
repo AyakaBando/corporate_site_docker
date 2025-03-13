@@ -1,0 +1,68 @@
+<link rel="stylesheet" type="text/css" href="/common/css/reset-fonts.css">
+<link rel="stylesheet" type="text/css" href="/common/css/reset-min.css">
+<link rel="stylesheet" type="text/css" href="/common/css/comp.css">
+<link rel="stylesheet" type="text/css" href="/common/css/contents.css">
+<!--[if IE]><link rel="stylesheet" href="/common/css/fontsize_ie.css" media="all" /><![endif]-->
+<!--[if lt IE 9]><script src="/common/js/html5shiv.js"></script><![endif]-->
+<link href="/common/css/bootstrap.min.css" rel="stylesheet">
+<link href="/common/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Rajdhani:400,300' rel='stylesheet' type='text/css'>
+<head>
+{if $smarty.get.r == 1}
+{literal}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script>
+$(document).ready(function(){
+    parent.$.fancybox.close();
+});
+</script>
+{/literal}
+{/if}
+</head>
+
+
+<div class="pop_up">
+<h5 class="head">レビューを編集</h5>
+
+       {if $form.errors}
+       <div style="border:double 3px #ff0000;margin-bottom:10px;background-color:#ffffff;padding:6px;">
+       {foreach from=$form.errors item=value}
+       {$value}<br />
+       {/foreach}
+       </div>
+       {/if}
+<form action="./detail_in.php?id={$smarty.get.id}&rId={$smarty.get.rId}" method="post">
+
+		<p class="btm5">評価</p>
+		<p class="star">
+		<select name="evaluation">
+<option value="5" class="s_area"{if $data.evaluation == 5} selected="selected"{/if}>★★★★★</option>
+<option value="4" class="s_area"{if $data.evaluation == 4} selected="selected"{/if}>★★★★</option>
+<option value="3" class="s_area"{if $data.evaluation == 3} selected="selected"{/if}>★★★</option>
+<option value="2" class="s_area"{if $data.evaluation == 2} selected="selected"{/if}>★★</option>
+<option value="1" class="s_area"{if $data.evaluation == 1} selected="selected"{/if}>★</option>
+
+</select>
+</p>
+<p class="btm5">タイトル</p>
+<p class="title btm10">
+{$form.title.html}
+</p>
+<p class="btm5">内容</p>
+<p class="t_txt btm10">
+{$form.comment.html}
+</p>
+<p class="btm15">※弊社で記事を確認するため、「編集するボタン」を押すと非表示になります。
+弊社確認後、表示されます。ご了承ください。
+</p>
+<nav class="btn_area">
+			<ul>
+				<li>{$form.submitReg.html}</li>
+			</ul>
+		</nav>
+		<!--/btn_area--> 
+</form>
+</div>
+<!--/pop_up-->
+

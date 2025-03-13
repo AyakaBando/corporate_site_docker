@@ -1,0 +1,585 @@
+@charset "utf-8";
+
+@media screen and (max-width: 640px){
+
+.contents-section{
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: #dedede 1px solid;
+}
+.contents-section2{
+	margin-bottom: 20px;
+	padding-bottom: 0;
+}
+.contents-section8,
+.contents-section5,
+.contents-section3{
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+.attention{
+	color:#796f4f;
+	font-size: .9em;
+}
+.body-parts{
+	margin: 0 0 30px;
+}
+.wire-image{
+	padding: 0 15px;
+}
+.body-parts2{
+	display: none;
+}
+.download-image img,
+.body-parts img{
+	width: 100%;
+}
+/*************************************
+ * Pid 紹介
+ *************************************/
+.pid-logo{
+	margin: 50px 0 50px 30px;
+	text-align: center;
+}
+.logo-article{
+	margin-bottom: 80px;
+}
+.item-photo{
+	margin: 30px 0 0;
+	text-align: center;
+}
+.pid-logo img,
+.item-photo img{
+	width: 60%;
+}
+.contents-section2 .item-photo img{
+	width: 50%;
+}
+.contents-section2 .item-photo{
+	padding: 30px 0 15px;
+	border-top: #dedede 1px solid;
+	text-align: center;
+	background: url("../../../images/bg/section2_bg.png") repeat 0 0;
+}
+.contents-section3 .contents-visual .method{
+	margin-bottom: 30px;
+	padding: 20px 0;
+	border-bottom: #dedede 1px solid;
+
+	text-align:center;
+}
+.method-section{
+	border-top: #dedede 1px solid;
+}
+.contents-section3 .contents-visual .method .pcimg{
+	display:none;
+}
+p.attention-alert{
+	margin: 10px 0 0 0;
+	padding: 10px 0 10px 32px;
+	color: #888;
+	display: inline-block;
+	border: 1px #888 solid;
+	background: url("../../../images/ic/alert.png") no-repeat 5px center;
+	position: relative;
+	left: 5px;
+}
+.sub-copy{
+	margin: 0 0 30px;
+}
+.faq-article{
+	margin: 0;
+	padding: 0 10px;
+}
+.faq-article dd,
+.faq-article dt{
+	margin: 0 0 15px;
+}
+.faq-article dd{
+	margin-bottom: 45px;
+}
+.faq-article dt span.q{
+	margin: 0 5px 0 0;
+	padding: 3px 10px;
+	color: #fff;
+	background: #002822;
+	display: block;
+	float: left;
+
+	border-radius: 16px;
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+}
+.faq-article dd span.a{
+	margin: 0 5px 0 0;
+	padding: 3px 10px;
+	color: #fff;
+	background: #ae0a29;
+	display: block;
+	float: left;
+
+	border-radius: 16px;
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+}
+.faq-article dt .question-text,
+.faq-article dd .answer-text{
+	position: relative;
+	top: 2px;
+	display: block;
+	overflow: hidden;
+	zoom:1;
+}
+
+.faq-article dd:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+
+
+.flow-section .article1 .flow-image img{
+	width: 60%;
+}
+.flow-section .article2 .flow-image img{
+	width: 50%;
+}
+.flow-section .article3 .flow-image img{
+	width: 40%;
+}
+.flow-section .article{
+	padding-bottom: 15px;
+	text-align: center;
+	border-bottom: #dedede 1px solid;
+}
+.flow-section .article3{
+	padding-top: 15px;
+	border-bottom: none;
+}
+.flow-section .flow-image{
+	margin: 0 0 15px;
+	text-align: center;
+}
+.voice-wrap .icon span{
+	margin: 10px 0 30px;
+	padding: 2px 5px;
+	display: inline-block;
+	background: #555;
+	color: #fff;
+}
+.voice-wrap li.voice2 .icon span{
+	margin: 0 0 15px;
+}
+li.voice2,
+li.voice1{
+	margin: 0 0 10px;
+	padding: 10px;
+	border: 5px #dedede solid;
+}
+li.voice2 .main-comment,
+li.voice1 .main-comment{
+	margin: 10px 0 20px;
+	padding: 0;
+	font-size: 1.4em;
+	line-height: 140%;
+	font-weight: bold;
+}
+p.name{
+	padding-left: 0;
+}
+#Voice .more-btn{
+	color: #ae0a29;
+    cursor:pointer;
+}
+#Voice .more-text{
+    display:none;
+}
+.contents-section8 .photo-list-pc{
+	display: none;
+}
+.contents-section8 .photo-list{
+	margin: 25px 0 0 0;
+}
+.contents-section8 .photo-list ul:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.contents-section8 .photo-list li{
+	margin: 0 0 5px 5px;
+	padding: 0;
+	overflow: hidden;
+	float: left;
+}
+.contents-section8 .photo-list li img{
+	width: 100px;
+}
+
+
+
+
+
+
+
+.download-section{
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.catalog-download-btn{
+	text-align: center;
+}
+.catalog-download-btn a{
+	padding: 15px 15px 15px 60px;
+	border: #8c031d 4px solid;
+	background: #ae0a29 url("../../../images/ic/download_l.png") no-repeat 15px center;
+	display: inline-block;
+	font-size: 1em;
+	text-decoration: none;
+
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+
+	transition: background .1s linear, color .1s linear;
+	-webkit-transition: background .1s linear, color .1s linear;
+	-moz-transition: background .1s linear, color .1s linear;
+}
+.products-btn{
+	margin-top: 30px;
+	text-align:center;
+}
+.products-btn a{
+	padding: 15px 10px 15px 45px;
+	background: #888 url("../../../images/ic/next.png") no-repeat 25px center;
+	display: inline-block;
+	border: #dedede 4px solid;
+	font-size: 1.1em;
+	text-decoration: none;
+
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+
+	transition: background .1s linear, color .1s linear;
+	-webkit-transition: background .1s linear, color .1s linear;
+	-moz-transition: background .1s linear, color .1s linear;
+}
+.download-list li img{
+	width: 140px !important;
+}
+.download-list .btn1 a{
+	display: inline-block;
+}
+span.product-name{
+	padding-top: 5px;
+	display: block;
+}
+
+
+.social-btns-container{
+	background: #faf8f2;
+}
+.social-btns-section{
+	margin: 0 auto;
+	padding: 20px 0 20px 10px;
+	width: 100%;
+}
+
+#fb-root{
+	display: none;
+}
+.fb-btn{
+	padding-right:15px;
+	float: left;
+}
+
+/*************************************
+ * カタログ請求フォーム
+ *************************************/
+.contents-section9{
+	margin-bottom: 0;
+	padding: 20px 0 0px;
+	background:#faf8f2;
+}
+.form-container .section{
+	margin: 0 10px 30px;
+	padding: 10px 0 30px;
+	background: #fbfbfb;
+	border: #dedede 1px solid;
+	border-radius: 8px;
+}
+	.form-container .section h3{
+		text-align: center;
+		font-size: 1.8em;
+	}
+	.form-container .corporate-section h3{
+
+	}
+
+/*************************************
+ * フォーム関連
+ *************************************/
+.submit-next input[type="submit"],
+.submit input[type="submit"] {
+	transition: background .1s linear;
+}
+.submit input[type="submit"]:hover,
+.submit-next input[type="submit"]:hover {
+	background: #d13955;
+}
+/*************************************
+ * 利用規約
+ *************************************/
+.body ol,
+.body p {
+	margin: 0 10px;
+}
+.body p {
+	margin-bottom: 15px;
+}
+.body ol li{
+	margin: 0 10px 10px 15px;
+	list-style: decimal;
+}
+.body ul.disc li {
+	margin: 0 10px 10px 25px;
+	list-style: disc;
+}
+
+
+/*************************************
+ *
+ *************************************/
+p {
+	margin-bottom: 15px;
+}
+ol li {
+	margin: 0 0 10px 15px;
+	list-style: decimal;
+}
+ul.disc li {
+	margin: 0 0 10px 15px;
+	list-style: disc;
+}
+
+
+/*************************************
+ *
+ *************************************/
+	p {
+		margin-bottom: 15px;
+		padding: 0 10px;
+	}
+
+    h3 span.title {
+	    padding: 0 0 0 20px;
+    }
+	.btn2,
+    .btn1 {
+    	margin-top: 30px;
+		margin-right: 10px;
+	    text-align: center;
+    }
+	.btn2 a,
+    .btn1 a{
+    	border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+    }
+	.contents-section6 .btn-article,
+	.contents-section4 .btn1,
+    .contents-section2 .btn1 {
+    	margin-top: 30px;
+		margin-bottom: 30px;
+		margin-right: 0;
+	    text-align: center;
+    }
+
+/*************************************
+ * 簡単に取付け可能
+ *************************************/
+#body-parts img {
+	width: 100%;
+}
+.plan-article{
+	border-bottom: #dedede 1px solid;
+}
+/*************************************
+ * 回り込み解除
+ *************************************/
+#body-parts,
+.price ul{
+	zoom: 1;
+}
+#body-parts:after,
+.price ul:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+
+	#overlay .page-desc {
+		top: 60%;
+	}
+
+
+/*************************************
+ * プライバシーポリシー
+ *************************************/
+	.body ol,
+	.body p {
+		margin: 0 10px 0 0;
+		/*padding: 0 10px;*/
+		display: block;
+	}
+	.body p {
+		margin-bottom: 10px;
+		/*padding: 0 10px;*/
+		display: block;
+	}
+	.body ol li {
+		margin: 0 0 10px 25px;
+		list-style: decimal;
+	}
+	.body ul.disc li {
+		margin: 0 0 10px 15px;
+		list-style: disc;
+	}
+
+
+/*************************************
+ * お問い合わせ
+ *************************************/
+	#ContactContents .body dl dt {
+		margin: 0;
+		padding: 15px;
+		font-size: 1em;
+		color: #fff;
+		background: #212121;
+	}
+	#ContactContents .body dl dd {
+		margin: 0;
+		padding: 15px;
+		color: #ddd;
+		border-bottom: #000 1px solid;
+	}
+	.form-container dl {
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+	}
+	.form-container dt,
+	.form-container dd {
+		padding: 15px 10px;
+		/*display: table-cell;*/
+		background: #fbfbfb;
+		border-bottom: 1px solid #dedede;
+	}
+	.form-container dt {
+		padding-bottom: 0;
+		display: block;
+		border-bottom: none;
+	}
+	.form-container input {
+		padding: 10px;
+		border-radius: 5px;
+		border: none;
+		font-size: 1.3em;
+		border: #dedede 1px solid;
+	}
+	.info {
+		margin: 40px 0 10px 0;
+		padding: 0 10px;
+	}
+
+
+	#T_NAME input,
+	#T_KANA input,
+	#T_TEL input,
+	#T_BUSINESS_CATEGORY input,
+	#T_COMPANY_NAME input,
+	#T_MAIL input {
+		width: 93%;
+	}
+	.radio {
+		padding-right: 0px;
+		padding-bottom: 10px;
+		display: inline-block;
+	}
+	.radio2 {
+		display: inline-block;
+		padding-bottom: 10px;
+	}
+	#T_ADDRESS input {
+		width: 80%;
+	}
+	.submit-next,
+	.submit {
+		margin-top: 30px;
+		text-align: center;
+	}
+	.form-container input[type="submit"],
+	.submit-next input,
+	#PREV,
+	#SEND {
+		padding: 15px 20px;
+		background: #ae0a29;
+		color: #fff;
+		-webkit-appearance: none;
+		font-size: 1.1em;
+		-webkit-transition: background .1s linear;
+	}
+
+	.submit-next input:hover,
+	.form-container input[type="submit"],
+	#PREV:hover,
+	#SEND:hover {
+		cursor: pointer;
+		background: #a0708f
+	}
+	#PREV {
+		background: #666;
+	}
+	.error-block {
+		margin-bottom: 20px;
+		margin-left: 10px;
+		color: #f07a8e;
+	}
+	.error-form-style {
+		background: #f07a8e;
+	}
+	dt.must,
+	dd.must {
+
+	}
+	.must {
+		font-weight: bold;
+		color: #888;
+	}
+	.form-container span.must {
+		font-size: 1.2em;
+		color: #ae0a29;
+	}
+	.form-container .must-info {
+		margin-left: 10px;
+	}
+	.form-container .group {
+		display: inline-block;
+	}
+	.form-container .example {
+		color: #888;
+	}
+
+	.form-container input[type="submit"].prev:hover{
+		background: #333;
+	}
+	.form-container input[type="submit"]{
+		padding: 15px 20px 15px 20px;
+		background: #ae0a29;
+		color: #fff;
+		text-decoration: none;
+		transition: background .1s linear, color .1s linear;
+		-webkit-transition: background .1s linear, color .1s linear;
+		-moz-transition: background .1s linear, color .1s linear;
+		cursor: pointer;
+	}
+	.form-container input[type="submit"].prev{
+		background: #888;
+		cursor: pointer;
+	}
+}

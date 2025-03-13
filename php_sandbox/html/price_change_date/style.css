@@ -1,0 +1,232 @@
+* {
+    list-style: none;
+    /* text-decoration: none; */
+    color: #707070;
+    font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体",
+      "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+  }
+  
+  body {
+    margin: 0 auto;
+    font-size: 16px;
+    color: #555;
+  }
+
+      /* header & footer */ 
+  header {
+    border-bottom: solid 1px #ddd;
+    padding-bottom: 10px;
+    margin-top: 2rem;
+  }
+
+  .header-sp {
+    display: none;
+  }
+
+  .nav-container {
+    max-width: 985px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-container > .logo {
+    justify-content: start;
+    align-items: center;
+    width: 124px;
+  }
+
+  .nav-container > .logo > a > img {
+    width: 124px;
+  }
+
+  .nav-container > .menu-left {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .menu-left > li > a {
+    position: relative;
+  }
+
+  .menu-left > li > a::after {
+    position: absolute;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #555;
+    bottom: -1px;
+    visibility: hidden;
+  }
+
+  .menu-left > li > a:hover::after {
+    visibility: visible;
+  }
+
+  .nav-container > .menu-right {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+  }
+
+      /* footer */
+      footer {
+        padding: 10px 0;
+        font-size: 80%;
+        text-align: center;
+        width: 985px;
+        margin: 0 auto;
+      }
+    
+      .footer-sp {
+        display: none;
+      }
+    
+      .footer-nav-container {
+        display: flex;
+        justify-content: space-between;
+      }
+      .footer-top-border {
+        border-top: solid 1px #ddd;
+        padding: 10px 0;
+        font-size: 80%;
+        text-align: center;
+        width: 100%;
+        margin-top: 5rem;
+      }
+    
+      .footer-nav-container > .footer-logo {
+        justify-content: start;
+        align-items: center;
+      }
+    
+      .footer-nav-container > .footer-logo > a > img {
+        width: 124px;
+      }
+    
+      .footer-menu-left {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+    
+      .sns {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    
+      .footer-bottom > ul {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 0;
+      }
+    
+      .copyright {
+        border-top: solid 1px #ddd;
+        padding: 10px 0;
+        font-size: 80%;
+        text-align: center;
+        width: 100%;
+      }
+
+      th,td{
+        border:1px #333 solid;
+        padding: 1rem 2rem;
+        font-weight: 100;
+      }
+
+      table{
+        border-collapse: collapse;
+        text-align: center;
+        margin: 5.64rem auto;
+      }
+    
+      .responsive {
+        display: none;
+      }
+
+  
+  @media screen and (min-width: 1279px) {
+  
+  }
+  
+  @media screen and (max-width: 1280px) {  
+
+  }
+  
+  @media only screen and (max-width: 500px) {
+        /* header & footer */
+    header {
+      margin: 0;
+    }
+  
+    .header-sp {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+    }
+  
+    .nav-container {
+      display: none;
+    }
+
+    .nav-container > .logo > img {
+      width: 124px;
+    }
+
+    table {
+        display:none;
+    }
+
+    .responsive {
+        display:block;
+        margin: 3rem auto;
+        width: 72%;
+    }
+
+    .responsive ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .responsive ul li {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .product-name {
+        background-color: #ECECEC;
+    }
+
+    .price-change-date{
+        border-top: 1px #ECECEC solid;
+    }
+
+  
+  
+    /* footer */
+    footer {
+      display: none;
+    }
+  
+    .footer-sp {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .copyright {
+      border-top: solid 1px #ddd;
+      padding: 10px 0;
+      font-size: 80%;
+      text-align: center;
+      width: 100%;
+    }
+  }
+  

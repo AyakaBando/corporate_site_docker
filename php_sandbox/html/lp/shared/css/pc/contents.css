@@ -1,0 +1,625 @@
+@charset "utf-8";
+
+
+
+@media screen and (min-width: 641px){
+
+.contents-section h2{
+	margin-bottom: 35px;
+	font-size: 2.4em;
+}
+/*************************************
+ * pid 紹介
+ *************************************/
+.contents-section2{
+	padding: 120px 0 80px;
+	background: url("../../../images/bg/section2_bg.png") repeat 0 0;
+}
+.contents-section2 .pid-logo{
+	margin: 0 0 70px;
+}
+.contents-section2 .logo-article{
+	margin: 15px 0 0 0;
+	float:left;
+	width: 390px;
+}
+.contents-section2 .item-photo{
+	margin: 0 70px 0 0;
+	padding: 0;
+	float: right;
+}
+.contents-section:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.pid-logo{
+	margin-bottom: 25px;
+}
+/*************************************
+ * 簡単取付け
+ *************************************/
+p.exp{
+	margin: 5px 0 0 0;
+	padding: 0;
+	font-size: .84em;
+	color: #888;
+}
+p.attention-alert{
+	margin: 10px 0 0 0;
+	padding: 10px 10px 10px 32px;
+	color: #888;
+	display: inline-block;
+	border: 1px #888 solid;
+	background: url("../../../images/ic/alert.png") no-repeat 5px center;
+}
+.contents-section3{
+	margin: 0;
+	padding: 50px 0;
+}
+.contents-section3 .contents-visual-top{
+	margin-bottom: 80px;
+}
+.contents-section3 .contents-visual .left-content{
+	margin: 0;
+	padding: 0;
+	width: 350px;
+	float: left;
+}
+.contents-section3 .contents-visual:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.contents-section3 .contents-visual .method{
+	margin: 0px 0 0 0;
+	float: right;
+}
+.contents-section3 .contents-visual .method .spimg{
+	display:none;
+}
+.flow-section ul:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.flow-section {
+	margin: 50px 0 0 0;
+}
+.flow-section .article{
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+.flow-section .article .flow-image{
+	height: 204px;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+.flow-section .article1 .flow-image{width: 367px; background: url("../../../images/flow1.png") no-repeat 40px 0}
+.flow-section .article2{width: 400px; background: url("../../../images/flow2.png") no-repeat 80px 0}
+.flow-section .article3{width: 213px; background: url("../../../images/flow3.png") no-repeat center 0}
+
+.flow-section .flow-image{
+	margin: 0 0 25px;
+	text-align: center;
+}
+/*************************************
+ * よくあるご質問
+ *************************************/
+.faq-article{
+	margin: 0;
+	padding: 0;
+}
+.faq-article dd{
+	margin-bottom: 45px;
+}
+.faq-article dt{
+	margin: 0 0 15px;
+}
+.faq-article dt span.q{
+	margin: 0 5px 0 0;
+	padding: 3px 10px;
+	color: #fff;
+	background: #002822;
+	display: block;
+	float: left;
+
+	border-radius: 16px;
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+}
+.faq-article dd span.a{
+	margin: 0 5px 0 0;
+	padding: 3px 10px;
+	color: #fff;
+	background: #ae0a29;
+	display: block;
+	float: left;
+
+	border-radius: 16px;
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+}
+
+.faq-article dt .question-text,
+.faq-article dd .answer-text{
+	position: relative;
+	top: 2px;
+	display: block;
+	overflow: hidden;
+	zoom:1;
+}
+.faq-article dd:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+
+#Voice .more-btn{
+	color: #ae0a29;
+    cursor:pointer;
+}
+#Voice .more-text{
+    display:none;
+}
+
+/*************************************
+ * 簡単操作のワンタッチ構造
+ *************************************/
+.contents-section4 .page-desc-container .page-desc{
+	top: 20%;
+	left: 58%;
+}
+.contents-section4 .page-desc-container .page-desc .desc{
+	margin-right: 0;
+}
+/*************************************
+ * 回り込み解除
+ *************************************/
+.contents-section5{
+	padding: 80px 0;
+}
+.contents-section5 .text-info h2{
+	width: 480px;
+	line-height: 130%;
+}
+.contents-section5 .item-image{
+	margin: 50px 0 0 0;
+}
+.contents-section5 .plan-article{
+	margin: 0 0 100px;
+}
+.contents-section5 .plan-article .photo{
+	margin: 0;
+	padding: 0;
+	width: 480px;
+	float: left;
+}
+.contents-section5 .plan-article .text-info{
+	margin: 0 0 0 20px;
+	padding: 0;
+	width: 480px;
+	float: left;
+}
+.contents-section5 .plan-article .text-info .item-image{
+	margin: 0;
+	padding: 0;
+}
+/*************************************
+ * ご購入方法・価格について
+ *************************************/
+.contents-section6 .page-desc-container .page-desc{
+	top: 20%;
+	left: 56%;
+	width: 480px;
+}
+.btn-article{
+	margin: 0;
+	padding: 0;
+}
+.btn-article ul{
+	margin: 0;
+	padding: 0;
+}
+.btn-article li{
+	display: inline-block;
+}
+.btn-article .btn2 a{
+	padding: 15px 20px 15px 50px;
+	background: #002822 url("../../../images/ic/cart.png") no-repeat 15px center;
+	color: #fff;
+	text-decoration: none;
+
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+
+	transition: background .1s linear, color .1s linear;
+	-webkit-transition: background .1s linear, color .1s linear;
+	-moz-transition: background .1s linear, color .1s linear;
+}
+.btn-article .btn2 a:hover {
+	background: #19685c url("../../../images/ic/cart.png") no-repeat 15px center;
+}
+/*************************************
+ * お客様の声
+ *************************************/
+.contents-section7{
+	padding: 80px 0 50px;
+}
+.voice-wrap{
+	margin: 30px 0 0 0;
+}
+.voice-wrap .icon span{
+	margin: 10px 0 30px;
+	padding: 2px 5px;
+	display: inline-block;
+	background: #555;
+	color: #fff;
+}
+.voice-wrap li.voice2 .icon span{
+	margin: 0 0 15px;
+}
+li.voice2,
+li.voice1{
+	margin: 0 0 10px;
+	padding: 10px;
+	border: 5px #dedede solid;
+}
+li.voice2 .main-comment,
+li.voice1 .main-comment{
+	margin: 10px 0 20px;
+	padding: 0;
+	font-size: 1.4em;
+	font-weight: bold;
+}
+li.voice1 .comment{
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 480px;
+}
+li.voice1 .photo{
+	width: 441px;
+	float: right;
+}
+li.voice1:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+li.voice2{
+	margin: 0 0 10px 0;
+}
+li.voice2 .name{
+	margin-bottom: 15px;
+}
+.voice-wrap li:last-child{
+	margin: 0;
+}
+.voice-wrap ul:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+/*************************************
+ * お客様の声
+ *************************************/
+.contents-section8{
+	padding: 80px 0;
+	border-top: 1px solid #dedede;
+}
+.contents-section8 .photo-list-sp{
+	display: none;
+}
+.contents-section8 .photo-list{
+	margin: 50px 0 0 0;
+}
+.contents-section8 .photo-list ul:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.contents-section8 .photo-list li{
+	margin: 0 0 10px 10px;
+	padding: 0;
+	width: 188px;
+	float: left;
+}
+.contents-section8 .photo-list li.left-photo{
+	margin: 0;
+}
+p.name{
+	padding-left: 0;
+}
+/*************************************
+ * カタログ請求フォーム
+ *************************************/
+.contents-section9{
+	padding: 80px 0 50px;
+	background:#faf8f2;
+}
+
+/*************************************
+ * お問い合わせ
+ *************************************/
+	#ContactContents .body dl dt {
+		margin: 0;
+		padding: 15px;
+		font-size: 1em;
+		color: #fff;
+		background: #fbfbfb;
+	}
+	#ContactContents .body dl dd {
+		margin: 0;
+		padding: 15px;
+		color: #ddd;
+		border-bottom: #000 1px solid;
+	}
+	input,
+	select,
+	textarea {
+		border-color: #000;
+		box-shadow: 1px 1px 4px rgba(0,0,0,.2) inset;
+		-webkit-box-shadow: 1px 1px 4px rgba(0,0,0,.2) inset;
+		-moz-box-shadow: 1px 1px 4px rgba(0,0,0,.2) inset;
+	}
+	input:focus,
+	select:focus,
+	textarea:focus {
+		outline: none;
+		border-color: #000;
+		box-shadow: 0 0 5px rgba(0,106,187,0.5), inset 0 0 2px #ccc;
+		-webkit-box-shadow: 0 0 5px rgba(0,106,187,0.5), inset 0 0 2px #ccc;
+		-moz-box-shadow: 0 0 5px rgba(0,106,187,0.5), inset 0 0 2px #ccc;
+	}
+	.form-container input[type="radio"]{
+		margin: 0 5px 0 10px;
+		box-shadow: none;
+		cursor: pointer;
+	}
+	.form-container{
+		margin: 50px auto;
+		width: 730px;
+	}
+	.form-container .section{
+		padding: 30px 0 30px;
+		background: #fbfbfb;
+		border: #dedede 1px solid;
+		border-radius: 8px;
+	}
+	.form-container .section h3{
+		margin-top: 0;
+		padding-left: 30px;
+		background: url("../../../images/ic/human.png") no-repeat 290px center;
+		text-align: center;
+		font-size: 1.8em;
+	}
+	.form-container .corporate-section h3{
+		padding:5px 0 0 30px;
+		background: url("../../../images/ic/corporate.png") no-repeat 275px center;
+	}
+	.form-container dl {
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+	}
+	.form-container dt,
+	.form-container dd {
+		padding: 15px;
+		display: table-cell;
+		background: #fbfbfb;
+	}
+	.form-container dt {
+		width: 200px;
+	}
+	.form-container input {
+		padding: 10px;
+		border-radius: 5px;
+		border: none;
+		font-size: 1.3em;
+	}
+	.form-container input[type="text"]{
+		border: #dedede 1px solid\9; /* IE8 */
+	}
+	.form-container input[type="submit"]{
+		padding: 15px 35px 15px 50px;
+		background: #ae0a29 url("../../../images/ic/next.png") no-repeat 25px center;
+		color: #fff;
+		text-decoration: none;
+		transition: background .1s linear, color .1s linear;
+		-webkit-transition: background .1s linear, color .1s linear;
+		-moz-transition: background .1s linear, color .1s linear;
+		border-radius: 0;
+		cursor: pointer;
+	}
+	.form-container input[type="submit"].prev{
+		margin-right: 5px;
+		background: #888 url("../../../images/ic/next.png") no-repeat 25px center;
+		cursor: pointer;
+	}
+	.info {
+		margin: 40px 0 10px 0;
+	}
+
+	#T_NAME input,
+	#T_KANA input,
+	#T_TEL input,
+	#T_BUSINESS_CATEGORY input,
+	#T_COMPANY_NAME input,
+	#T_MAIL input {
+		width: 270px;
+	}
+	/*#T_TEL input {*/
+		/*width: 200px;*/
+	/*}*/
+	.radio {
+		padding-right: 20px;
+		display: inline-block;
+	}
+	#T_ADDRESS input {
+		width: 700px;
+	}
+
+	.submit-next,
+	.submit {
+		margin-top: 30px;
+		text-align: center;
+	}
+	.submit-next input,
+	#PREV,
+	#SEND {
+		padding: 15px 30px;
+		background: #ae0a29;
+		color: #fff;
+		transition: background .1s linear;
+	}
+	#PREV {
+		background: #666;
+	}
+	.submit-next input:hover,
+	#PREV:hover,
+	#SEND:hover {
+		cursor: pointer;
+		background: #a0708f;
+	}
+	#PREV:hover {
+		background: #333;
+	}
+
+	.error-block {
+		margin-bottom: 20px;
+		color: #f07a8e;
+	}
+	.error-form-style {
+		background: #f07a8e;
+	}
+	dt.must {
+		width: 185px;
+		text-align: right;
+	}
+	.form-container span.must {
+		font-size: 1.2em;
+		color: #ae0a29;
+	}
+	.form-container .must-info {
+		margin-left: 30px;
+	}
+
+	#T_CONTACT_DATE p,
+	#T_COMING_DATE p {
+	    margin-bottom: 5px;
+	}
+
+
+
+
+
+}
+/*************************************
+ * フォーム関連
+ *************************************/
+.submit-next input[type="submit"],
+.submit input[type="submit"] {
+	transition: background .1s linear;
+
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+.submit input[type="submit"]:hover,
+.submit-next input[type="submit"]:hover {
+	background: #d13955 url("../../../images/ic/next.png") no-repeat 25px center;
+}
+.form-container input[type="submit"].prev:hover{
+	background: #333 url("../../../images/ic/next.png") no-repeat 25px center;
+}
+.form-container .example {
+	color: #888;
+}
+.form-container .group {
+	margin: 0 10px 0 0;
+	display: inline-block;
+}
+
+.overlay .page-desc {
+	top: 80%;
+}
+
+/*************************************
+ * ダウンロードページ
+ *************************************/
+.download-image{
+	margin-top: 50px;
+}
+.catalog-download-btn{
+	text-align: center;
+}
+.catalog-download-btn a{
+	padding: 20px 20px 20px 60px;
+	border: #8c031d 4px solid;
+	background: #ae0a29 url("../../../images/ic/download_l.png") no-repeat 15px center;
+	display: inline-block;
+	font-size: 1.4em;
+	text-decoration: none;
+
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+
+	transition: background .1s linear, color .1s linear;
+	-webkit-transition: background .1s linear, color .1s linear;
+	-moz-transition: background .1s linear, color .1s linear;
+}
+.catalog-download-btn a:hover{
+	background: #c41637 url("../../../images/ic/download_l.png") no-repeat 15px center;
+	color: #fff;
+	text-decoration: none;
+}
+.download-section{
+	margin-top: 30px;
+}
+.download-list .btn1 {
+	margin-top: 20px;
+}
+.download-list .btn1 a{
+	padding: 12px 5px 12px 50px!important;
+	font-size: .86em!important;
+	display: block!important;
+}
+.download-list .product-name{
+	margin: 5px;
+	font-size: 1.2em;
+	display: inline-block;
+}
+.products-btn{
+	margin-top: 50px;
+	text-align:center;
+}
+.products-btn a{
+	padding: 20px 20px 20px 50px;
+	border: #dedede 4px solid;
+	background: #888 url("../../../images/ic/next.png") no-repeat 25px center;
+	display: inline-block;
+	font-size: 1.4em;
+	text-decoration: none;
+
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+
+
+	transition: background .1s linear, color .1s linear;
+	-webkit-transition: background .1s linear, color .1s linear;
+	-moz-transition: background .1s linear, color .1s linear;
+}
+.products-btn a:hover{
+	background: #ccc url("../../../images/ic/next.png") no-repeat 25px center;
+	color: #fff;
+	text-decoration: none;
+}
+#fb-root{
+	display: none;
+}
+.social-btns-container{
+	background: #faf8f2;
+}
+.social-btns-section{
+	margin: 0 auto;
+	padding: 20px 0;
+	width: 980px;
+}
+.social-btns-section:after{
+	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.fb-btn{
+	margin-right:15px;
+	float: left;
+}

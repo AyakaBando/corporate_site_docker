@@ -1,0 +1,95 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'].'/inc/contentsConfig.php'); ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>森田アルミ工業</title>
+<meta name="description" content="森田アルミ工業">
+<meta name="Keywords" content="">
+<meta property="og:title" content="森田アルミ工業">
+<meta property="og:type" content="website">
+<meta property="og:description" content="森田アルミ工業">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="森田アルミ工業">
+<link rel="shortcut icon" href="/image/icon/favicon.ico">
+<link rel="apple-touch-icon" href="/image/icon/ios.png"/>
+<link rel="icon" href="/image/icon/ios.png">
+<link rel="stylesheet" type="text/css" href="/en/common/css/reset-fonts.css">
+<link rel="stylesheet" type="text/css" href="/en/common/css/reset-min.css">
+<link rel="stylesheet" type="text/css" href="/en/common/css/comp.css">
+<link rel="stylesheet" type="text/css" href="/en/common/css/contents.css">
+<link rel="stylesheet" type="text/css" href="/en/common/css/test.css">
+<!--[if IE]><link rel="stylesheet" href="/en/common/css/fontsize_ie.css" media="all" /><![endif]-->
+<!--[if lt IE 9]><script src="/en/common/js/html5shiv.js"></script><![endif]-->
+<link href="/en/common/css/bootstrap.min.css" rel="stylesheet">
+<link href="/en/common/css/bootstrap-theme.min.css" rel="stylesheet">
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Quicksand|Source+Sans+Pro:400,200,300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<?php require_once($_SERVER['DOCUMENT_ROOT'].'/en/common/include/header.php'); ?>
+
+
+<section id="md_area">
+	<div id="md_area_in">
+		<h1>採用情報</h1>
+	</div>
+	<!--/md_area_in-->
+</section>
+<!--/md_area-->
+<nav id="c_glo">
+	<ul id="c_glo_in">
+		<li><a href="/recruit/index.php">採用コンセプト</a></li>
+		<li><a href="/recruit/flow.php">募集要項</a></li>
+		<li><a href="/recruit/sales/index.php">プロジェクト紹介</a></li>
+		<li><a href="/recruit/profile.php">社内紹介</a></li>
+	</ul>
+	<!--/c_glo_in-->
+	<!--<br class="clearfix">-->
+</nav>
+<!--/c_glo-->
+
+
+<article id="contents" class="recruit">
+<nav id="pan">
+<ul>
+<li><a href="/en/">HOME</a></li>
+<li><a href="/recruit/">採用情報</a></li>
+<li><span>プロジェクト紹介</span></li>
+</ul>
+<br class="clearfix">
+</nav><!--/pan-->
+
+<div class="md002">
+<h2 class="head">プロジェクト紹介</h2>
+</div>
+<!--/md002-->
+
+<section class="box02" id="_f_box">
+<div class="s_box">
+<ul>
+<li><a href="detail.php"><p class="pl_ph"><img src="/en/common/image/recruit/project_01.jpg" alt=""/></p><h5>未界夢創</h5><p class="s_title">有志による製品企画会議</p></a></li>
+<li><a href="detail02.php"><p class="pl_ph"><img src="/en/common/image/recruit/project_02.jpg" alt=""/></p><h5>m / 現場リーダープロジェクト</h5><p class="s_title">社内横断型の改善活動</p></a></li>
+<li><a href="detail03.php"><p class="pl_ph"><img src="/en/common/image/recruit/project_03.jpg" alt=""/></p><h5>m / ライン化プロジェクト</h5><p class="s_title">オーダーエクステリアの製造合理化活動</p></a></li>
+</ul>
+<br class="clearfix">
+</div>
+</section>
+
+
+</article>
+<!--/contents-->
+<?php require_once($_SERVER['DOCUMENT_ROOT'].'/en/common/include/footer.php'); ?>
+<script src="/en/common/js/import.js"></script>
+<script src="/en/common/js/bootstrap.min.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="/common/js/jquery.bxslider.min.css">-->
+
+
+
+</body>
+</html>

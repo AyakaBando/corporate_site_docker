@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>森田アルミ工業</title>
+<meta name="description" content="森田アルミ工業">
+<meta name="Keywords" content="">
+<meta property="og:title" content="森田アルミ工業">
+<meta property="og:type" content="website">
+<meta property="og:description" content="森田アルミ工業">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="森田アルミ工業">
+<link rel="shortcut icon" href="/image/icon/favicon.ico">
+<link rel="apple-touch-icon" href="/image/icon/ios.png"/>
+<link rel="icon" href="/image/icon/ios.png">
+<link rel="stylesheet" type="text/css" href="/common/css/reset-fonts.css">
+<link rel="stylesheet" type="text/css" href="/common/css/reset-min.css">
+<link rel="stylesheet" type="text/css" href="/common/css/comp.css">
+<!--[if IE]><link rel="stylesheet" href="/common/css/fontsize_ie.css" media="all" /><![endif]-->
+<!--[if lt IE 9]><script src="/common/js/html5shiv.js"></script><![endif]-->
+<link href="/common/css/bootstrap.min.css" rel="stylesheet">
+<link href="/common/css/bootstrap-theme.min.css" rel="stylesheet">
+<!--<link href='http://fonts.googleapis.com/css?family=Vollkorn:400,400italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Amiri:400,400italic,700,700italic' rel='stylesheet' type='text/css'>-->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Quicksand|Source+Sans+Pro:400,200,300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+{include file="../common/header.html"}
+<section id="md_area">
+	<div id="md_area_in">
+		<h1>FAQ</h1>
+	</div>
+	<!--/md_area_in--> 
+</section>
+<!--/md_area-->
+
+
+<article id="contents">
+<nav id="pan">
+<ul>
+<li><a href="">HOME</a></li>
+<li><span>FAQ</span></li>
+</ul>
+<br class="clearfix">
+</nav>
+<!--/pan-->
+	<div class="md002">
+		<h2 class="head">FAQ一覧</h2>
+	</div>
+	<!--/md002-->
+	
+	<section class="box02" id="_f_box">
+		<div class="s_box">
+			<ul>
+{foreach from=$data item=value name=result key=key}
+				<li>
+				<a href="./detail.php?id={$value.id}">
+					<p class="pl_ph"><img src="/upImage/product/{$imgArray[$value.id].fileName}" alt="{$value.name}"/></p>
+					<h5>{$value.subName}</h5>
+					<p class="s_title">{$value.name}</p>
+				</a>
+				</li>
+{/foreach}
+			</ul>
+			<br class="clearfix">
+	</div>
+	</section>
+	<!--/faq-->
+</article>
+<!--/contents-->
+{include file="../common/footer.html"}
+<script src="/common/js/import.js"></script> 
+<script src="/common/js/bootstrap.min.js"></script> 
+<!--<link rel="stylesheet" type="text/css" href="/common/js/jquery.bxslider.min.css">-->
+{literal}
+
+{/literal}
+
+</body>
+</html>

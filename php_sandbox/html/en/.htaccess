@@ -1,0 +1,5 @@
+# FOR SSI
+
+AddHandler server-parsed .shtml
+AddHandler server-parsed .html
+AddHandler server-parsed .htm

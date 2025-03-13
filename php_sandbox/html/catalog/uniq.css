@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ca_list001{
+	width:100%;
+	letter-spacing:-0.4em;
+	}
+
+	.ca_list001 .ca_list001_in:first-child {
+		display: block !important;
+	}
+
+.ca_list001 .ca_list001_in{
+	display:inline-block;
+	width:23.5%;
+	letter-spacing:normal;
+	margin-right:1.5%;
+	margin-bottom:22px;
+	vertical-align:top;
+	}
+	/* .ca_list001 .ca_list001_in:nth-child(4n){
+		margin-right:0;} */
+		
+
+.ca_list001_in .cata001{
+	cursor:pointer;
+	width:100%;}
+	
+	a.red02{
+		text-decoration:underline;}
+		
+		a.red02:hover{
+			text-decoration:none;}
+
+.ca_list001_in .cata001 .cata_txt001{
+	font-size:78%;
+	/*width:100%;*/
+	display:table;
+	margin-bottom:6px;}
+	
+	.ca_list001_in .cata001 .cata_txt001 input,.ca_list001_in .cata001 .cata_txt001 i{
+		display:table-cell;
+		letter-spacing:normal;
+		vertical-align:top;}
+		.ca_list001_in .cata001 .cata_txt001 input{
+			width:20px;}
+		.ca_list001_in .cata001 .cata_txt001 i{
+			padding-left:6px;
+			font-style:normal;}
+
+.ca_list001_in .cata001 .cata_ph001{
+	width:100%;}
+	
+	.ca_list001_in .cata001 .cata_ph001 img{
+		width:100%;}
+		
+		textarea{
+			border:solid 1px #ddd;
+			padding:10px;
+			width:100%;}
+			
+			@media screen and (max-width: 1000px) {
+		.ca_list001 .ca_list001_in{
+	display:inline-block;
+	width:49%;
+	letter-spacing:normal;
+	margin-right:2%;
+	margin-bottom:14px;
+	vertical-align:top;
+	}
+	.ca_list001 .ca_list001_in:nth-child(4n){
+		margin-right:auto;}
+		.ca_list001 .ca_list001_in:nth-child(2n){
+		margin-right:0;}		
+				.ca_list001_in .cata001 .cata_txt001{
+					font-size:70%;}
+				}

@@ -1,0 +1,79 @@
+@charset "utf-8";
+/*
+ * extends.css
+ */
+
+@media screen and (max-width: 640px){
+
+.title-nav {
+	position: absolute;
+	top: 30px;
+	right: 0;
+}
+.title-nav a,
+.btn1 a {
+	padding: 15px 20px 15px 50px;
+	background: #ae0a29 url("../../../images/ic/download.png") no-repeat 15px center;
+	font-size: 1.0em;
+	color: #fff;
+	text-decoration: none;
+}
+.title-nav a:hover,
+.btn1 a:hover {
+	background: #d13955 url("../../../images/ic/download.png") no-repeat 15px center;
+}
+.download-list .btn1{
+	margin-top: 10px;
+}
+.download-list .btn1 a{
+	padding: 5px 20px 10px;
+	font-size: .8em;
+	background: #ae0a29;
+}
+.download-list .btn1 a:hover{
+	background: #d13955;
+}
+.btn-article .btn2 a{
+	padding: 15px 20px 15px 50px;
+	background: #002822 url("../../../images/ic/cart.png") no-repeat 15px center;
+	color: #fff;
+	text-decoration: none;
+	transition: background .1s linear, color .1s linear;
+	-webkit-transition: background .1s linear, color .1s linear;
+	-moz-transition: background .1s linear, color .1s linear;
+}
+.btn-article .btn2 a:hover {
+	background: #19685c url("../../../images/ic/cart.png") no-repeat 15px center;
+}
+
+table.default-tbl {
+	width: 100%;
+}
+table.default-tbl th {
+	padding: 10px 15px;
+	background: #212121;
+	border-bottom: 1px solid #000;
+	border-right:  1px solid #000;
+	min-width: 100px;
+	text-align: left;
+
+}
+table.default-tbl td {
+	padding: 10px 15px;
+	background: #212121;
+	border-bottom: 1px solid #000;
+}
+
+
+/*#overlay #mainvisual img {*/
+	/*width: 100%;*/
+/*}*/
+/*#overlay h2 {*/
+	/*margin-bottom: 10px;*/
+/*}*/
+
+	#overlay .desc {
+		margin-left: 10px;
+	}
+
+}

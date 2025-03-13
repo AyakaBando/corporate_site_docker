@@ -1,0 +1,139 @@
+@charset "utf-8";
+/*
+ * product.css
+ * gdCMS product module
+ */
+/*************************************
+ * Local Contents
+ *************************************/
+.product-local-container {
+}
+
+/*************************************
+ * Navi
+ *************************************/
+.product-nav-container{
+ 	margin: 0 auto;
+ 	padding: 0;
+ }
+.product-nav{
+	margin: 0;
+	padding: 0;
+	background: #ccc;
+}
+.product-nav ul{
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+	width: 140px;
+	background: #fff;
+}
+.product-nav li{
+	margin: 0 0 0 0;
+	padding: 0;
+	border-bottom: #f5f3ed 1px solid;
+}
+.product-nav li a{
+	margin: 0;
+	padding: 5px 0 5px 25px;
+	background: url("/images/ic_arr.png") no-repeat 10px center;
+	display: block;
+}
+/*************************************
+ * Body
+ *************************************/
+/*
+.product-body {
+}
+.product-detail-body {
+	margin: 0;
+	padding: 0;
+	width: 720px;
+}
+*/
+/*************************************
+ * List view
+ *************************************/
+
+/*************************************
+ * Mod Product List
+ *************************************/
+.mod-product-section{
+
+}
+.product-list {
+}
+.product-list:after{
+  	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}
+.product-list{
+	margin: 0 0 50px 0;
+	width: 600px;
+	clear: both;
+}
+.product-title{
+}
+.product-list ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.product-list li{
+	margin: 30px 8px 0 0;
+	padding: 0;
+	float: left;
+}
+.product-list li a{
+	color: #5c4835;
+}
+.product-list li a:hover{
+	color: #c93131;
+}
+
+.product-list .bg-clr1 .img{
+	margin: 0 0 5px 0;
+	padding: 0;
+}
+.product-list .bg-clr1 .title{
+	text-align: center;
+}
+/*************************************
+ * Index List view
+ *************************************/
+
+/*************************************
+ * Detail
+ *************************************/
+.product-detail-body .date {
+}
+/*************************************
+ * Top Product
+ *************************************/
+.top-product-nav{
+	margin: 430px 0 0px -200px;
+	padding: 0 0 32px 0;
+	position: relative;
+	zoom: 1;
+}
+.top-product-nav ul{
+	padding: 5px;
+	list-style: none;
+	clear: both;
+}
+.top-product-nav li{
+	margin: 0;
+	padding: 10px 15px;
+	float: left;
+	border-right: #ded7ca 1px solid;
+	background: #fff url("/images/ic_arr.png") no-repeat .7em center;
+}
+.top-product-nav li a{
+	margin: 0 0 0 8px;
+	color: #5c4835;
+}
+.top-product-nav li a:hover{
+ 	color: #c93131;
+}
+.top-product-nav ul:after{
+  	content: ""; display: block; height: 0; visibility: hidden; clear: both;
+}

@@ -1,0 +1,49 @@
+@charset "utf-8";
+// ===================================================================
+// foundationのインポート
+// ===================================================================
+
+// リセット
+@import "foundation/_reset";
+
+// 変数
+@import "foundation/_variable";
+
+// FontAwesome
+@import "foundation/ico";
+
+// slick
+@import "foundation/slick";
+
+// ミックスイン
+@import "foundation/mixin";
+
+// グリッド
+@import "foundation/grid";
+
+// レスポンシブユーティリティ
+@import "foundation/responsive-utilities";
+
+// ベース
+@import "foundation/base";
+
+
+// ===================================================================
+// layoutのインポート
+// ===================================================================
+
+// レイアウトスタイル
+@import "layout/_layout";
+
+// ===================================================================
+// objectのインポート
+// ===================================================================
+
+// コンポーネント
+@import "object/_compornet";
+
+//各ページのスタイル
+@import "object/pages/_index";
+
+// 汎用クラス
+@import "object/_utility";
