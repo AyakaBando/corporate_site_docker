@@ -126,7 +126,7 @@ if( $_POST['submitConf'] )
 }
 
 $form->setRequiredNote( '<span style="font-size:80%; color:#ff0000;">*</span><span style="font-size:80%;">の項目は必ず入力してください。</span>' );
-$form->setJsWarnings( '*の項目は必ず入力してください。', "\n\n" . TITLE );
+$form->setJsWarnings( '*の項目は必ず入力してください。', "\n\n" . 'TITLE' );
 
 $form->setDefaults( $data );
 

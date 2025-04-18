@@ -5,6 +5,8 @@ services:
     volumes:
       - ./html:/var/www/html
       - ./apache-config/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./html/composer.json:/var/www/composer.json
+
     ports:
       - "8080:80"
     depends_on:

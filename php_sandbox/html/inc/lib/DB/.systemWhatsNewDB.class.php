@@ -93,7 +93,9 @@ class systemWhatsNewDB extends queserserDB
                     `contentsCategory`, `comment`, `dispFlg`, `dateTime` 
                FROM `" . $this->tableName . "` 
                " . $sqlWhere . "
-             ORDER BY ". $sqlOrderBy;
+             ORDER BY ". $sqlOrderBy . 
+             " LIMIT " . intval($this->limit) . " OFFSET " . intval($this->ls);
+             
         $result = $this->_setQuery( 'limitQuery', $queryStr, array() );
 
         while( $row = $result->fetchRow( DB_FETCHMODE_ASSOC ) )

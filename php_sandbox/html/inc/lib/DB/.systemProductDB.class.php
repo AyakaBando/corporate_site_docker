@@ -46,7 +46,8 @@ class systemContentsDB extends queserserDB
             "SELECT `" . $this->tableId . "`, `subCategory`, `subName`, `name`, `dateTime`, `dispFlg` " . $sqlSelect . " 
                FROM `" . $this->tableName . "` 
               " . $this->ListWhere( $param ) . "
-           ORDER BY " . $sqlOrderBy;
+           ORDER BY " . $sqlOrderBy . 
+           " LIMIT " . intval($this->limit) . " OFFSET " . intval($this->ls);
 
         $result = $this->_setQuery( 'limitQuery', $queryStr, array() );
 
@@ -68,29 +69,66 @@ class systemContentsDB extends queserserDB
 
         return ( isset( $data ) ) ? $data : null;
     }
+    
+    
+
 
 
     /**
      *一覧取得メソッド
      */
-    public function DataCountList( $param = array() )
-    {
-        if( $param['year'] && !$param['month'] )
-            $sqlWhere = " WHERE DATE_FORMAT( `dateTime`, '%Y' ) = '" . $param['year'] . "' ";
-        if( $param['year'] && $param['month'] )
-            $sqlWhere = " WHERE DATE_FORMAT( `dateTime`, '%Y-%m' ) = '" . $param['year'] . "-" . $param['month'] . "' ";
+    // public function DataCountList( $param = array() )
+    // {
+    //     if( $param['year'] && !$param['month'] )
+    //         $sqlWhere = " WHERE DATE_FORMAT( `dateTime`, '%Y' ) = '" . $param['year'] . "' ";
+    //     if( $param['year'] && $param['month'] )
+    //         $sqlWhere = " WHERE DATE_FORMAT( `dateTime`, '%Y-%m' ) = '" . $param['year'] . "-" . $param['month'] . "' ";
 
-        $queryStr = "SELECT `" . $this->tableId . "`, COUNT( * ) AS `cnt` FROM `memberPageView` " . $sqlWhere . " GROUP BY `id` ";
-        $result = $this->_setQuery( 'query', $queryStr, array() );
+    //     $queryStr = "SELECT `" . $this->tableId . "`, COUNT( * ) AS `cnt` FROM `memberPageView` " . $sqlWhere . " GROUP BY `id` ";
+    //     $result = $this->_setQuery( 'query', $queryStr, array() );
 
-        //一覧取得
-        while( $row = $result->fetchRow( DB_FETCHMODE_ASSOC ) )
-        {
-            $data[$row['id']] = $row;
-        }
+    //     //一覧取得
+    //     while( $row = $result->fetchRow( DB_FETCHMODE_ASSOC ) )
+    //     {
+    //         $data[$row['id']] = $row;
+    //     }
 
-        return ( isset( $data ) ) ? $data : null;
+    //     return ( isset( $data ) ) ? $data : null;
+    // }
+
+    public function DataCountList($param = array())
+{
+    // Ensure $param is an array and check for 'year' and 'month'
+    $year = isset($param['year']) ? $param['year'] : null;
+    $month = isset($param['month']) ? $param['month'] : null;
+
+    // Build the WHERE clause based on year and month
+    if ($year && !$month) {
+        $sqlWhere = " WHERE DATE_FORMAT( `dateTime`, '%Y' ) = '" . $year . "' ";
+    } elseif ($year && $month) {
+        $sqlWhere = " WHERE DATE_FORMAT( `dateTime`, '%Y-%m' ) = '" . $year . "-" . $month . "' ";
+    } else {
+        $sqlWhere = ""; // No filter if neither year nor month is provided
     }
+
+    // Construct the query string
+    $queryStr = "SELECT `" . $this->tableId . "`, COUNT( * ) AS `cnt` FROM `memberPageView` " . $sqlWhere . " GROUP BY `id` ";
+    
+    // Execute the query
+    $result = $this->_setQuery('query', $queryStr, array());
+
+    // Initialize the data array
+    $data = [];
+
+    // Fetch the results
+    while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) {
+        $data[$row['id']] = $row;
+    }
+
+    // Return data if available, otherwise return null
+    return isset($data) ? $data : null;
+}
+
 
 
     /**

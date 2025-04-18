@@ -1,0 +1,31 @@
+     <div id="navi" style="margin-bottom:10px;">
+      <div id="naviBt">
+       <ul>
+        <li style="margin-bottom:2px;"><a href="./makerAddChange.php">メーカー一覧</a></li>
+{foreach from=$makerMenuArray item=value name=result key=key}
+{if $value.category == $smarty.const.CATEGORY_NUM}
+        <li{if $smarty.const.PAGE_NUM == $key} class="active"{/if} style="margin-bottom:2px;">{if $smarty.const.PAGE_NUM == $key}<font>{else}<a href="./{$value.file}.php?makerId={$smarty.request.makerId}">{/if}{$value.title}{if $smarty.const.PAGE_NUM == $key}</font>{else}</a>{/if}</li>
+{/if}
+{/foreach}
+        <li class="own">
+        <a href="javascript:void(0)">その他の項目</a>
+        <ul class="child">
+{foreach from=$makerMenuArray item=value name=result key=key}
+{if $value.category != $smarty.const.CATEGORY_NUM}
+        <li{if $smarty.const.PAGE_NUM == $key} class="active"{/if}>{if $smarty.const.PAGE_NUM == $key}<font>{else}<a href="./{$value.file}.php?makerId={$smarty.request.makerId}">{/if}{$value.title}{if $smarty.const.PAGE_NUM == $key}</font>{else}</a>{/if}</li>
+{/if}
+{/foreach}
+        </ul>
+        </li>
+
+{*
+<br style="clear:both;" />
+{foreach from=$makerMenuArray item=value name=result key=key}
+{if $value.category != $smarty.const.CATEGORY_NUM}
+        <li{if $smarty.const.PAGE_NUM == $key} class="active"{/if} style="margin-bottom:2px;">{if $smarty.const.PAGE_NUM == $key}<font>{else}<a href="./{$value.file}.php?makerId={$smarty.request.makerId}">{/if}{$value.title}{if $smarty.const.PAGE_NUM == $key}</font>{else}</a>{/if}</li>
+{/if}
+{/foreach}
+*}
+      </div>
+      <div class="clear"></div>
+     </div>

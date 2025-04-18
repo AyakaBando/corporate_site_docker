@@ -2,7 +2,6 @@
 require_once( dirname(__FILE__) . '/../inc/config.php' );
 require_once( dirname(__FILE__) . '/../inc/contentsConfig.php' );
 require_once( dirname(__FILE__) . '/../inc/lib/DB/.systemSaveDB.class.php' );
-//require_once( dirname(__FILE__) . '/../inc/lib/queserser.Cipher.class.php' );
 
 session_start();
 
@@ -133,7 +132,7 @@ if( $_POST['submitConf'] )
 }
 
 $form->setRequiredNote( '<span style="font-size:80%; color:#ff0000;">*</span><span style="font-size:80%;">の項目は必ず入力してください。</span>' );
-$form->setJsWarnings( '*の項目は必ず入力してください。', "\n\n" . TITLE );
+$form->setJsWarnings( '*の項目は必ず入力してください。', "\n\n" . 'TITLE' );
 
 $form->setDefaults( $data );
 
@@ -221,7 +220,7 @@ if ( $form->validate() )
         $userBody .= '〒599-0201'                                            . "\n";
         $userBody .= '大阪府阪南市尾崎町530-1'                               . "\n";
         $userBody .= 'TEL : 072-480-1400'                                    . "\n";
-        $userBody .= 'URL : 072-480-1414'                                    . "\n";
+        $userBody .= 'FAX : 072-480-1414'                                    . "\n";
         $userBody .= '======================================'                . "\n";
 
 

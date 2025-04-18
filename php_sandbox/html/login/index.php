@@ -42,6 +42,7 @@ if( isset( $_POST['submitReg'] ) )
     if( $_POST['account'] && $_POST['password'] && $userquery->CheckLogin( $_POST ) === false )
         $form->_errors['account'] = 'メールアドレスかパスワードが正しく入力されていません。';
 }
+define('TITLE', 'ログインページ');
 
 $form->setRequiredNote( '<span style="font-size:80%; color:#ff0000;">下記</span><span style="font-size:80%;">の項目は必ず入力してください。</span>' );
 $form->setJsWarnings( '下記の項目は必ず入力してください。', "\n\n" . TITLE );

@@ -62,6 +62,7 @@
 	
 
 {include file="./common/header.html"}
+<!-- <p>{$test}</p> -->
 
 
 <div class="container">
@@ -144,177 +145,179 @@
 
 
 <nav class="content_wrap disnon">
-<ul class="nn_list" id="nn01" >
-{assign var="i" value=1}
-{foreach from=$middleCategory.1 item=value name=result key=key}
-
-{if $puroductData.$key}
-<li class="nn_in{if $i == 1} select{/if}">{$value}</li>
-{assign var="i" value=$i+1}
-
-{/if}
-{/foreach}
-
-</ul>
-<br class="clearfix">
-{assign var="i" value=1}
-{foreach from=$middleCategory.1 item=cvalue name=result key=ckey}
-{if $puroductData.$ckey}
-<div class="s_box s01{if $i != 1} disnon{/if}">
-<ul id="productBox{$ckey}" style="display: flex; flex-wrap: wrap;">
-	{foreach from=$puroductData.$ckey item=value name=result key=key}
-	{if $smarty.foreach.result.iteration <= 6}
-	<!-- Not displaying id=61 -->
-		{if $value.id != 61}
-	<li>
-	<a href="./product/detail.php?id={$value.id}">
-		{if $imgArray[$value.id].fileName}
-		<p class="pl_ph"><img src="/upImage/product/{$imgArray[$value.id].fileName}" alt="{$value.name}Image"/></p>
-		{/if}
-		<h5>{$value.subName}</h5>
-		<p class="s_title">{$value.name}</p>
-	</a>
-	</li>
-	{/if}
+	<ul class="nn_list" id="nn01" >
+	{assign var="i" value=1}
+	{foreach from=$middleCategory.1 item=value name=result key=key}
+	
+	{if $puroductData.$key}
+	<li class="nn_in{if $i == 1} select{/if}">{$value}</li>
+	{assign var="i" value=$i+1}
+	
 	{/if}
 	{/foreach}
-</ul>
-	<!--more-->
-{if count( $puroductData.$ckey ) > 6}
-	<form>
-	<div class="more">
-	<input type="button" value="More" class="more_b" onclick="loadHtml( {$ckey}, this );">
+	
+	</ul>
+	<br class="clearfix">
+	{assign var="i" value=1}
+	{foreach from=$middleCategory.1 item=cvalue name=result key=ckey}
+	{if $puroductData.$ckey}
+	<div class="s_box s01{if $i != 1} disnon{/if}">
+	<ul id="productBox{$ckey}" style="display: flex; flex-wrap: wrap;">
+		{foreach from=$puroductData.$ckey item=value name=result key=key}
+		{if $smarty.foreach.result.iteration <= 6}
+		<!-- Not displaying id=61 -->
+			{if $value.id != 61}
+		<li>
+		<a href="./product/detail.php?id={$value.id}">
+			{if $imgArray[$value.id].fileName}
+			<p class="pl_ph"><img src="/upImage/product/{$imgArray[$value.id].fileName}" alt="{$value.name}Image"/></p>
+			{/if}
+			<h5>{$value.subName}</h5>
+			<p class="s_title">{$value.name}</p>
+		</a>
+		</li>
+		{/if}
+		{/if}
+		{/foreach}
+	</ul>
+		<!--more-->
+	{if count( $puroductData.$ckey ) > 6}
+		<form>
+		<div class="more">
+		<input type="button" value="More" class="more_b" onclick="loadHtml( {$ckey}, this );">
+		</div>
+		</form>
+		<!--/moreここまで-->
+	{/if}
 	</div>
-	</form>
-	<!--/moreここまで-->
-{/if}
-</div>
-<!--/-->
-{assign var="i" value=$i+1}
-{/if}
-{/foreach}
-<br class="clearfix">
-</nav>
+	<!--/-->
+	{assign var="i" value=$i+1}
+	{/if}
+	{/foreach}
+	<br class="clearfix">
+	</nav>
+
+
 
 <nav class="content_wrap disnon content_exterior">
-<ul class="nn_list" id="nn02" style="display: none;">
-{assign var="i" value=1}
-{foreach from=$middleCategory.2 item=value name=result key=key}
-
-{if $puroductData.$key}
-<li class="nn_in{if $i == 1} select{/if}">{$value}</li>
-{assign var="i" value=$i+1}
-
-{/if}
-{/foreach}
-</ul>
-<br class="clearfix">
-
-{assign var="i" value=1}
-{foreach from=$middleCategory.2 item=cvalue name=result key=ckey}
-{if $puroductData.$ckey}
-<div class="s_box s02{if $i != 1} disnon{/if}">
-<ul id="productBox{$ckey}">
-	{foreach from=$puroductData.$ckey item=value name=result key=key}
-	{if $smarty.foreach.result.iteration <= 6}
-		<!-- Not displaying id=61 -->
-		{if $value.id != 61}
-	<li>
-	<a href="./product/detail.php?id={$value.id}">
-		{if $imgArray[$value.id].fileName}
-		<p class="pl_ph"><img src="/upImage/product/{$imgArray[$value.id].fileName}" alt="{$value.name}Image"/></p>
-		{/if}
-		<h5>{$value.subName}</h5>
-		<p class="s_title">{$value.name}</p>
-	</a>
-	</li>
-	{/if}
+	<ul class="nn_list" id="nn02" style="display: none;">
+	{assign var="i" value=1}
+	{foreach from=$middleCategory.2 item=value name=result key=key}
+	
+	{if $puroductData.$key}
+	<li class="nn_in{if $i == 1} select{/if}">{$value}</li>
+	{assign var="i" value=$i+1}
+	
 	{/if}
 	{/foreach}
-</ul>
-{if count( $puroductData.$ckey ) > 6}
-	<form>
-	<div class="more">
-	<input type="button" value="More" class="more_b" onclick="loadHtml( {$ckey}, this );">
+	</ul>
+	<br class="clearfix">
+	
+	{assign var="i" value=1}
+	{foreach from=$middleCategory.2 item=cvalue name=result key=ckey}
+	{if $puroductData.$ckey}
+	<div class="s_box s02{if $i != 1} disnon{/if}">
+	<ul id="productBox{$ckey}">
+		{foreach from=$puroductData.$ckey item=value name=result key=key}
+		{if $smarty.foreach.result.iteration <= 6}
+			<!-- Not displaying id=61 -->
+			{if $value.id != 61}
+		<li>
+		<a href="./product/detail.php?id={$value.id}">
+			{if $imgArray[$value.id].fileName}
+			<p class="pl_ph"><img src="/upImage/product/{$imgArray[$value.id].fileName}" alt="{$value.name}Image"/></p>
+			{/if}
+			<h5>{$value.subName}</h5>
+			<p class="s_title">{$value.name}</p>
+		</a>
+		</li>
+		{/if}
+		{/if}
+		{/foreach}
+	</ul>
+	{if count( $puroductData.$ckey ) > 6}
+		<form>
+		<div class="more">
+		<input type="button" value="More" class="more_b" onclick="loadHtml( {$ckey}, this );">
+		</div>
+		</form>
+		<!-- // /moreここまで--> 
+	 {/if}
 	</div>
-	</form>
-	<!-- // /moreここまで--> 
- {/if}
-</div>
-{assign var="i" value=$i+1}
-{/if}
-{/foreach}
-<br class="clearfix">
-			<!-- Banner -->
-			<section id="other_area_ex">
-				<nav id="o_list01">
-					<ul id="o_list01_in">
-						<li class="first">
-						<a href="https://ma.moritaalumi.co.jp/exterior-distributor-list">
-							<img src="/common/image/exterior-distributor-list.jpg">
-						</a>
-						</li>
-			
-						<li class="even">
-							<a href="https://www.instagram.com/moritaalumi_ex/?igshid=OGQ5ZDc2ODk2ZA%3D%3D">
-								<img src="/common/image/insta_bnr001.jpg">
+	{assign var="i" value=$i+1}
+	{/if}
+	{/foreach}
+	<br class="clearfix">
+				<!-- Banner -->
+				<section id="other_area_ex">
+					<nav id="o_list01">
+						<ul id="o_list01_in">
+							<li class="first">
+							<a href="https://ma.moritaalumi.co.jp/exterior-distributor-list">
+								<img src="/common/image/exterior-distributor-list.jpg">
 							</a>
-							</li>	
-					</ul>
-				</nav>
-			</section>
-			<!-- Banner -->
-</nav> 
+							</li>
+				
+							<li class="even">
+								<a href="https://www.instagram.com/moritaalumi_ex/?igshid=OGQ5ZDc2ODk2ZA%3D%3D">
+									<img src="/common/image/insta_bnr001.jpg">
+								</a>
+								</li>	
+						</ul>
+					</nav>
+				</section>
+				<!-- Banner -->
+	</nav> 
 
 
 <nav class="content_wrap disnon">
-<ul class="nn_list" id="nn03">
-{assign var="i" value=1}
-{foreach from=$middleCategory.3 item=value name=result key=key}
-
-{if $puroductData.$key}
-<li class="nn_in{if $i == 1} select{/if}">{$value}</li>
-{assign var="i" value=$i+1}
-
-{/if}
-{/foreach}
-</ul>
-<br class="clearfix">
-
-{assign var="i" value=1}
-{foreach from=$middleCategory.3 item=cvalue name=result key=ckey}
-{if $puroductData.$ckey}
-<div class="s_box s03{if $i != 1} disnon{/if}">
-<ul id="productBox{$ckey}" style="display: flex; flex-wrap: wrap;">
-	{foreach from=$puroductData.$ckey item=value name=result key=key}
-	{if $smarty.foreach.result.iteration <= 6}
-	<li>
-	<a href="./product/detail.php?id={$value.id}">
-		{if $imgArray[$value.id].fileName}
-		<p class="pl_ph"><img src="/upImage/product/{$imgArray[$value.id].fileName}" alt="{$value.name}Image"/></p>
-		{/if}
-		<h5>{$value.subName}</h5>
-		<p class="s_title">{$value.name}</p>
-	</a>
-	</li>
+	<ul class="nn_list" id="nn03">
+	{assign var="i" value=1}
+	{foreach from=$middleCategory.3 item=value name=result key=key}
+	
+	{if $puroductData.$key}
+	<li class="nn_in{if $i == 1} select{/if}">{$value}</li>
+	{assign var="i" value=$i+1}
+	
 	{/if}
 	{/foreach}
-</ul>
-{if count( $puroductData.$ckey ) > 6}
-	<form>
-	<div class="more">
-	<input type="button" value="More" class="more_b" onclick="loadHtml( {$ckey}, this );">
+	</ul>
+	<br class="clearfix">
+	
+	{assign var="i" value=1}
+	{foreach from=$middleCategory.3 item=cvalue name=result key=ckey}
+	{if $puroductData.$ckey}
+	<div class="s_box s03{if $i != 1} disnon{/if}">
+	<ul id="productBox{$ckey}" style="display: flex; flex-wrap: wrap;">
+		{foreach from=$puroductData.$ckey item=value name=result key=key}
+		{if $smarty.foreach.result.iteration <= 6}
+		<li>
+		<a href="./product/detail.php?id={$value.id}">
+			{if $imgArray[$value.id].fileName}
+			<p class="pl_ph"><img src="/upImage/product/{$imgArray[$value.id].fileName}" alt="{$value.name}Image"/></p>
+			{/if}
+			<h5>{$value.subName}</h5>
+			<p class="s_title">{$value.name}</p>
+		</a>
+		</li>
+		{/if}
+		{/foreach}
+	</ul>
+	{if count( $puroductData.$ckey ) > 6}
+		<form>
+		<div class="more">
+		<input type="button" value="More" class="more_b" onclick="loadHtml( {$ckey}, this );">
+		</div>
+		</form>
+		<!-- //moreここまで -->
+	{/if}
 	</div>
-	</form>
-	<!-- //moreここまで -->
-{/if}
-</div>
-{assign var="i" value=$i+1}
-{/if}
-{/foreach}
-
-<br class="clearfix">
-</nav>
+	{assign var="i" value=$i+1}
+	{/if}
+	{/foreach}
+	
+	<br class="clearfix">
+	</nav>
 	</section>
 
 	<!-- price_change_date -->

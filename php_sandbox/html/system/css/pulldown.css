@@ -1,0 +1,26 @@
+li.own{
+    position: relative;
+    margin: 0;
+}
+
+ul.child{
+    display: none;
+    position: absolute;
+    left:-1px;
+    top:25px;
+    /*margin-left: 2px;*/
+    padding: 0;
+}
+
+ul.child li, ul.child a, ul.child font{
+    /*margin-left: 2px;*/
+    padding: 0;
+    width:150px;
+    text-align:left;
+    height:22px;
+    overflow: hidden; 
+}
+
+li a:hover{
+    color: #0000ff;
+}

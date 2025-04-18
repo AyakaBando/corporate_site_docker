@@ -1,6 +1,4 @@
 <?php
-
-
 function relativityPath( $layer )
 {
     for( $i = 1; $i <= $layer - 1; $i++ )

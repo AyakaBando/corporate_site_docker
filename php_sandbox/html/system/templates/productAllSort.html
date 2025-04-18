@@ -1,0 +1,97 @@
+{include file="./common/meta.html"}
+
+<link rel="stylesheet" type="text/css" href="css/sort.li.css"/>
+<script type="text/javascript" src="./js/setForm.js"></script>
+
+<script type="text/javascript" src="./js/ui/jquery.ui.core.min.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.widget.min.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.mouse.min.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.sortable.min.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.droppable.min.js"></script>
+<script type="text/javascript" src="./js/queserser.sort.li.js"></script>
+
+
+<script type="text/javascript" charset="utf-8">
+<!--
+var prtJson = {$prtJson};
+{literal}
+
+{/literal}
+// -->
+</script>
+
+</head>
+ <body id="two-left-w">
+  <div id="wrapper">
+   <div id="header">
+    <div>
+	 {include file="./common/head.html"}
+    <div id="logo"></div>
+   </div><!-- /#header -->
+
+   <div id="container">
+    <div id="contents">
+     <div id="pan"><a href="login.php">{$smarty.const.TITLE}</a> / {$itemCategoryArray[$smarty.get.categoryId]}{$smarty.const.PAGE_TITLE}管理</div>
+
+{include file="./common/contentsMenu.html"}
+
+       <div style="margin:12px 0 20px 0;padding:10px;border:1px solid {if $smarty.get.r}#ff99ff{else}#cccccc{/if};background-color:#ffffff;{if $smarty.get.r}color:#ff33ff{/if}">
+         {if $smarty.get.r == 1}
+             全体の表示順位を変更しました。
+         {else}
+             {$smarty.const.PAGE_TITLE}の表示順位を変更します。
+         {/if}
+       </div>
+
+     <div id="data">
+<div class="clear"></div>
+
+
+<table border="0" cellpadding="0" cellspacing="0" class="sortList" style="margin-left:0;background-color:#fff">
+  <tr>
+    <td style="border:none;">
+            <ul id="boxes">
+
+{foreach from=$data item=value name=name key=key }
+            <li class="box{if !$value.dispFlg} gray{/if}" data-idnum="{$value.id}">
+              {if $value.image.fileName}
+                  <p class="imgBox" style="overflow:hidden;"><img src="/upImage/{$smarty.const.FILE_CATEGORY}/{$value.image.fileName}" alt="{$value.title}" border="0" height="80" /></p>
+              {else}
+                  <span class="noImgBox">no-image</span>
+              {/if}
+              <p class="name" style="height:14px;">{$value.name}</p>
+              <p class="name">{$value.subName}</p>
+              <p class="rank">順位({$smarty.foreach.name.iteration})</p>
+            </li>
+{foreachelse}
+<p class="name">現在製品の登録はございません。</p>
+{/foreach}
+            </ul>
+    </td>
+  </tr>
+</table>
+
+{if $data}
+<div class="sortSubmit">
+  <form action="./{$smarty.const.THE_FILE_NAME}.php{$getLink.all}{$getLink.all}{if $getLink.all}&{else}?{/if}s=1" method="post" enctype="multipart/form-data" id="sortSubmit" name="sort" style="margin-bottom:40px;text-align:center;">
+    <input id="sortBtn" type="button" value="並び替え" onclick="sortSave( '.box' )">
+  </form>
+</div>
+{/if}
+<div class="pager">
+{$pagerLinks.all}
+</div>
+      <div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+    </div>
+   </div>
+
+{include file="./common/menu.html"}
+   <div class="clear"></div>
+   {include file="./common/footer.html"}
+  </div>
+
+ </body>
+</html>
+

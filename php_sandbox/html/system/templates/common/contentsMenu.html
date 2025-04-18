@@ -1,0 +1,12 @@
+     <div id="navi" style="margin-bottom:10px;">
+      <div id="naviBt">
+       <ul>
+        <li{if $smarty.const.PAGE_NUM == 1} class="active"{/if}>{if $smarty.const.PAGE_NUM == 1}<font>{else}<a href="./{$smarty.const.FILE_CATEGORY}List.php">{/if}{$smarty.const.PAGE_TITLE}一覧{if $smarty.const.PAGE_NUM == 1}</font>{else}</a>{/if}</li>
+        {if $smarty.const.CHENGE_FLG}<li{if $smarty.const.PAGE_NUM == 2} class="active"{/if}>{if $smarty.const.PAGE_NUM == 2}<font>{else}<a href="./{$smarty.const.FILE_CATEGORY}AddChange.php">{/if}{$smarty.const.PAGE_TITLE}{if $smarty.get.id}詳細{else}登録{/if}{if $smarty.const.PAGE_NUM == 2}</font>{else}</a>{/if}</li>{/if}
+        {if $smarty.const.SORT_FLG}<li{if $smarty.const.PAGE_NUM == 3} class="active"{/if}>{if $smarty.const.PAGE_NUM == 3}<font>{else}<a href="./{$smarty.const.FILE_CATEGORY}Sort.php">{/if}{$smarty.const.PAGE_TITLE}カテゴリ並び替え{if $smarty.const.PAGE_NUM == 3}</font>{else}</a>{/if}</li>{/if}
+        {if $smarty.const.SORT_FLG}<li{if $smarty.const.PAGE_NUM == 4} class="active"{/if}>{if $smarty.const.PAGE_NUM == 4}<font>{else}<a href="./{$smarty.const.FILE_CATEGORY}AllSort.php">{/if}{$smarty.const.PAGE_TITLE}並び替え{if $smarty.const.PAGE_NUM == 4}</font>{else}</a>{/if}</li>{/if}
+
+       </ul>
+      </div>
+      <div class="clear"></div>
+     </div>

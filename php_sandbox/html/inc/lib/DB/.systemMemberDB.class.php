@@ -35,7 +35,8 @@ class systemMemberDB extends queserserDB
                     IF( ( SELECT IF( MAX( `dateTime` ), MAX( `dateTime` ), '0000-00-00 00:00:00' ) FROM `downloadFileCnt` WHERE `memberMaster`.`memberId` = `downloadFileCnt`.`memberId` ) > ( SELECT IF( MAX( `dateTime` ), MAX( `dateTime` ), '0000-00-00 00:00:00' ) FROM `downloadZipCnt` WHERE `memberMaster`.`memberId` = `downloadZipCnt`.`memberId` ), ( SELECT MAX( `dateTime` ) FROM `downloadFileCnt` WHERE `memberMaster`.`memberId` = `downloadFileCnt`.`memberId` ), ( SELECT MAX( `dateTime` ) FROM `downloadZipCnt` WHERE `memberMaster`.`memberId` = `downloadZipCnt`.`memberId` ) ) AS `maxDate` 
                FROM `memberMaster` 
               " . self::ListWhere( $param ) . "
-             ORDER BY " . $sqlOrderBy;
+             ORDER BY " . $sqlOrderBy . 
+             " LIMIT " . intval($this->limit) . " OFFSET " . intval($this->ls);
 
         $result = $this->_setQuery( 'limitQuery', $queryStr, array() );
 
@@ -83,6 +84,31 @@ class systemMemberDB extends queserserDB
 
         return ( isset( $data ) ) ? $data : null;
     }
+
+    //         /**
+    //  * 指定したテーブルのレコード数を取得する
+    //  *
+    //  * @param string $table テーブル名
+    //  * @param string $where WHERE句の条件（オプション）
+    //  * @return int レコード数
+    //  */
+    // public function listCount($table, $where = '')
+    // {
+    //     $queryStr = "SELECT COUNT(*) FROM `{$table}`";
+
+    //     // WHERE句があれば追加
+    //     if ($where) {
+    //         $queryStr .= " WHERE {$where}";
+    //     }
+
+    //     // クエリの実行
+    //     $result = $this->_setQuery('query', $queryStr, array());
+
+    //     // 結果の取得
+    //     $row = $result->fetchRow(DB_FETCHMODE_ASSOC);
+
+    //     return (int) $row[0]; // COUNTの結果を返す
+    // }
 
 
 
@@ -146,6 +172,12 @@ class systemMemberDB extends queserserDB
         if( $debFlg )echo $sqlWhere;
 
         return ( $sqlWhere ) ? $sqlWhere : null;
+    }
+
+    public function Disconnect() {
+        if ($this->db instanceof mysqli) {
+            $this->db->close();
+        }
     }
 
 

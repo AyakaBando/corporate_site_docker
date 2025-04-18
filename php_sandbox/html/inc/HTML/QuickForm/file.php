@@ -71,11 +71,24 @@ class HTML_QuickForm_file extends HTML_QuickForm_input
      * @since     1.0
      * @access    public
      */
-    function HTML_QuickForm_file($elementName=null, $elementLabel=null, $attributes=null)
-    {
-        HTML_QuickForm_input::HTML_QuickForm_input($elementName, $elementLabel, $attributes);
-        $this->setType('file');
-    } //end constructor
+    // function HTML_QuickForm_file($elementName=null, $elementLabel=null, $attributes=null)
+    // {
+    //     HTML_QuickForm_input::HTML_QuickForm_input($elementName, $elementLabel, $attributes);
+    //     $this->setType('file');
+    // } //end constructor
+
+    function __construct($elementName = null, $elementLabel = null, $attributes = null)
+{
+    parent::__construct($elementName, $elementLabel, $attributes);
+    $this->setType('file');
+}
+
+// 旧コンストラクタ名でも呼ばれたときの互換対応（必要に応じて）
+function HTML_QuickForm_file($elementName = null, $elementLabel = null, $attributes = null)
+{
+    self::__construct($elementName, $elementLabel, $attributes);
+}
+
     
     // }}}
     // {{{ setSize()
@@ -186,8 +199,9 @@ class HTML_QuickForm_file extends HTML_QuickForm_input
                 return $this->onQuickFormEvent('updateValue', null, $caller);
                 break;
             case 'createElement':
-                $className = get_class($this);
-                $this->$className($arg[0], $arg[1], $arg[2]);
+                // $className = get_class($this);
+                // $this->$className($arg[0], $arg[1], $arg[2]);
+                $this->__construct($arg[0], $arg[1], $arg[2]);
                 break;
         }
         return true;
@@ -323,36 +337,72 @@ class HTML_QuickForm_file extends HTML_QuickForm_input
     * @access    private
     * @return    mixed
     */
-    function _findValue()
-    {
-        if (empty($_FILES)) {
-            return null;
+
+    function _findValue(&$values = null) {
+        if (null === $values) {
+            return null; // または適切なデフォルト処理
         }
+        
         $elementName = $this->getName();
         if (isset($_FILES[$elementName])) {
             return $_FILES[$elementName];
-        } elseif (false !== ($pos = strpos($elementName, '['))) {
-            $base  = str_replace(
-                        array('\\', '\''), array('\\\\', '\\\''),
-                        substr($elementName, 0, $pos)
-                    ); 
-            $idx   = "['" . str_replace(
-                        array('\\', '\'', ']', '['), array('\\\\', '\\\'', '', "']['"),
-                        substr($elementName, $pos + 1, -1)
-                     ) . "']";
-            $props = array('name', 'type', 'size', 'tmp_name', 'error');
-            $code  = "if (!isset(\$_FILES['{$base}']['name']{$idx})) {\n" .
-                     "    return null;\n" .
-                     "} else {\n" .
-                     "    \$value = array();\n";
-            foreach ($props as $prop) {
-                $code .= "    \$value['{$prop}'] = \$_FILES['{$base}']['{$prop}']{$idx};\n";
-            }
-            return eval($code . "    return \$value;\n}\n");
-        } else {
-            return null;
         }
+    
+        // foo[bar][baz] 形式に対応
+        $keys = preg_split('/[\[\]]+/', rtrim($elementName, ']'));
+        $file = $_FILES;
+        foreach ($keys as $key) {
+            if ($key === '') continue; // 空のキーはスキップ
+            if (!isset($file['name'][$key])) {
+                return null;
+            }
+            foreach (['name', 'type', 'size', 'tmp_name', 'error'] as $prop) {
+                $file[$prop] = $file[$prop][$key];
+            }
+        }
+    
+        return [
+            'name'     => $file['name'],
+            'type'     => $file['type'],
+            'size'     => $file['size'],
+            'tmp_name' => $file['tmp_name'],
+            'error'    => $file['error']
+        ];
     }
+    
+
+
+
+    // function _findValue()
+    // {
+    //     if (empty($_FILES)) {
+    //         return null;
+    //     }
+    //     $elementName = $this->getName();
+    //     if (isset($_FILES[$elementName])) {
+    //         return $_FILES[$elementName];
+    //     } elseif (false !== ($pos = strpos($elementName, '['))) {
+    //         $base  = str_replace(
+    //                     array('\\', '\''), array('\\\\', '\\\''),
+    //                     substr($elementName, 0, $pos)
+    //                 ); 
+    //         $idx   = "['" . str_replace(
+    //                     array('\\', '\'', ']', '['), array('\\\\', '\\\'', '', "']['"),
+    //                     substr($elementName, $pos + 1, -1)
+    //                  ) . "']";
+    //         $props = array('name', 'type', 'size', 'tmp_name', 'error');
+    //         $code  = "if (!isset(\$_FILES['{$base}']['name']{$idx})) {\n" .
+    //                  "    return null;\n" .
+    //                  "} else {\n" .
+    //                  "    \$value = array();\n";
+    //         foreach ($props as $prop) {
+    //             $code .= "    \$value['{$prop}'] = \$_FILES['{$base}']['{$prop}']{$idx};\n";
+    //         }
+    //         return eval($code . "    return \$value;\n}\n");
+    //     } else {
+    //         return null;
+    //     }
+    // }
 
     // }}}
 } // end class HTML_QuickForm_file

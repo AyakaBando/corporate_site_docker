@@ -1,0 +1,55 @@
+{include file="./common/meta.html"}
+<link rel="stylesheet" type="text/css" href="css/login.css"/>
+{$form.javascript}
+</head>
+ <body>
+<form{$form.attributes}>
+   <div class="box">
+
+    <div style="margin:0 0 20px 0;">
+     <div style="float:left;">
+      <div style="margin:0 0 6px 0;">
+       <div style="float:left;margin:0 6px 0 0;">
+        <span class="t10">USER ACCOUNT</span><br />
+        {$form.account.html}
+        
+        </div>
+       <div style="float:left;margin:0 10px 0 0;">
+        <span class="t10">PASSWORD</span><br />
+        {$form.password.html}
+        </div>
+
+       <div style="float:left;margin:16px 0 0 0;">
+        {$form.submitConf.html}
+       </div>
+        {if $form.errors.account}
+            <div style="clear:both;"><span class="t10" style="color:#ff0000;">{$form.errors.account}</span></div>
+        {/if}
+       <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+      <div>
+
+       <span style="margin:20px 0 0 0;">
+        {$form.kaniChk.html}       </span>
+      </div>
+     </div>
+     <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+
+    <div style="margin:0 0 30px 0;line-height:130%;color:#aaa;">
+     <ul>
+      {if $smarty.get.r == 'logout'}<li class="t10">・<font class="error">完全にログアウトしました。</font></li>{/if}
+      <li class="t10">・Forgot your password? You can get help retrieving your password here.</li>
+      <li class="t10">・Not a member yet? Creating an account is free and easy. Sign up Now !</li>
+      <li class="t10">・Having trouble logging in?  Make sure your browser is set to accept cookies.</li>
+     </ul>
+<div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    {include file="./common/footer.html"}
+   </div>
+  </form>
+ </body>
+</html>

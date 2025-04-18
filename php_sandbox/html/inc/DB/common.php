@@ -28,7 +28,7 @@
  * Obtain the PEAR class so it can be extended from
  */
 #require_once 'PEAR.php';
-require_once( dirname(__FILE__) . '/../PEAR.php' );
+// require_once( dirname(__FILE__) . '/../PEAR.php' );
 /**
  * DB_common is the base class from which each database driver class extends
  *

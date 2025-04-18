@@ -89,7 +89,7 @@
 <li{if $smarty.get.c == 4} class="select"{/if}><a href="./?c=4">採用情報</a></li>
 </ul>
 
-{*{foreach from=$whatsNewCategory item=cvalue name=cresult key=ckey}*}
+{foreach from=$whatsNewCategory item=cvalue name=cresult key=ckey}
 <nav class="n_box001{if !$smarty.foreach.cresult.first} disnon{/if}">
 	<ul class="n_box001_in btm40">
 {foreach from=$list item=value name=result key=key}
@@ -103,7 +103,7 @@
 <div class="navi">{$pagerLinks.pages}</div>
 </nav>
 <!--/-->
-{*{/foreach}*}
+{/foreach}
 
 	</section>
 	<!--/box-->

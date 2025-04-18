@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="title" content="{$smarty.const.TITLE}" />
+<meta name="language" content="ja" />
+<meta name="robots" content="index,nofollow" />
+<meta name="copyright" content="Your company" /> 
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<title>{$smarty.const.TITLE}</title>
+<link rel="stylesheet" type="text/css" href="../css/import.css"/>
+<link rel="stylesheet" href="/system/js/thickbox/thickbox.css" type="text/css" media="all" />
+<script type="text/javascript" src="/system/js/jquery-1.6.3.min.js"></script>
+<script type="text/javascript" src="/system/js/thickbox/thickbox.js"></script>
+<script language="JavaScript" type="text/javascript" src="../sortJs/top.js"></script>
+<script language="JavaScript" type="text/javascript" src="../sortJs/core.js"></script>
+<script language="JavaScript" type="text/javascript" src="../sortJs/events.js"></script>
+<script language="JavaScript" type="text/javascript" src="../sortJs/css.js"></script>
+<script language="JavaScript" type="text/javascript" src="../sortJs/coordinates.js"></script>
+<script language="JavaScript" type="text/javascript" src="../sortJs/drag.js"></script>
+<script language="JavaScript" type="text/javascript" src="../sortJs/dragsort.js"></script>
+<script language="JavaScript" type="text/javascript" src="../sortJs/cookies.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/pulldown.css"/>
+<script type="text/javascript" src="../js/load.js"></script>
+{literal}
+<script type="text/javascript" charset="utf-8">
+<!--
+
+function chk()
+{
+    if( confirm( "削除してもよろしいですか？" ) )
+    {
+        return true;
+    }
+    return false;
+}
+
+
+// -->
+</script>
+
+<style type="text/css">
+<!--
+sortList *{
+    margin:0;
+    padding:0;
+}
+form{
+	margin:0;
+	padding:0;
+}
+#boxes {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0 0 2px 3px;
+	float:left;
+}
+#boxes li {
+	cursor: move;
+	position: relative;
+	float: left;
+	display:inline;
+	margin: 2px 2px 0px 0px;
+	width: 207px;
+	height: 276px;
+	border: 1px solid #bbb;
+	text-align: center;
+	padding:0;
+	padding-top: 5px;
+	z-index: 1;
+	color:#000000;
+	background-color:#fff;
+}
+#boxes li:hover{
+    background-color:#ffbbff;
+}
+#boxes li img{
+	margin:2px 0 3px 0;
+	border:1px solid #999;
+}
+p.imgBox{
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+
+.gray{
+	background-color:#cccccc;
+}
+
+.size{
+	color:#ff0000;
+	margin:4px 0 2px 0;
+	padding:0;
+	font-size:10px;
+	text-align:center;
+}
+//-->
+</style>
+{/literal}
+</head>
+ <body>
+  <div id="wrapper">
+   <div id="header">
+    <div>
+	 {include file="../../templates/common/head.html"}
+    <div id="logo"><img src="../../cmn_img/logo.jpg" /></div>
+   </div><!-- /#header -->
+
+   <div id="container">
+    <div id="contents">
+     <div id="pan"><a href="../login.php">{$smarty.const.TITLE}</a> / {$smarty.const.PAGE_TITLE}管理</div>
+
+
+     <div id="data">
+       <div class="patternPan"{if $smarty.get.r || $smarty.get.d} style="color:#ff33ff;border-color:#ff99ff;"{/if}>
+       {if !$smarty.get.r && !$smarty.get.d}{$smarty.const.PAGE_TITLE}一覧を表示しています。
+       {elseif $smarty.get.r==1}{$smarty.const.PAGE_TITLE}を登録しました。
+       {elseif $smarty.get.r==2}{$smarty.const.PAGE_TITLE}順位を更新しました。
+       {elseif $smarty.get.r==3}{$smarty.const.PAGE_TITLE}の表示を更新しました。
+       {elseif $smarty.get.d==1}{$smarty.const.PAGE_TITLE}を削除しました。{/if}
+       </div>
+
+
+{if $errors}
+    <div style="border:double 3px #ff0000;margin-bottom:10px;background-color:#ffffff;padding:6px;">
+    {foreach from=$errors item=value}
+    {$value}<br />
+    {/foreach}
+    </div>
+{/if}
+
+<div class="clear"></div>
+
+<div class="clear"></div>
+
+{if $smarty.post.imgId}<p style="padding-top:10px;"><a href="./{$smarty.const.THE_FILE_NAME}.php?id={$smarty.request.id}" style="font-size:14px;">&gt;&gt;新規登録</a></p>{/if}
+<table cellpadding="0" cellspacing="0" style="margin:10px 0;width:340px;">
+  <tr class="caption"><th colspan="4" class="center"{if $smarty.post.imgId} style="background-color:#ff6500;color:#ffffff;"{/if}>
+      画像{if $smarty.post.imgId}修正{else}新規登録{/if}</th></tr>
+  <tr>
+    <td align="center" valign="bottom" class="tdreg" style="line-height:2em;">
+    {if $smarty.post.imgId || $upDateImg.fileName}
+        <p style="text-align:center;">
+        <a href="../../upImage/{$smarty.const.FILE_CATEGORY}/{$upDateImg.fileName}" class="thickbox"><img src="../../upImage/{$smarty.const.FILE_CATEGORY}/{$upDateImg.fileName}" width="{$upDateImg.size.width}" height="{$upDateImg.size.height}" /></a>
+        </p>
+    {/if}
+      <form enctype="multipart/form-data" action="./{$smarty.const.THE_FILE_NAME}.php?id={$smarty.request.id}" method="post">
+          <p class="center" style="margin-bottom:4px;"><input type="file" name="1" /><br /><span style="color:#ff0000;">【横{$maxWidth.1}px × 縦{$maxHeight.1}px】</span></p>
+
+          <p class="center" style="margin-bottom:12px;">url : <input type="text" name="imageAlt" value="{$upDateImg.imageAlt}" style="width:240px;padding-bottom:4px;" /></p>
+
+          <p style="text-align:center;"><input type="submit" name="reg" value="{if $smarty.post.imgId}修正{else}登録{/if}" /></p>
+          <input type="hidden" name="priority" value="{$smarty.section.cnt.index}" />
+          <input type="hidden" name="id" value="{$smarty.request.id}" />
+          {if $smarty.post.imgId}
+          <input type="hidden" name="imgId" value="{$upDateImg.imgId}" />
+          <input type="hidden" name="fileName[1]" value="{$upDateImg.fileName}" />
+          {/if}
+      </form>
+    </td>
+  </tr>
+</table>
+
+
+<table border="0" cellpadding="0" cellspacing="0" class="12" bgcolor="#000000" class="sortList" style="width:100%;">
+<tr class="caption">
+  <th colspan="4" class="center">登録画像一覧</th>
+</tr>
+<tr>
+  <td class="tdreg" style="border:none;">
+{if $data}
+            <ul id="boxes">
+{foreach from=$data item=value name=result key=key}
+            <li class="box{if $value.prtFlg} gray{/if}">
+<!--- id={$value.imgId} title={$value.title} 　No.{$key} --->
+                {if $value.fileName}
+                    <p style="text-align:center;height:120px;border:none;">
+                    {*<a href="../upImage/{$smarty.const.FILE_CATEGORY}/{$value.fileName}" target="_blank">ファイルを確認</a>*}
+                    <img src="../../upImage/{$smarty.const.FILE_CATEGORY}/{$value.fileName}" width="{$value.size.width}" height="{$value.size.height}" />
+                    </p>
+                {/if}
+
+                <p class="center" style="margin:0 0 6px 0;overflow:hidden;width:100%;height:34px;">{if $value.imageAlt}url<br />{$value.imageAlt}{/if}</p>
+                <form action="./{$smarty.const.THE_FILE_NAME}.php?id={$smarty.request.id}" method="post">
+                    <p style="text-align:center;"><input type="submit" name="imgupdate" value="修正" /></p>
+                    <input type="hidden" name="imgId" value="{$value.imgId}" />
+                </form>
+                
+                {if $value.fileName}
+                <br />
+                <form action="./{$smarty.const.THE_FILE_NAME}.php?id={$smarty.request.id}" method="post" style="text-align:center;">
+                    <input type="submit" name="del" value="削除" onclick="return chk();" />
+                    <input type="hidden" name="imgId" value="{$value.imgId}" />
+                    <input type="hidden" name="fileName" value="{$value.fileName}" />
+                </form>
+                <br />
+
+                <form action="./{$smarty.const.THE_FILE_NAME}.php?id={$smarty.request.id}" method="post" style="text-align:center;">
+                    <input type="submit" name="disp" value="{if $value.dispFlg}非表示{else}表示{/if}" />
+                    <input type="hidden" name="imgId" value="{$value.imgId}" />
+                    <input type="hidden" name="dispFlg" value="{if $value.dispFlg}0{else}1{/if}" />
+                </form>
+
+                {/if}
+            </li>
+{/foreach}
+            </ul>
+{else}
+現在画像の登録はございません。
+{/if}
+  </td>
+</tr>
+</table>
+{if $data}
+<div class="sortSubmit" style="margin-top:10px;">
+  <form action="./{$smarty.const.THE_FILE_NAME}.php?id={$smarty.request.id}&s=1" method="post" enctype="multipart/form-data" name="sort" style="margin-bottom:40px;text-align:center;">
+    <input onmouseover="this.style.backgroundColor='#ff9900'" style="font-size:10pt;color:#ffffff;background-color:#ff6500;width:200px;line-height:20px;height:30px;margin:0 auto;" onmouseout="this.style.backgroundColor='#ff6500'" type="button" value="並び替え" onclick="func_inspectListOrder('boxes')">
+  </form>
+</div>
+{/if}
+      <div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+    </div>
+   </div>
+
+{include file="../../templates/common/menu.html"}   <div class="clear"></div>
+   {include file="../../templates/common/footer.html"}
+  </div>
+{literal}
+<script type="text/javascript">
+<!--
+  var openwindow = null;
+
+  var dragsort   = ToolMan.dragsort();
+  var junkdrawer = ToolMan.junkdrawer();
+{/literal}
+  var savelist   = "{$data.jsSavelist}";
+{literal}
+  var savelist2  = "";
+  var savenew    = "";
+  var savepost   = "";
+
+  window.onload = function() {
+    dragsort.makeListSortable(document.getElementById("boxes"));
+  }
+
+//アンロード用
+function func_serializeList2(list) {
+  var items = list.getElementsByTagName("li");
+  for (var i=0,n=items.length; i<n; i++) {
+    var item = items[i];
+
+    var itemhtml = item.innerHTML.toString();
+
+    var spos1 = itemhtml.indexOf("id=");
+    var epos1 = itemhtml.indexOf(" ",spos1);
+    var id = itemhtml.substring(spos1+3,epos1);
+
+    var spos2 = itemhtml.indexOf("title=");
+    var epos2 = itemhtml.indexOf(" ",spos2);
+    var name = itemhtml.substring(spos2+5,epos2);
+
+    savelist2 = savelist2+","+id;
+  }
+}
+
+//アンロード
+{/literal}
+
+{literal}
+//POST用
+function func_serializeList(list) {
+  var items = list.getElementsByTagName("li");
+  for (var i=0,n=items.length; i<n; i++) {
+    var item = items[i];
+
+    var itemhtml = item.innerHTML.toString();
+
+    var spos1 = itemhtml.indexOf("id=");
+    var epos1 = itemhtml.indexOf(" ",spos1);
+    var id = itemhtml.substring(spos1+3,epos1);
+
+    var input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "reNewId["+i+"]";
+    input.value = id;
+    document.sort.appendChild(input);
+
+    var spos2 = itemhtml.indexOf("title=");
+    var epos2 = itemhtml.indexOf(" ",spos2);
+    var name = itemhtml.substring(spos2+5,epos2);
+
+    var input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "reNewName["+i+"]";
+    input.value = name;
+    document.sort.appendChild(input);
+  }
+}
+
+//POSTボタン
+function func_inspectListOrder(id) {
+  savenew = "1";
+  func_serializeList(document.getElementById(id));
+  document.sort.submit();
+}
+
+
+function func_submit(url){
+  savelist2 = "";
+  if(savelist != ""){
+    func_serializeList2(document.getElementById('boxes'));
+    if(savelist != savelist2){
+      var flg = window.confirm("並び順を保存しますか？");
+      if(flg == true){
+        savepost = "a";
+        func_serializeList(document.getElementById('boxes'));
+        document.sort.submit();
+      }
+    }
+  }
+
+  openwindow = window.open(url,"contentsList.php","dependent=yes,width=627,height=635,scrollbars=yes");
+  openwindow.focus();
+  return false;
+}
+// -->
+</script>
+{/literal}
+ </body>
+</html>

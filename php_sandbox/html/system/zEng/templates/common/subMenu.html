@@ -1,0 +1,10 @@
+     <div id="navi">
+	  <div id="naviBt">
+       <ul>
+        {if $smarty.const.SUB_LIST_FLG}<li{if $smarty.const.SUB_PAGE_NUM == 1} class="active"{/if}>{if $smarty.const.SUB_PAGE_NUM == 1}<font>{else}<a href="./{$smarty.const.FILE_CATEGORY}List.php?id={$smarty.request.id}">{/if}一覧{if $smarty.const.SUB_PAGE_NUM == 1}</font>{else}</a>{/if}</li>{/if}
+        {if $smarty.const.SUB_CHENGE_FLG}<li{if $smarty.const.SUB_PAGE_NUM == 2} class="active"{/if}>{if $smarty.const.SUB_PAGE_NUM == 2}<font>{else}<a href="./{$smarty.const.FILE_CATEGORY}AddChange.php?id={$smarty.request.id}">{/if}登録{if $smarty.const.SUB_PAGE_NUM == 2}</font>{else}</a>{/if}</li>{/if}
+        {if $smarty.const.SUB_CATEGORY_FLG}<li{if $smarty.const.SUB_PAGE_NUM == 3} class="active"{/if}>{if $smarty.const.SUB_PAGE_NUM == 3}<font>{else}<a href="./{$smarty.const.FILE_CATEGORY}CategoryAddChange.php?id={$smarty.request.id}">{/if}カテゴリ{if $smarty.const.SUB_PAGE_NUM == 3}</font>{else}</a>{/if}</li>{/if}
+       </ul>
+	  </div>
+      <div class="clear"></div>
+     </div>

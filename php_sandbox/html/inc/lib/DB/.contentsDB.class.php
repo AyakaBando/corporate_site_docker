@@ -1,7 +1,8 @@
 <?php
-require_once( '.queserser.DB.class.php' );
-require_once( dirname(__FILE__) . '/./.systemSearchDB.class.php' );
-require_once( dirname(__FILE__) . '/./.systemDB.class.php' );
+require_once(dirname(__FILE__) . '/.systemSearchDB.class.php' );
+require_once(dirname(__FILE__) . '/.systemDB.class.php' );
+require_once(dirname(__FILE__) . '/.queserser.DB.class.php');
+
 /*  */
 
 /**
@@ -103,7 +104,9 @@ class contentsDB extends queserserDB
                 $row['caseImg'][$caserow['priority']]  = $caserow;
             }
             //設置事例登録枚数取得
-            $row['caseCnt'] = count( $row['caseImg'] );
+            // $row['caseCnt'] = count( $row['caseImg'] );
+            $row['caseCnt'] = is_array($row['caseImg']) ? count($row['caseImg']) : 0;
+
 
             //図面データ
             $queryStr = "SELECT `imgId`, `id`, `imageAlt`, `fileName`, `width`, `height`, `dispFlg`, `priority` FROM `product_drawing` WHERE `id` = ? AND `dispFlg` = 1 ORDER BY `priority` ";
@@ -451,6 +454,8 @@ class contentsDB extends queserserDB
         $this->ls    = $ls;
         $this->limit = $limit;
 
+        $sqlWhere = ''; 
+
         $selectDataArray[] = 1;
         if( $year && preg_match( '/^[0-9]{4}$/', $year ) )
         {
@@ -477,13 +482,19 @@ class contentsDB extends queserserDB
             "SELECT `id`, `category`, `contentsCategory`, `title`, `url`, `pdfFileName`, `imgFileName`, `width`, `height`, `dateTime` 
                FROM `whatsNew` 
               WHERE `dispFlg` = ? " . $sqlWhere . "
-           ORDER BY `dateTime` DESC";
+           ORDER BY `dateTime` DESC LIMIT ?, ?";
+
+           $selectDataArray[] = (int)$ls;
+           $selectDataArray[] = (int)$limit;
+
         $result = $this->_setQuery( 'limitQuery', $queryStr, $selectDataArray );
 
         while( $row = $result->fetchRow( DB_FETCHMODE_ASSOC ) )
             $data[]      = $row;
 
         return ( isset( $data ) ) ? $data : null;
+
+        
     }
 
 

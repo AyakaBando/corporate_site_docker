@@ -22,8 +22,10 @@ $data = $query->NewsList( $ls, $limit, $_GET['y'], $_GET['c'] );
 //if( $_GET['y'] && preg_match( '/^\d{4}$/', $_GET['y'] ) )
 //    $sqlWhere .= " AND DATE_FORMAT( `dateTime`, '%Y' ) = '" . $_GET['y'] . "' ";
 
+$sqlWhere = '';
 if( $_GET['c'] && preg_match( '/^\d{1}$/', $_GET['c'] ) )
     $sqlWhere .= " AND `category` = '" . $_GET['c'] . "' ";
+
 
 $listCount            = $query->listCount( 'whatsNew', " WHERE `dispFlg` = 1 " . $sqlWhere );
 //$archiveList          = $query->WhatsNewArchiveList( $_GET );
@@ -53,7 +55,7 @@ $pageParam = array(
     'spacesAfterSeparator'  => 0, 
 );
 
-$pager         = pager::factory( $pageParam );
+$pager         = Pager::factory( $pageParam );
 $pagerLinks    = $pager->getLinks();
 $pagerLink_rep = pagerReplace( $pagerLinks, $pager );
 

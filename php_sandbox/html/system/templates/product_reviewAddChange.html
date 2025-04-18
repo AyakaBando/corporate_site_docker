@@ -1,0 +1,142 @@
+{include file="./common/meta.html"}
+{literal}
+<link rel="stylesheet" type="text/css" href="css/pulldown.css"/>
+<script type="text/javascript" src="./js/load.js"></script>
+<script type="text/javascript" src="./js/setForm.js"></script>
+<script type="text/javascript" charset="utf-8">
+<!--
+jQuery(function($){
+ $('.datasheet').tableHover();
+ });
+// 確認ウィンドウを表示する
+function chk()
+{
+    if( confirm( "削除してもよろしいですか？" ) )
+    {
+        return true;
+    }
+    return false;
+}
+
+
+// -->
+</script>
+{/literal}
+</head>
+ <body id="two-left-w">
+  <div id="wrapper">
+   <div id="header">
+    <div>
+	 {include file="./common/head.html"}
+    <div id="logo"><img src="../../cmn_img/logo.jpg" /></div>
+   </div><!-- /#header -->
+
+   <div id="container">
+    <div id="contents">
+     <div id="pan"><a href="login.php">{$smarty.const.TITLE}</a> / {$smarty.const.PAGE_TITLE}管理 /</div>
+
+
+{include file="./common/contentsFileMenu.html"}
+
+    <div class="patternPan" style="margin-top:10px;{if $smarty.get.r || $smarty.get.d}border-color:#0066ff;{/if}">
+     <b>『{$itemName}』</b>の
+     {if !$smarty.get.r && !$smarty.get.d}
+         {$smarty.const.PAGE_TITLE}一覧を表示しています。
+     {elseif $smarty.get.r}
+         {$smarty.const.PAGE_TITLE}を登録しました。
+     {elseif $smarty.get.d == 1}
+         『<b>{$smarty.get.t}</b>』を未承認にしました。
+     {elseif $smarty.get.d == 2}
+         『<b>{$smarty.get.t}</b>』を承認しました。
+     {elseif $smarty.get.d == 99}
+         『<b>{$smarty.get.t}</b>』を削除しました。
+     {/if}
+    </div>
+
+
+     <div id="data">
+
+<div class="clear"></div>
+
+<table class="" cellpadding="0" cellspacing="0" style="margin-top:10px;width:100%;">
+{foreach from=$data item=value name=result key=key}
+
+<tr>
+    <th class="threg" style="text-align:right;width:100px;">内容</th>
+    <td style="" class="tdreg">
+    <div>
+        <h3 style="font-size:16px;font-weight:bold;float:left;">{$value.title}</h3>
+        <p style="font-size:14px;color:#ff6600;float:right;">{$evaluationArray[$value.evaluation]}</p>
+    </div>
+    <br style="clear:both;" />
+    <div style="margin-top:8px;padding:8px;">
+        <p>{$value.comment|nl2br}</p>
+        <p style="text-align:right;"><span style="font-size:10px;">{$value.dateTime|date_format:"%Y/%m/%d %H:%M"}</span>　　<span>{$value.name}</span></p>
+    </div>
+    </td>
+</tr>
+<tr>
+    <th class="threg" style="border-bottom:double 3px #bbb;text-align:right;">状態・操作</th>
+    <td style="border-bottom:double 3px #bbb;{if $value.dispFlg == 0}background-color:#999;{/if}" class="tdreg">
+    <div style="{if $value.dispFlg == 0}color:#fff;{/if}font-size:14px;">状態・{$reviewStatusArray[$value.dispFlg]}</div>
+    <div style="float:right;padding-right:30px;">
+    <form action="./{$smarty.const.FILE_CATEGORY}AddChange.php?id={$value.id}&rId={$value.rId}" method="post">
+        <input type="submit" name="unDisp" value="未承認"{if !$value.dispFlg} disabled="disabled"{/if} />　
+        <input type="submit" name="okDisp" value="承認"{if $value.dispFlg == 1}disabled="disabled"{/if} />　
+        <input type="submit" name="del" value="削除" onclick="return chk();" />
+        <input type="hidden" name="rId" value="{$value.rId}" />
+        <input type="hidden" name="mode" value="1" />
+    </form>
+    </div>
+    </td>
+</tr>
+{*
+<tr>
+<td class="tdreg">{$value.dateTime|date_format:"%Y/%m/%d %H:%M"}</td>
+<td class="tdreg">{$productNewsContentsCategory[$value.contentsCategory]}</td>
+<td class="tdreg">{$productNewsType[$value.type]}</td>
+<td class="tdreg"><a href="./{$smarty.const.FILE_CATEGORY}AddChange.php?id={$value.id}&newsId={$value.newsId}">{$value.title}</a></td>
+<td style="width:13px;text-align:center;" class="tdreg">
+    <a href="./{$smarty.const.THE_FILE_NAME}.php?id={$value.id}&newsId={$value.newsId}&mode=disp&dispFlg={if !$value.dispFlg}1{else}0{/if}{$getLink.addition}">
+            <img src="./cmn_img/{if !$value.dispFlg}eye_close.png{else}eye_open.png{/if}" 
+                 alt="{if !$value.dispFlg}非表示{else}表示中{/if}" 
+                 title="{if !$value.dispFlg}非表示{else}表示中{/if}" />
+    </a>
+</td>
+<td style="width:13px;text-align:center;" class="tdreg">
+    <a href="./{$smarty.const.THE_FILE_NAME}.php?id={$value.id}&newsId={$value.newsId}&mode=del{$getLink.addition}" onclick="return chk()">
+    <img src="./cmn_img/dustbox.png" alt="削除する" title="削除する" name="del" />
+    </a></td>
+</tr>
+*}
+{foreachelse}
+<tr>
+<td style="width:13px;text-align:center;" class="tdreg" colspan="18">新着情報は登録されていません。</td>
+</tr>
+{/foreach}
+{if $listCount}
+<tfoot>
+<tr>
+<td colspan="18" class="hothre">
+<font>全{$listCount}件中{$cnt.start}～{$cnt.end}件を表示。</font>
+</td>
+</tr>
+</tfoot>
+{/if}
+</table>
+
+
+<div class="pager">
+{$pagerLinks.all}
+</div>
+      <div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+    </div>
+   </div>
+
+{include file="./common/menu.html"}   <div class="clear"></div>
+   {include file="./common/footer.html"}
+  </div>
+ </body>
+</html>

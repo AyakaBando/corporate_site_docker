@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# すべてのリクエストを index.php にリダイレクト
+RewriteCond %{REQUEST_URI} !^/index.php$
+RewriteRule ^(.*)$ /index.php [L]

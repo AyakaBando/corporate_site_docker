@@ -1,0 +1,655 @@
+<?php /* Smarty version 2.6.19, created on 2014-03-28 20:41:54
+         compiled from artHallAddChange.html */ ?>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "./common/meta.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+
+<link rel="stylesheet" type="text/css" href="./css/ui.all.css"/>
+<link rel="stylesheet" type="text/css" href="./css/ui.datepicker.css"/>
+<link rel="stylesheet" type="text/css" href="./css/mdp.css" />
+<script type="text/javascript" src="./js/ui.core.js"></script>
+<script type="text/javascript" src="./js/ui.datepicker.js"></script>
+<script type="text/javascript" src="./js/ui.datepicker-ja.js"></script>
+<script type="text/javascript" src="./js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="./js/ckfinder/ckfinder.js"></script>
+
+<?php echo '
+<script type="text/javascript">
+function changeEnable( flg )
+{
+    var bol = ( flg == 1 ) ? false: true;
+    document.item.sponsorship2.disabled = bol;
+
+}
+
+function clearForm()
+{
+    document.news.startDate.value = \'\';
+    document.news.endDate.value = \'\';
+}
+
+$(document).ready(function(){
+	// 時間ピッカー
+	$("input#ticketStartDate").datepicker(
+		{duration: "",dateFormat: \'yy-mm-dd\'}
+	);
+	$("input#ticketMaitStartDate").datepicker(
+		{duration: "",dateFormat: \'yy-mm-dd\'}
+	);
+	// 時間ピッカー
+	$( "input#startDate" ).datepicker(
+		{duration: "",dateFormat: \'yy-mm-dd\'}
+	);
+	$( "input#endDate" ).datepicker(
+		{duration: "",dateFormat: \'yy-mm-dd\'}
+	);
+
+
+    var radioList = document.getElementsByName( \'sponsorshipFlg\' );
+
+    for( var i = 0; i <= radioList.length; i++ )
+    {
+        if( radioList[i].checked === true )
+        {
+            ///alert( radioList[i].checked );
+            changeEnable( i+1 );
+        }
+    }
+
+});
+
+jQuery(function($) {
+  $("#startDate").mask("9999-99-99");
+  $("#endDate").mask("9999-99-99");
+  $("#ticketStartDate").mask("9999-99-99");
+  $("#ticketMaitStartDate").mask("9999-99-99");
+}); 
+
+
+
+</script>
+
+<style type="text/css"> 
+span.ui-datepicker-year {
+	margin-right:1em;
+}
+
+#p2146-table{
+width:100%;
+font-size:14px;
+border-collapse:collapse;
+}
+#p2146-table th,#p2146-table td{
+border:1px solid #aaa;
+padding:5px 8px;
+text-align:center;
+}
+#p2146-table th{
+background-color:#999;
+color:#fff;
+}
+
+#p2146-table img{
+cursor:pointer;
+vertical-align:text-bottom;
+}
+#p2146-table input[type="button"]{
+background-color:#f0f0f0;
+border:1px solid #aaa;
+border-radius:3px;
+box-shadow:0 1px 2px #999;
+width:30px;
+}
+</style>
+<script>
+//▼リストの追加▼
+function addList(obj){
+   //var element=document.createElement(\'tr\');
+   //var list=\'<td><select onchange="changeType(this);"><option>A</option><option>B</option><option>C</option></select></td><td>A</td><td><img src="/wp-content/uploads/2011/11/up.png" alt="↑" height="18" onclick="listUp(this);" />上へ　<img src="/wp-content/uploads/2011/11/down.png" alt="↓" height="18" onclick="listDown(this);" />下へ</td><td><input type="button" value="+" onclick="addList(this);" />　<input type="button" value="-" onclick="removeList(this);" /></td>\';
+   //element.innerHTML=list;
+
+   var tbody=document.getElementById(\'p2146-tbody\');
+   var tr=obj.parentNode.parentNode;
+   var list=tbody.childNodes[0].cloneNode(true);
+   var td=list.childNodes[1];
+
+   tbody.insertBefore(list,tr.nextSibling);
+
+}
+//▲リストの追加▲
+
+//▼リストの削除▼
+function removeList(obj){
+var tbody=document.getElementById(\'p2146-tbody\');
+var tr=obj.parentNode.parentNode;
+var tags=tbody.getElementsByTagName("tr").length;
+
+//var response=confirm("「リスト」を削除してもよろしいでしょうか？");
+
+//if(response==true){
+if( tags >= 2 )
+    tbody.removeChild(tr); 
+//}
+}
+//▲リストの削除▲
+
+//▼リストの順番上げる▼
+function upList(obj){
+var tbody=document.getElementById(\'p2146-tbody\');
+var tr=obj.parentNode.parentNode;
+
+if(tr.previousSibling.nodeName=="TR"){
+tbody.insertBefore(tr, tr.previousSibling);
+}
+}
+//▲リストの順番上げる▲
+
+//▼リストの順番下げる▼
+function downList(obj){
+var tbody=document.getElementById(\'p2146-tbody\');
+var tr=obj.parentNode.parentNode;
+//alert(tr.nextSibling.nodeName);
+
+if(tr.nextSibling.nodeName=="TR"){
+tbody.insertBefore(tr.nextSibling, tr);
+}
+}
+//▲リストの順番下げる▲
+
+//▼切り替え▼
+function changeList(obj){
+var type=obj.value;
+//alert(type);
+var tr=obj.parentNode.parentNode;
+var td=tr.childNodes[1];
+
+var cell=document.createElement(\'td\');
+cell.innerHTML=type;
+tr.replaceChild(cell,td);
+}
+//▲切り替え▲
+</script>
+
+
+'; ?>
+
+
+</head>
+ <body id="two-left-w">
+  <div id="wrapper">
+   <div id="header">
+    <div>
+     <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "./common/head.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+    <div id="logo">
+     <img src="../../cmn_img/logo.jpg" />
+    </div>
+   </div><!-- /#header -->
+   <div id="container">
+    <div id="contents">
+     <div id="pan">
+      <a href="./login.php"><?php echo @TITLE; ?>
+</a> / <a href="./<?php echo @FILE_CATEGORY; ?>
+List.php"><?php echo @PAGE_TITLE; ?>
+一覧</a> / <?php echo @PAGE_TITLE; ?>
+<?php if ($_GET['id']): ?>更新<?php else: ?>編集<?php endif; ?>     </div>
+
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "./common/contentsMenu.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+
+     <div id="data">
+
+       <div class="patternPan">
+       <?php echo @PAGE_TITLE; ?>
+を<?php if ($_REQUEST['id']): ?>編集<?php else: ?>登録<?php endif; ?>します。<br />
+       <span style="color:#ff0000;">＊の項目は必ず入力・選択してください</span>
+       </div>
+
+<form<?php echo $this->_tpl_vars['form']['attributes']; ?>
+>
+       <?php if ($this->_tpl_vars['form']['errors']): ?>
+       <div style="border:double 3px #ff0000;margin-bottom:10px;background-color:#ffffff;padding:6px;">
+       <?php $_from = $this->_tpl_vars['form']['errors']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['value']):
+?>
+       <?php echo $this->_tpl_vars['value']; ?>
+<br />
+       <?php endforeach; endif; unset($_from); ?>
+       </div>
+       <?php endif; ?>
+
+       <table cellpadding="0" cellspacing="0" style="margin-bottom:20px;width:100%;">
+         <tr class="caption"><th colspan="2" class="center" class="threg">概要</th></tr>
+          <tr>
+            <th width="18%" style="text-align:right;" class="threg">イベント種別</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['category']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">イベントタイトル<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['title']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">イベントサブタイトル</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['subTitle']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">開催期間<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['startDate']['html']; ?>
+～<?php echo $this->_tpl_vars['form']['endDate']['html']; ?>
+　　　<input type="button" value="期間リセット" onclick="clearForm()" /></td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">時間</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['openTime']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">会場</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['kaijou']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">フロア</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['floor']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">入場方法</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['entrance']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">種別</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['sponsorshipFlg']['html']; ?>
+<?php echo $this->_tpl_vars['form']['sponsorshipText']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">チケット</th>
+            <td class="tdreg">
+                一般 <?php echo $this->_tpl_vars['form']['ticketStatus']['1']['html']; ?>
+　<?php echo $this->_tpl_vars['form']['ticketStatus']['2']['html']; ?>
+<?php echo $this->_tpl_vars['form']['ticketStartDate']['html']; ?>
+　<?php echo $this->_tpl_vars['form']['ticketStatus']['3']['html']; ?>
+<br />
+                メイト <?php echo $this->_tpl_vars['form']['ticketStatusMait']['1']['html']; ?>
+　<?php echo $this->_tpl_vars['form']['ticketStatusMait']['2']['html']; ?>
+<?php echo $this->_tpl_vars['form']['ticketMaitStartDate']['html']; ?>
+　<?php echo $this->_tpl_vars['form']['ticketStatusMait']['3']['html']; ?>
+
+            </td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">料金（一覧用）</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['chargeList']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">料金（詳細用）</th>
+            <td class="tdreg">
+            <?php if ($this->_tpl_vars['flg'] == 1): ?>
+                <div class="confFCK">
+                    <?php echo $this->_tpl_vars['confComment2']; ?>
+
+                </div>
+                <input type="hidden" name="chargeDetail" value="<?php echo $this->_tpl_vars['hiddenValue2']; ?>
+" />
+            <?php else: ?>
+                <?php echo $this->_tpl_vars['form']['chargeDetail']['html']; ?>
+
+                <script type="text/javascript">
+                  var news_text = CKEDITOR.replace( 'chargeDetail' );
+                  CKFinder.setupCKEditor( news_text, './js/ckfinder/' );
+                </script>
+            <?php endif; ?>
+            </td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">料金備考</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['bikou']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">プレイガイド</th>
+            <td class="tdreg">
+            <?php echo $this->_tpl_vars['form']['ticketGuide']['1']['html']; ?>
+<br />
+            <?php echo $this->_tpl_vars['form']['ticketGuide']['2']['html']; ?>
+<br />
+            <?php echo $this->_tpl_vars['form']['ticketGuide']['3']['html']; ?>
+Pコード：<?php echo $this->_tpl_vars['form']['pia']['html']; ?>
+<br />
+            <?php echo $this->_tpl_vars['form']['ticketGuide']['4']['html']; ?>
+<br />
+            <?php echo $this->_tpl_vars['form']['ticketGuide']['5']['html']; ?>
+Lコード：<?php echo $this->_tpl_vars['form']['lawson']['html']; ?>
+<br />
+            </td>
+          </tr>
+
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">紹介文</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['introduction']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">イベント詳細</th>
+            <td class="tdreg">
+            <?php if ($this->_tpl_vars['flg'] == 1): ?>
+                <div class="confFCK">
+                    <?php echo $this->_tpl_vars['confComment']; ?>
+
+                </div>
+                <input type="hidden" name="comment" value="<?php echo $this->_tpl_vars['hiddenValue']; ?>
+" />
+            <?php else: ?>
+                <?php echo $this->_tpl_vars['form']['comment']['html']; ?>
+
+                <script type="text/javascript">
+                  var news_text = CKEDITOR.replace( 'comment' );
+                  CKFinder.setupCKEditor( news_text, './js/ckfinder/' );
+                </script>
+            <?php endif; ?>
+            </td>
+          </tr>
+
+
+
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">団体名</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['organization']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">お問い合わせ</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['inquiry']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">外部リンク</th>
+            <td class="tdreg">タイトル：<?php echo $this->_tpl_vars['form']['urlTitle']['html']; ?>
+<br />アドレス：<?php echo $this->_tpl_vars['form']['url']['html']; ?>
+</td>
+          </tr>
+
+<?php $this->assign('sessionKey', @FILE_SESSION_KEY); ?>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">メイン画像</th>
+            <td class="tdreg">
+<?php unset($this->_sections['cnt']);
+$this->_sections['cnt']['name'] = 'cnt';
+$this->_sections['cnt']['start'] = (int)1;
+$this->_sections['cnt']['loop'] = is_array($_loop=$this->_tpl_vars['maxImageCnt']+1) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['cnt']['show'] = true;
+$this->_sections['cnt']['max'] = $this->_sections['cnt']['loop'];
+$this->_sections['cnt']['step'] = 1;
+if ($this->_sections['cnt']['start'] < 0)
+    $this->_sections['cnt']['start'] = max($this->_sections['cnt']['step'] > 0 ? 0 : -1, $this->_sections['cnt']['loop'] + $this->_sections['cnt']['start']);
+else
+    $this->_sections['cnt']['start'] = min($this->_sections['cnt']['start'], $this->_sections['cnt']['step'] > 0 ? $this->_sections['cnt']['loop'] : $this->_sections['cnt']['loop']-1);
+if ($this->_sections['cnt']['show']) {
+    $this->_sections['cnt']['total'] = min(ceil(($this->_sections['cnt']['step'] > 0 ? $this->_sections['cnt']['loop'] - $this->_sections['cnt']['start'] : $this->_sections['cnt']['start']+1)/abs($this->_sections['cnt']['step'])), $this->_sections['cnt']['max']);
+    if ($this->_sections['cnt']['total'] == 0)
+        $this->_sections['cnt']['show'] = false;
+} else
+    $this->_sections['cnt']['total'] = 0;
+if ($this->_sections['cnt']['show']):
+
+            for ($this->_sections['cnt']['index'] = $this->_sections['cnt']['start'], $this->_sections['cnt']['iteration'] = 1;
+                 $this->_sections['cnt']['iteration'] <= $this->_sections['cnt']['total'];
+                 $this->_sections['cnt']['index'] += $this->_sections['cnt']['step'], $this->_sections['cnt']['iteration']++):
+$this->_sections['cnt']['rownum'] = $this->_sections['cnt']['iteration'];
+$this->_sections['cnt']['index_prev'] = $this->_sections['cnt']['index'] - $this->_sections['cnt']['step'];
+$this->_sections['cnt']['index_next'] = $this->_sections['cnt']['index'] + $this->_sections['cnt']['step'];
+$this->_sections['cnt']['first']      = ($this->_sections['cnt']['iteration'] == 1);
+$this->_sections['cnt']['last']       = ($this->_sections['cnt']['iteration'] == $this->_sections['cnt']['total']);
+?>
+<?php if ($this->_sections['cnt']['index'] == 1): ?>
+               <div style="float:left;display:inline;width:220px;margin-right:20px;">
+               <?php if ($this->_tpl_vars['fileFlg'][$this->_sections['cnt']['index']] == 1): ?>
+                   <?php if (! $_POST['imageDel'][$this->_sections['cnt']['index']] && $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']): ?>
+                       <img src="./temp/<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']; ?>
+" alt="アップ予定ファイル" width="<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['img']['width']; ?>
+" height="<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['img']['height']; ?>
+" /><br />
+                       <input type="hidden" name="fileName[<?php echo $this->_sections['cnt']['index']; ?>
+]" value="<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']; ?>
+" />
+
+                   <?php elseif (! $_POST['imageDel'][$this->_sections['cnt']['index']] && $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['fileName'] && ! $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']): ?>
+                       <img src="../upImage/<?php echo @FILE_CATEGORY; ?>
+/<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['fileName']; ?>
+" alt="登録画像" width="<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['image']['width']; ?>
+" height="<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['image']['height']; ?>
+" /><br />
+                       <input type="hidden" name="fileName[<?php echo $this->_sections['cnt']['index']; ?>
+]" value="<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['fileName']; ?>
+" />
+
+                   <?php endif; ?>
+               <?php else: ?>
+                   <?php if ($this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['fileName'] && ! $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']): ?>
+                       <img src="../upImage/<?php echo @FILE_CATEGORY; ?>
+/<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['fileName']; ?>
+" alt="登録画像" width="<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['image']['width']; ?>
+" height="<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['image']['height']; ?>
+" /><br />
+                       <input type="hidden" name="fileName[<?php echo $this->_sections['cnt']['index']; ?>
+]" value="<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['fileName']; ?>
+" />
+
+                   <?php elseif ($_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']): ?>
+                       <img src="./temp/<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']; ?>
+" alt="登録画像" /><br />
+                       <input type="hidden" name="fileName[<?php echo $this->_sections['cnt']['index']; ?>
+]" value="<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']; ?>
+" width="<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['img']['width']; ?>
+" height="<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['img']['height']; ?>
+" />
+
+                   <?php endif; ?>
+               <?php endif; ?>
+                   <?php if (! $this->_tpl_vars['flg']): ?><?php echo $this->_tpl_vars['form'][$this->_sections['cnt']['index']]['html']; ?>
+<?php endif; ?>
+                   <br /><span style="font-size:10px;color:#ff0000;">登録画像サイズ 横<?php echo $this->_tpl_vars['maxWidth']; ?>
+px×縦<?php echo $this->_tpl_vars['maxHeight']; ?>
+</span>
+                   <br /><?php echo $this->_tpl_vars['form']['imageDel'][$this->_sections['cnt']['index']]['html']; ?>
+
+               </div>
+<?php endif; ?>
+<?php endfor; endif; ?>
+            </td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">画像</th>
+            <td class="tdreg">
+<?php unset($this->_sections['cnt']);
+$this->_sections['cnt']['name'] = 'cnt';
+$this->_sections['cnt']['start'] = (int)1;
+$this->_sections['cnt']['loop'] = is_array($_loop=$this->_tpl_vars['maxImageCnt']+1) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$this->_sections['cnt']['show'] = true;
+$this->_sections['cnt']['max'] = $this->_sections['cnt']['loop'];
+$this->_sections['cnt']['step'] = 1;
+if ($this->_sections['cnt']['start'] < 0)
+    $this->_sections['cnt']['start'] = max($this->_sections['cnt']['step'] > 0 ? 0 : -1, $this->_sections['cnt']['loop'] + $this->_sections['cnt']['start']);
+else
+    $this->_sections['cnt']['start'] = min($this->_sections['cnt']['start'], $this->_sections['cnt']['step'] > 0 ? $this->_sections['cnt']['loop'] : $this->_sections['cnt']['loop']-1);
+if ($this->_sections['cnt']['show']) {
+    $this->_sections['cnt']['total'] = min(ceil(($this->_sections['cnt']['step'] > 0 ? $this->_sections['cnt']['loop'] - $this->_sections['cnt']['start'] : $this->_sections['cnt']['start']+1)/abs($this->_sections['cnt']['step'])), $this->_sections['cnt']['max']);
+    if ($this->_sections['cnt']['total'] == 0)
+        $this->_sections['cnt']['show'] = false;
+} else
+    $this->_sections['cnt']['total'] = 0;
+if ($this->_sections['cnt']['show']):
+
+            for ($this->_sections['cnt']['index'] = $this->_sections['cnt']['start'], $this->_sections['cnt']['iteration'] = 1;
+                 $this->_sections['cnt']['iteration'] <= $this->_sections['cnt']['total'];
+                 $this->_sections['cnt']['index'] += $this->_sections['cnt']['step'], $this->_sections['cnt']['iteration']++):
+$this->_sections['cnt']['rownum'] = $this->_sections['cnt']['iteration'];
+$this->_sections['cnt']['index_prev'] = $this->_sections['cnt']['index'] - $this->_sections['cnt']['step'];
+$this->_sections['cnt']['index_next'] = $this->_sections['cnt']['index'] + $this->_sections['cnt']['step'];
+$this->_sections['cnt']['first']      = ($this->_sections['cnt']['iteration'] == 1);
+$this->_sections['cnt']['last']       = ($this->_sections['cnt']['iteration'] == $this->_sections['cnt']['total']);
+?>
+<?php if ($this->_sections['cnt']['index'] == 2): ?>
+               <div style="float:left;display:inline;width:220px;margin-right:20px;">
+               <?php if ($this->_tpl_vars['fileFlg'][$this->_sections['cnt']['index']] == 1): ?>
+                   <?php if (! $_POST['imageDel'][$this->_sections['cnt']['index']] && $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']): ?>
+                       <img src="./temp/<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']; ?>
+" alt="アップ予定ファイル" width="<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['img']['width']; ?>
+" height="<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['img']['height']; ?>
+" /><br />
+                       <input type="hidden" name="fileName[<?php echo $this->_sections['cnt']['index']; ?>
+]" value="<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']; ?>
+" />
+
+                   <?php elseif (! $_POST['imageDel'][$this->_sections['cnt']['index']] && $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['fileName'] && ! $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']): ?>
+                       <img src="../upImage/<?php echo @FILE_CATEGORY; ?>
+/<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['fileName']; ?>
+" alt="登録画像" width="<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['image']['width']; ?>
+" height="<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['image']['height']; ?>
+" /><br />
+                       <input type="hidden" name="fileName[<?php echo $this->_sections['cnt']['index']; ?>
+]" value="<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['fileName']; ?>
+" />
+
+                   <?php endif; ?>
+               <?php else: ?>
+                   <?php if ($this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['fileName'] && ! $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']): ?>
+                       <img src="../upImage/<?php echo @FILE_CATEGORY; ?>
+/<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['fileName']; ?>
+" alt="登録画像" width="<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['image']['width']; ?>
+" height="<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['image']['height']; ?>
+" /><br />
+                       <input type="hidden" name="fileName[<?php echo $this->_sections['cnt']['index']; ?>
+]" value="<?php echo $this->_tpl_vars['data']['image'][$this->_sections['cnt']['index']]['fileName']; ?>
+" />
+
+                   <?php elseif ($_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']): ?>
+                       <img src="./temp/<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']; ?>
+" alt="登録画像" /><br />
+                       <input type="hidden" name="fileName[<?php echo $this->_sections['cnt']['index']; ?>
+]" value="<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['fileName']; ?>
+" width="<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['img']['width']; ?>
+" height="<?php echo $_SESSION[$this->_tpl_vars['sessionKey']][$this->_sections['cnt']['index']]['img']['height']; ?>
+" />
+
+                   <?php endif; ?>
+               <?php endif; ?>
+                   <?php if (! $this->_tpl_vars['flg']): ?><?php echo $this->_tpl_vars['form'][$this->_sections['cnt']['index']]['html']; ?>
+<?php endif; ?>
+                   <br /><span style="font-size:10px;color:#ff0000;">登録画像サイズ 横<?php echo $this->_tpl_vars['maxWidth']; ?>
+px×縦<?php echo $this->_tpl_vars['maxHeight']; ?>
+</span>
+                   <br /><?php echo $this->_tpl_vars['form']['imageDel'][$this->_sections['cnt']['index']]['html']; ?>
+
+               </div>
+<?php endif; ?>
+<?php endfor; endif; ?>
+            </td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">主催</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['sponsorship2']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">後振</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['shiriburi']['html']; ?>
+</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">協賛</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['support']['html']; ?>
+</td>
+          </tr>
+
+          <tr><th width="16%" style="text-align:right;" class="threg">追加項目</th> 
+          <td class="tdreg">
+<table id="p2146-table">
+<thead><tr><th>タイトル/内容</th><th>リスト順</th><th>追加/削除</th></tr></thead>
+<!--▼改行しない▼-->
+<?php if (! $this->_tpl_vars['flg']): ?>
+<tbody id="p2146-tbody"><?php $_from = $_POST['addItem']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['value']):
+?><tr><td style="text-align:left;">タイトル<br /><input type="text" name="addItem[]" value="<?php echo $_POST['addItem'][$this->_tpl_vars['key']]; ?>
+" style="width:400px;" /><br />内容<br /><textarea name="addContents[]" style="width:400px;height:160px;"><?php echo $_POST['addContents'][$this->_tpl_vars['key']]; ?>
+</textarea></td><td><img src="./cmn_img/up.png" alt="↑" height="18" onclick="upList(this);" />　　<img src="./cmn_img/down.png" alt="↓" height="18" onclick="downList(this);" /></td><td><input type="button" value="+" onclick="addList(this);" />　<input type="button" value="-" onclick="removeList(this);" /></td></tr><?php endforeach; else: ?><tr><td style="text-align:left;">タイトル<br /><input type="text" name="addItem[]" value="" style="width:400px;" /><br />内容<br /><textarea name="addContents[]" style="width:400px;height:160px;"><?php echo $_POST['addContents'][$this->_tpl_vars['key']]; ?>
+</textarea></td><td><img src="./cmn_img/up.png" alt="↑" height="18" onclick="upList(this);" />　　<img src="./cmn_img/down.png" alt="↓" height="18" onclick="downList(this);" /></td><td><input type="button" value="+" onclick="addList(this);" />　<input type="button" value="-" onclick="removeList(this);" /></td></tr>
+<?php endif; unset($_from); ?></tbody>
+<?php else: ?><tbody id="p2146-tbody">
+<?php $_from = $_POST['addItem']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['value']):
+?>
+<tr>
+  <td>
+    <input type="hidden" name="addItem[]" value="<?php echo $this->_tpl_vars['value']; ?>
+"><?php echo $this->_tpl_vars['value']; ?>
+
+    <input type="hidden" name="addContents[]" value="<?php echo $_POST['addContents'][$this->_tpl_vars['key']]; ?>
+"><?php echo $_POST['addContents'][$this->_tpl_vars['key']]; ?>
+
+  </td>
+  <td>　</td>
+  <td>　</td>
+</tr>
+<?php endforeach; endif; unset($_from); ?>
+</tbody>
+<?php endif; ?>
+<!--▲改行しない▲-->
+</table>
+          </td></tr>
+
+
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">公開設定</th>
+            <td class="tdreg"><?php echo $this->_tpl_vars['form']['dispFlg']['html']; ?>
+</td>
+          </tr>
+
+
+       </table>
+
+       <div id="naviBt03">
+        <ul>
+         <li><?php if (! $this->_tpl_vars['flg']): ?><?php echo $this->_tpl_vars['form']['submitConf']['html']; ?>
+<?php else: ?><?php echo $this->_tpl_vars['form']['submitReg']['html']; ?>
+<?php endif; ?></li>
+         <li><?php if (! $this->_tpl_vars['flg']): ?><?php echo $this->_tpl_vars['form']['reset']['html']; ?>
+<?php else: ?><?php echo $this->_tpl_vars['form']['submitReturn']['html']; ?>
+<?php endif; ?></li>
+         <?php echo $this->_tpl_vars['form']['hidden']; ?>
+</form>
+        </ul>
+       </div>
+       <div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+    </div>
+   </div>
+
+   <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "./common/menu.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+   <div class="clear"></div>
+   <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "./common/footer.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+ </body>
+</html>

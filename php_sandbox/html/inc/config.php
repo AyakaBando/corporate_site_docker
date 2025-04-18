@@ -20,20 +20,23 @@ define( 'ERROR_MAIL',             '-f ' . COMPANY_MAIL_FROM );
 ini_set( 'error_reporting', E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED );// & ~E_USER_DEPRECATED
 ini_set( 'display_errors',  1 );
 
+
 // MYSQL connection
-$servername = "mysql006.phy.heteml.lan";
-$username = "_moritaalumi";
-$password = "morialu2018";
-$database = "moritaalumi_db";
+$servername = "mysql_db";
+$username = getenv("MYSQL_USER") ?: "root"; 
+$password = getenv("MYSQL_PASSWORD") ?: "morialu2018"; 
+$database = getenv("MYSQL_DATABASE") ?: "moritaalumi_db";
+
 
 // Establish MySQL Connection
 $conn = new mysqli($servername, $username, $password, $database);
 
 if($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} else {
-    echo "Database connection succeded!";
-}
+} 
+// Log success without displaying it to the user
+error_log("Database connected successfully");
+
 
 
 ////////////////////////////////////////////////
@@ -452,6 +455,4 @@ function prefArray()
 
     return $prefArray;
 }
-
-
 ?>

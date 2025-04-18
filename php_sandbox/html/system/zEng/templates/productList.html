@@ -1,0 +1,208 @@
+{include file="../../templates/common/meta.html"}
+
+{literal}
+<script type="text/javascript" charset="utf-8">
+<!--
+// 確認ウィンドウを表示する
+function chk()
+{
+    if( confirm( "削除してもよろしいですか？" ) )
+    {
+        return true;
+    }
+    return false;
+}
+
+// 確認ウィンドウを表示する
+function cpChk( title )
+{
+    if( confirm( "『" + title + "』コピーしてもよろしいですか？" ) )
+    {
+        return true;
+    }
+    return false;
+}
+// -->
+</script>
+{/literal}
+</head>
+ <body>
+  <div id="wrapper">
+   <div id="header">
+    <div>
+	 {include file="../../templates/common/head.html"}
+    <div id="logo"><img src="../../cmn_img/logo.jpg" /></div>
+   </div><!-- /#header -->
+
+   <div id="container">
+    <div id="contents">
+     <div id="pan"><a href="../login.php">{$smarty.const.TITLE}</a> / {$smarty.const.PAGE_TITLE}管理 /</div>
+
+{include file="../../templates/common/contentsMenu.html"}
+
+     <div id="data">
+       <div class="patternPan">
+       {if !$smarty.get.d}{$smarty.const.PAGE_TITLE}一覧を表示しています。
+       {elseif $smarty.get.d==1}<b>{$smarty.get.t}</b>を削除しました。
+       {elseif $smarty.get.d==2}<b>{$title}</b>を{if $smarty.get.dispFlg}公開{else}非公開に{/if}しました。
+       {elseif $smarty.get.d==3}<b>{$smarty.get.t}</b>をコピーしました。
+       {/if}
+       </div>
+{*
+<table cellpadding="0" cellspacing="0" style="width:100%;">
+	     <tr class="caption">
+		  <th class="center threg" colspan="2">
+		   {$smarty.const.PAGE_TITLE}イベント検索
+		   <form action="./{$smarty.const.THE_FILE_NAME}.php" method="get" style="float:right;"><input class="submits minisubmit" type="submit" name="byall" value="検索条件を解除する" style="width:200px;" /></form>
+		  </th>
+         </tr>
+<form{$form.attributes}>
+         <tr>
+          <th width="16%" class="threg">メーカー</th>
+          <td class="tdreg" style="line-height:2em;">{$form.makerId.html}</td>
+         </tr>
+         <tr>
+          <th class="threg">カテゴリ</th>
+          <td class="tdreg">{$form.category.html}</td>
+         </tr>
+         <tr>
+          <th class="threg">商品名</th>
+          <td class="tdreg">{$form.name.html}</td>
+         </tr>
+
+         <tr>
+          <th class="threg">開催日</th>
+          <td class="tdreg">
+          <p>{$form.dateStart.Y.html} 年 {$form.dateStart.m.html} 月 {$form.dateStart.d.html} 日～
+          {$form.dateEnd.Y.html} 年 {$form.dateEnd.m.html} 月 {$form.dateEnd.d.html} 日</p>
+          </td>
+         </tr>
+
+         <tr>
+           <td colspan="4" class="tdreg center">
+           <div style="width:100%;height:26px;text-align:center;">
+            <input type="submit" name="spotlight" value="この条件で検索する" style="width:200px;text-align:center;" />
+           </div>
+          </td>
+         </tr>
+</form>
+       </table>
+*}
+<div class="clear"></div>
+{if $listCount}
+<div class="pager">
+{$pagerLinks.all}
+</div>
+<div class="clear"></div>
+{/if}
+<table class="datasheet" cellpadding="0" cellspacing="0" style="margin-top:10px;width:100%;">
+{*<col />*}
+<col />
+<col width="200px" />
+<col width="140px" />
+<col width="100px" />
+<col width="40px" />
+{*
+<tr>
+<th style="text-align:center;" class="threg">
+<a href="./{$smarty.const.THE_FILE_NAME}.php?sort=dateTime&cond={if $smarty.get.sort == "dateTime" && $smarty.get.cond == "DESC"}ASC{else}DESC{/if}{$sortLink.addition}">
+登録日時
+</a>
+</th>
+*}
+<th style="text-align:center;" class="threg">
+{*<a href="./{$smarty.const.THE_FILE_NAME}.php?sort=title&cond={if $smarty.get.sort == "title" && $smarty.get.cond == "DESC"}ASC{else}DESC{/if}{$sortLink.addition}">*}
+製品名
+{*</a>*}
+</th>
+<th style="text-align:center;" class="threg">
+{*<a href="./{$smarty.const.THE_FILE_NAME}.php?sort=use&cond={if $smarty.get.sort == "use" && $smarty.get.cond == "DESC"}ASC{else}DESC{/if}{$sortLink.addition}">*}
+絞込みカテゴリ
+{*</a>*}
+</th>
+<th style="text-align:center;" class="threg">
+{*<a href="./{$smarty.const.THE_FILE_NAME}.php?sort=part&cond={if $smarty.get.sort == "part" && $smarty.get.cond == "DESC"}ASC{else}DESC{/if}{$sortLink.addition}">*}
+その他登録
+{*</a>*}
+</th>
+<th style="text-align:center;" class="threg">
+{*  <a href="./{$smarty.const.THE_FILE_NAME}.php?sort=dispFlg&cond={if $smarty.get.sort == "dispFlg" && $smarty.get.cond == "DESC"}ASC{else}DESC{/if}{$sortLink.addition}">*}
+公開状態
+{* <img src="cmn_img/{if $smarty.get.sort == "dispFlg" && $smarty.get.cond == "DESC"}down{else}up{/if}.gif"/></a>*}
+</th>
+<th style="text-align:center; width:50px;" class="threg">削除</th>
+</tr>
+
+
+{foreach from=$data item=value name=result key=key}
+<tr>
+{*<td class="tdreg">{$value.dateTime|date_format:"%Y/%m/%d %H:%M"}</td>*}
+<td class="tdreg"><a href="./{$smarty.const.FILE_CATEGORY}AddChange.php?id={$value.id}">{$value.name} / {$value.subName}</a></td>
+<td class="tdreg" style="vertical-align:top;">
+{foreach from=$productCategoryArray item=bvalue name=bresult key=bkey}
+{assign var="flg" value=0}
+	{foreach from=$categoryArray.$bkey item=cvalue name=cresult key=ckey}
+	{if $value.subCategory.$ckey}
+	{assign var="flg" value=1}
+	{/if}
+	{/foreach}
+	{if $flg}<b>{$bvalue}</b><br />{/if}
+	{foreach from=$categoryArray.$bkey item=cvalue name=cresult key=ckey}
+		{if $value.subCategory.$ckey}
+			　{$cvalue}<br />
+		{/if}
+	{/foreach}
+{/foreach}
+</td>
+<td class="tdreg">
+<a href="{$smarty.const.FILE_CATEGORY}_imgAddChange.php?id={$value.id}">設置事例</a><br />
+{*<a href="{$smarty.const.FILE_CATEGORY}_catalogAddChange.php?id={$value.id}">カタログ</a><br />
+<a href="{$smarty.const.FILE_CATEGORY}_drawingAddChange.php?id={$value.id}">図面</a><br />
+<a href="{$smarty.const.FILE_CATEGORY}_faqList.php?id={$value.id}">FAQ</a><br />*}
+<a href="{$smarty.const.FILE_CATEGORY}_newsList.php?id={$value.id}">お知らせ</a><br />
+{*<a href="{$smarty.const.FILE_CATEGORY}_reviewAddChange.php?id={$value.id}">レビュー</a>*}
+</td>
+
+<td style="text-align:center;" class="tdreg">
+{*
+    <a href="./{$smarty.const.THE_FILE_NAME}.php?id={$value.id}&mode=disp&disp={if !$value.dispFlg}1{else}0{/if}{$getLink.addition}">
+        {if !$value.dispFlg}非表示{else}表示中{/if}
+    </a>
+*}
+  <form action="./{$smarty.const.THE_FILE_NAME}.php{$getLink.all}" method="post" style="display:inline;">
+    <input type="image" src="../cmn_img/{if !$value.dispFlg}eye_close.png{else}eye_open.png{/if}" name="dispButton" 
+           alt="{if $value.dispFlg}公開中{else}非公開{/if}" title="{if $value.dispFlg}公開中{else}非公開{/if}" style="text-align:center;" />
+    <input type="hidden" value="{$value.id}" name="id" />
+    <input type="hidden" name="mode" value="{if !$value.dispFlg}open{else}close{/if}" />
+    <input type="hidden" name="dispFlg" value="{if !$value.dispFlg}1{else}0{/if}" />
+  </form>
+</td>
+
+<td class="tdreg center"><form action="./{$smarty.const.THE_FILE_NAME}.php{$getLink.all}" method="post" style="display:inline;">
+    <input type="image" src="../cmn_img/dustbox.png" alt="削除する" title="削除する" name="del" onclick="return chk()" style="text-align:center;" />
+    <input type="hidden" value="{$value.id}" name="id" />
+</form></td>
+</tr>
+{/foreach}
+{if $listCount}
+<tr>
+<td colspan="13" class="hothre">
+<font>全{$listCount}件中{$cnt.start}～{$cnt.end}件を表示。</font>
+</td>
+</tr>
+{/if}
+</table>
+
+<div class="pager">
+{$pagerLinks.all}
+</div>      <div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+    </div>
+   </div>
+
+{include file="../../templates/common/menu.html"}   <div class="clear"></div>
+   {include file="../../templates/common/footer.html"}
+  </div>
+ </body>
+</html>

@@ -1,0 +1,10 @@
+     <div id="navi">
+	  <div id="naviBt">
+       <ul>
+        {if $smarty.const.LIST_FLG}<li{if $smarty.const.PAGE_NUM == 1} class="active"{/if}>{if $smarty.const.PAGE_NUM == 1}<font>{else}<a href="./{$smarty.const.FILE_CATEGORY}List.php">{/if}{$smarty.const.PAGE_TITLE}一覧{if $smarty.const.PAGE_NUM == 1}</font>{else}</a>{/if}</li>{/if}
+        {if $smarty.const.CHENGE_FLG}<li{if $smarty.const.PAGE_NUM == 2} class="active"{/if}>{if $smarty.const.PAGE_NUM == 2}<font>{else}<a href="./{$smarty.const.FILE_CATEGORY}AddChange.php">{/if}{$smarty.const.PAGE_TITLE}登録{if $smarty.const.PAGE_NUM == 2}</font>{else}</a>{/if}</li>{/if}
+        {if $smarty.const.SORT_FLG}<li{if $smarty.const.PAGE_NUM == 3} class="active"{/if}>{if $smarty.const.PAGE_NUM == 3}<font>{else}<a href="./{$smarty.const.FILE_CATEGORY}Sort.php">{/if}{$smarty.const.PAGE_TITLE}並び替え{if $smarty.const.PAGE_NUM == 3}</font>{else}</a>{/if}</li>{/if}
+       </ul>
+	  </div>
+      <div class="clear"></div>
+     </div>

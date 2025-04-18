@@ -1,0 +1,133 @@
+{include file="./common/meta.html"}
+{*
+<link rel="stylesheet" type="text/css" href="./css/ui.all.css"/>
+<link rel="stylesheet" type="text/css" href="./css/ui.datepicker.css"/>
+<link rel="stylesheet" type="text/css" href="./css/mdp.css" />
+<script type="text/javascript" src="./js/ui.core.js"></script>
+<script type="text/javascript" src="./js/ui.datepicker.js"></script>
+<script type="text/javascript" src="./js/ui.datepicker-ja.js"></script>
+*}
+<script type="text/javascript" src="./js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="./js/ckfinder/ckfinder.js"></script>
+<script type="text/javascript" src="./js/setForm.js"></script>
+
+
+</head>
+ <body id="two-left-w">
+  <div id="wrapper">
+   <div id="header">
+    <div>
+     {include file="./common/head.html"}
+
+
+   </div><!-- /#header -->
+   <div id="container">
+    <div id="contents">
+     <div id="pan">
+      <a href="./login.php">{$smarty.const.TITLE}</a> / <a href="./{$smarty.const.FILE_CATEGORY}List.php">{$smarty.const.PAGE_TITLE}一覧</a> / {$smarty.const.PAGE_TITLE}{if $smarty.get.id}更新{else}編集{/if}     </div>
+
+{include file="./common/downloadMenu2.html"}
+
+     <div id="data">
+
+       <div class="patternPan">
+       {$smarty.const.PAGE_TITLE}を{if $smarty.request.id}編集{else}登録{/if}します。<br />
+       <span style="color:#ff0000;">＊の項目は必ず入力・選択してください</span>
+       </div>
+
+
+       <table cellpadding="0" cellspacing="0" style="margin-bottom:20px;width:100%;">
+         <tr class="caption"><th colspan="2" class="center threg">概要</th></tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">ブランド名</th>
+            <td class="tdreg">{$data.subName}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">製品名</th>
+            <td class="tdreg">{$data.name}</td>
+          </tr>
+{*
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">画像</th>
+            <td class="tdreg">{if $image.1.fileName}<img src="/upImage/product/{$image.1.fileName}" />{/if}</td>
+          </tr>
+*}
+       </table>
+
+<table class="datasheet" cellpadding="0" cellspacing="0" style="margin-top:10px;width:100%;">
+
+<th style="text-align:center;" class="threg" colspan="2">
+{*<a href="./{$smarty.const.THE_FILE_NAME}.php?sort=title&cond={if $smarty.get.sort == "title" && $smarty.get.cond == "DESC"}ASC{else}DESC{/if}{$sortLink.addition}">*}
+会員名
+{*</a>*}
+</th>
+<th style="text-align:center;" class="threg">
+{*<a href="./{$smarty.const.THE_FILE_NAME}.php?sort=title&cond={if $smarty.get.sort == "title" && $smarty.get.cond == "DESC"}ASC{else}DESC{/if}{$sortLink.addition}">*}
+最新ダウンロード日時
+{*</a>*}
+</th>
+<th style="text-align:center;width:100px;" class="threg">ダウンロード数</th>
+
+{foreach from=$dataProduct item=value name=result key=key}
+
+    {foreach from=$value.catalog item=cvalue name=cresult key=ckey}
+<tr>
+    <td class="tdreg" width="50px" style="font-size:10px;text-align:right;">カタログ</td>
+    <td class="tdreg">{if $cvalue.imageAlt}{$cvalue.imageAlt}{else}{$cvalue.fileName}{/if}</td>
+    <td class="tdreg" style="text-align:center;"></td>
+    <td class="tdreg" style="text-align:center;"></td>
+</tr>
+       {foreach from=$value.memberArrayCatalog[$cvalue.imgId] item=zvalue name=zresult key=zkey}
+  <tr>
+      <td class="tdreg"></td>
+      <td class="tdreg"><a href="./memberAddChange.php?memberId={$dataMember.$zkey.memberId}" target="_blank">{$dataMember.$zkey.name}</a></td>
+      <td class="tdreg">{$zvalue.latestDateTime|date_format:"%Y年%m月%d日 %H時%M分"}</td>
+      <td class="tdreg" style="text-align:center;">{$zvalue.cnt}</td>
+  </tr>
+       {/foreach}
+    {/foreach}
+    {foreach from=$value.draw item=cvalue name=cresult key=ckey}
+<tr>
+    <td class="tdreg" width="50px" style="font-size:10px;text-align:right;">図面</td>
+    <td class="tdreg">{if $cvalue.imageAlt}{$cvalue.imageAlt}{else}{$cvalue.fileName}{/if}</td>
+    <td class="tdreg" style="text-align:center;"></td>
+    <td class="tdreg" style="text-align:center;"></td>
+</tr>
+       {foreach from=$value.memberArrayDrow[$cvalue.imgId] item=zvalue name=zresult key=zkey}
+  <tr>
+      <td class="tdreg"></td>
+      <td class="tdreg"><a href="./memberAddChange.php?memberId={$dataMember.$zkey.memberId}" target="_blank">{$dataMember.$zkey.name}</a></td>
+      <td class="tdreg">{$zvalue.latestDateTime|date_format:"%Y年%m月%d日 %H時%M分"}</td>
+      <td class="tdreg" style="text-align:center;">{$zvalue.cnt}</td>
+  </tr>
+       {/foreach}
+    {/foreach}
+<tr>
+    <td class="tdreg" width="50px" style="font-size:10px;text-align:right;">zip</td>
+    <td class="tdreg"></td>
+    <td class="tdreg" style="text-align:center;"></td>
+    <td class="tdreg" style="text-align:center;"></td>
+</tr>
+     {foreach from=$value.memberArrayZip item=zvalue name=zresult key=zkey}
+  <tr>
+      <td class="tdreg"></td>
+      <td class="tdreg"><a href="./memberAddChange.php?memberId={$dataMember.$zkey.memberId}" target="_blank">{$dataMember.$zkey.name}</a></td>
+      <td class="tdreg">{$zvalue.latestDateTime|date_format:"%Y年%m月%d日 %H時%M分"}</td>
+      <td class="tdreg" style="text-align:center;">{$zvalue.cnt}</td>
+  </tr>
+     {/foreach}
+{/foreach}
+
+</table>
+       <div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+    </div>
+   </div>
+
+   {include file="./common/menu.html"}
+   <div class="clear"></div>
+   {include file="./common/footer.html"}
+ </body>
+</html>
+

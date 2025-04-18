@@ -1,0 +1,140 @@
+{include file="./common/meta.html"}
+{*
+<link rel="stylesheet" type="text/css" href="./css/ui.all.css"/>
+<link rel="stylesheet" type="text/css" href="./css/ui.datepicker.css"/>
+<link rel="stylesheet" type="text/css" href="./css/mdp.css" />
+<script type="text/javascript" src="./js/ui.core.js"></script>
+<script type="text/javascript" src="./js/ui.datepicker.js"></script>
+<script type="text/javascript" src="./js/ui.datepicker-ja.js"></script>
+
+<script type="text/javascript" src="./js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="./js/ckfinder/ckfinder.js"></script>
+<script type="text/javascript" src="./js/setForm.js"></script>
+*}
+</head>
+ <body id="two-left-w">
+  <div id="wrapper">
+   <div id="header">
+    <div>
+     {include file="./common/head.html"}
+
+
+   </div><!-- /#header -->
+   <div id="container">
+    <div id="contents">
+     <div id="pan">
+      <a href="./login.php">{$smarty.const.TITLE}</a> / <a href="./{$smarty.const.FILE_CATEGORY}List.php">{$smarty.const.PAGE_TITLE}一覧</a> / {$smarty.const.PAGE_TITLE}{if $smarty.get.id}更新{else}編集{/if}     </div>
+
+{include file="./common/contentsMenu.html"}
+
+     <div id="data">
+
+       <div class="patternPan">
+       {$smarty.const.PAGE_TITLE}を{if $smarty.request.id}編集{else}登録{/if}します。<br />
+       <span style="color:#ff0000;">＊の項目は必ず入力・選択してください</span>
+       </div>
+
+<form{$form.attributes}>
+       {if $form.errors}
+       <div style="border:double 3px #ff0000;margin-bottom:10px;background-color:#ffffff;padding:6px;">
+       {foreach from=$form.errors item=value}
+       {$value}<br />
+       {/foreach}
+       </div>
+       {/if}
+
+       <table cellpadding="0" cellspacing="0" style="margin-bottom:20px;width:100%;">
+         <tr class="caption"><th colspan="2" class="center threg">概要</th></tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">会社名<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg">{$form.companyName.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">お名前<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg">{$form.name.html}　　<a href="./memberDownLoad2List.php?memberId={$data.memberId}" style="display:inline-block;padding:6px 16px;border:1px solid #666;background-color:#ddd;">製品DL履歴</a></td>
+          </tr>
+{*
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">ご担当者ご職業<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg">{$form.job.html}</td>
+          </tr>
+*}
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">関連業種<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg">{$form.relationJob.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">職種<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg">{$form.subJobCategory.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">部署名<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg">{$form.busyo.html}</td>
+          </tr>
+
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">メールアドレス<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg">{$form.eMail.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">パスワード</th>
+            <td class="tdreg">{$form.password.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">郵便番号</th>
+            <td class="tdreg">{$form.zip1.html} - {$form.zip2.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">住所</th>
+            <td class="tdreg">
+            {$form.pref.html}<br />
+            {$form.address1.html}<br />
+            {$form.address2.html}
+            </td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">電話番号<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg">{$form.tel1.html} - {$form.tel2.html} - {$form.tel3.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">FAX番号</th>
+            <td class="tdreg">{$form.fax1.html} - {$form.fax2.html} - {$form.fax3.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">御社URL</th>
+            <td class="tdreg">{$form.siteUrl.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">弊社ウェブサイトに<br />来られたきっかけを<br />教えて下さい。</th>
+            <td class="tdreg">{$form.medium.html}</td>
+          </tr>
+{*
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">PDF</th>
+            <td class="tdreg">{$form.pdf.html}</td>
+          </tr>
+*}
+       </table>
+
+{*
+       <div id="naviBt03">
+        <ul>
+         <li>{if !$flg}{$form.submitConf.html}{else}{$form.submitReg.html}{/if}</li>
+         <li>{if !$flg}{$form.reset.html}{else}{$form.submitReturn.html}{/if}</li>
+         {$form.hidden}
+        </ul>
+       </div>
+*}
+</form>
+       <div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+    </div>
+   </div>
+
+   {include file="./common/menu.html"}
+   <div class="clear"></div>
+   {include file="./common/footer.html"}
+ </body>
+</html>
+

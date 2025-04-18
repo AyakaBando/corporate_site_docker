@@ -1,0 +1,127 @@
+{include file="./common/meta.html"}
+<script src="./js/setForm.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+<!--
+
+//var mode = '{$smarty.get.mode}';
+//var member = {$smarty.get.member|default:"0"};
+{literal}
+function setRelatedProduct( id, number, name, price )
+{
+    opener.window.$( '.relatedProductForm' ).each( function()
+    {
+        if( $( this ).data( 'id' ) == id )
+        {
+            alert( 'すでに登録されてます。' );
+            exit;
+        }
+    });
+    var innerStr = '';
+    innerStr += '<tr>';
+    innerStr += '<td class="tdreg">' + number + '</td>';
+    innerStr += '<td class="tdreg">' + name + '</td>';
+    innerStr += '<td class="tdreg">' + price + '<input type="hidden" class="relatedProductForm" data-id="' + id + '" name="relatedProduct[' + id + ']" value="1" /></td>';
+    innerStr += '<td class="tdreg"><span id="close{$key}" class="closeBtnMini" onclick="delBox( this.parentNode )">×</span></td>';
+    innerStr += '</tr>';
+    opener.window.$( "#relatedBox" ).append( innerStr );
+    //window.close();
+}
+
+
+function setOptionProduct( id, number, name, price )
+{
+    opener.window.$( '.relatedOptionForm' ).each( function()
+    {
+        if( $( this ).data( 'id' ) == id )
+        {
+            alert( 'すでに登録されてます。' );
+            exit;
+        }
+    });
+    var innerStr = '';
+    innerStr += '<tr>';
+    innerStr += '<td class="tdreg">' + number + '</td>';
+    innerStr += '<td class="tdreg">' + name + '</td>';
+    innerStr += '<td class="tdreg">' + price + '<input type="hidden" class="optionProductForm" data-id="' + id + '" name="optionProduct[' + id + ']" value="1" /></td>';
+    innerStr += '<td class="tdreg"><span id="close{$key}" class="closeBtnMini" onclick="delBox( this.parentNode )">×</span></td>';
+    innerStr += '</tr>';
+    opener.window.$( "#optionBox" ).append( innerStr );
+    //window.close();
+}
+{/literal}
+-->
+</script>
+
+</head>
+<body style="background-image:none;">
+
+<div id="popup_area" onblur="focus()">
+
+
+<div id="main_area">
+
+	<h1 style="background-color:#666;padding:8px;color:#fff;font-size:18px;text-align:center;margin-bottom:10px;">{if $smarty.get.t == 'option'}オプション品{else}関連製品{/if}{$smarty.const.PAGE_TITLE}</h1>
+
+	<div class="section01">
+<form{$form.attributes}>
+<table cellpadding="0" cellspacing="0" style="margin-bottom:20px;width:90%;">
+		<tr>
+			<td class="tdreg center" style="border-top:1px solid #ded;border-left:1px solid #ded;letter-spacing:0.6em;">
+                <input type="text" name="word" value="{$smarty.get.word}" style="width:60%;" />
+				<input type="submit" name="freeWordSearch" value="型番・製品名 検索" />
+			</td>
+		</tr>
+</table>
+{$form.hidden}
+</form>
+
+
+		<table class="datasheet" cellpadding="0" cellspacing="0" id="serchList" style="width:90%;">
+			<col width="100" />
+			<col width="100" />
+			<tr class="caption">
+				<th class="threg" colspan="3" style="text-align:center;">一覧</th>
+			</tr>
+			<tr>
+				<th class="threg" style="text-align:center;">型番</th>
+				<th class="threg" style="text-align:center;">メーカー</th>
+				<th class="threg" style="text-align:center;">商品名</th>
+			</tr>
+			<tbody id="employee">
+			{foreach from=$listData item=value name=result key=key}
+			<tr>
+				<td class="tdreg">{$value.modelNumber}</td>
+				<td class="tdreg">{$makerArray.maker[$value.makerId]}</td>
+				<td class="tdreg">
+				{if $smarty.get.t == 'option'}
+				<a href="javascript:void(0)" onclick="setOptionProduct('{$value.id}', '{$value.modelNumber}', '{$value.name}', '{$value.priceMinimum}')">{$value.name}</a>
+				{else}
+				<a href="javascript:void(0)" onclick="setRelatedProduct('{$value.id}', '{$value.modelNumber}', '{$value.name}', '{$value.priceMinimum}')">{$value.name}</a>
+				{/if}
+				</td>
+			</tr>
+			{foreachelse}
+			<tr>
+				<td class="tdreg" colspan="3">{if $smarty.get.freeWordSearch}該当する商品は登録されていません。{else}型番・商品名を入力してください。{/if}</td>
+			</tr>
+			{/foreach}
+		</table>
+
+	</div>
+
+
+
+</div><!--/main_area-->
+<p style="text-align:center;margin-top:16px;">
+<input type="button" onclick="window.close()" value="閉じる" />
+</p>
+<!--/sub_area-->
+
+</div><!--/container-->
+
+
+<!--/footer_area-->
+
+</body>
+</html>

@@ -6,6 +6,11 @@
  * @
  */
 
+ if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', dirname(dirname(dirname(__DIR__))));
+}
+
+
 define( 'INSERT_MODE', 1 );
 define( 'UPDATE_MODE', 2 );
 define( 'DEBUG_FLG',   1 );
@@ -30,7 +35,9 @@ define( 'DB_MDB2',   2 );
 define( 'DB_MODE',   DB_PEAR );
 
 
-if( DB_MODE == DB_PEAR ) require_once( 'DB.php' );
+if( DB_MODE == DB_PEAR ) require_once( ROOT_PATH . '/inc/DB.php' );
+
+// require_once(ROOT_PATH . '/inc/lib/DB.php');
 
 
 class queserserDB
@@ -42,8 +49,8 @@ class queserserDB
         "phptype"  => "mysqli",
         "username" => '_moritaalumi',
         "password" => 'morialu2018',
-        "hostspec" => 'mysql006.phy.heteml.lan',
-        "database" => '_moritaalumi'
+        "hostspec" => 'mysql_db',
+        "database" => 'moritaalumi_db'
 /*
         'phptype'  => 'mysqli',
         'username' => '_test735',
@@ -68,6 +75,12 @@ class queserserDB
         {
             case DB_PEAR://pear DB
                 $this->db = DB::connect( $this->dsn );
+
+                            // ここで接続エラーをチェック
+            if (PEAR::isError($this->db)) {
+                die('DB接続エラー: ' . $this->db->getMessage());
+            }
+            
                 $this->db->query( 'set names utf8' );
                 break;
 
@@ -119,5 +132,46 @@ class queserserDB
 
         return ( $title ) ? $title : null;
     }
+
+
+
+    // * #カウントメソッド
+    public function listCount($table, $where = "")
+    {
+        // SQLクエリを構築（テーブル名とWHERE条件を受け取る）
+        $queryStr = "SELECT COUNT(*) as count FROM `" . $table . "` " . $where;
+
+        // クエリ実行
+        $result = $this->_setQuery('getOne', $queryStr);
+
+        // 結果が取得できれば、カウントを返す
+        return ($result) ? $result : 0;
+    }
+
+    
+
+    private function exeQuery($mode)
+{
+    switch ($mode) {
+        case 'getOne':
+            return $this->db->getOne($this->queryStr, $this->queryArray);
+
+        case 'getRow':
+            return $this->db->getRow($this->queryStr, $this->queryArray);
+
+        case 'getAll':
+            return $this->db->getAll($this->queryStr, $this->queryArray);
+
+        case 'limitQuery':
+            $sth = $this->db->prepare($this->queryStr);
+            $res = $this->db->execute($sth, $this->queryArray);
+            return $res;
+
+        case 'query':
+        default:
+            return $this->db->query($this->queryStr, $this->queryArray);
+    }
+}
+
 }
 ?>

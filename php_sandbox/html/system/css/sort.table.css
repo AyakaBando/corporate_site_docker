@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+
+.sortThis{
+    padding:0;
+    color:#fff;
+    cursor:move;
+    font-size:18px;
+    font-weight:bold;
+    text-align:center;
+    width:40px;
+    display:table-cell;
+    background:url( '../cmn_img/arrow.gif' ) no-repeat center center;
+    /*filter: progid:DXImageTransform.Microsoft.gradient( GradientType=0,startColorstr='#d1e1f1', endColorstr='#2f73ba' );
+    background:-moz-linear-gradient(
+        top, 
+        #d1e1f1,  
+        #d1e1f1 4%, 
+        #d1e1f1 5%, 
+        #d1e1f1 50%, 
+        #2f73ba 60%, 
+        #2f73ba 90%, 
+        #2f73ba );
+    background: 
+        -webkit-gradient(
+        linear,
+        left top,left bottom,
+        from(#d1e1f1),
+        color-stop(0.04, #d1e1f1),
+        color-stop(0.05, #d1e1f1),
+        color-stop(0.45, #d1e1f1),
+        color-stop(0.50, #2f73ba),
+        color-stop(0.90, #2f73ba),
+        to(#2f73ba));*/
+}
+
+
+/*グラデーション
+    filter: progid:DXImageTransform.Microsoft.gradient( GradientType=0,startColorstr='#4097ff', endColorstr='#014ce3' );
+    background:-moz-linear-gradient(
+        top, 
+        #4097ff,  
+        #2b91ff 4%, 
+        #0372ff 5%, 
+        #0055e4 60%, 
+        #026aff 90%, 
+        #014ce3 );
+    background: 
+        -webkit-gradient(
+        linear,
+        left top,left bottom,
+        from(#4097ff),
+        color-stop(0.04, #2b91ff),
+        color-stop(0.05, #0372ff),
+        color-stop(0.50, #0055e4),
+        color-stop(0.90, #026aff),
+        to(#014ce3));
+*/

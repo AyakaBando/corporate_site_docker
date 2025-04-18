@@ -1,0 +1,28 @@
+     <div id="navi" style="margin-bottom:10px;">
+      <div id="naviBt">
+       <ul>
+        <li{if $smarty.const.PAGE_NUM == 1} class="active"{/if}>{if $smarty.const.PAGE_NUM == 1}<font>{else}<a href="./product_imgAddChange.php?id={$smarty.request.id}">{/if}設置事例{if $smarty.const.PAGE_NUM == 1}</font>{else}</a>{/if}</li>
+        <li{if $smarty.const.PAGE_NUM == 2} class="active"{/if}>{if $smarty.const.PAGE_NUM == 2}<font>{else}<a href="./product_catalogAddChange.php?id={$smarty.request.id}">{/if}カタログ{if $smarty.const.PAGE_NUM == 2}</font>{else}</a>{/if}</li>
+        <li{if $smarty.const.PAGE_NUM == 3} class="active"{/if}>{if $smarty.const.PAGE_NUM == 3}<font>{else}<a href="./product_drawingAddChange.php?id={$smarty.request.id}">{/if}図面{if $smarty.const.PAGE_NUM == 3}</font>{else}</a>{/if}</li>
+
+        <li class="own{if $smarty.const.PAGE_NUM == 4} active{/if}">{if $smarty.const.PAGE_NUM == 4}<font>{else}<a href="javascript:void(0)">{/if}FAQ{if $smarty.const.PAGE_NUM == 4}</font>{else}</a>{/if}
+            <ul class="child">
+                <li><a href="./product_faqCategoryAddChange.php?id={$smarty.request.id}">カテゴリ登録</a></li>
+                <li><a href="./product_faqList.php?id={$smarty.request.id}">一覧</a></li>
+                <li><a href="./product_faqAddChange.php?id={$smarty.request.id}">登録</a></li>
+            </ul>
+        </li>
+
+        <li class="own{if $smarty.const.PAGE_NUM == 5} active{/if}">{if $smarty.const.PAGE_NUM == 5}<font>{else}<a href="javascript:void(0)">{/if}ニュース&リリース{if $smarty.const.PAGE_NUM == 5}</font>{else}</a>{/if}
+            <ul class="child">
+                <li><a href="./product_newsList.php?id={$smarty.request.id}">一覧</a></li>
+                <li><a href="./product_newsAddChange.php?id={$smarty.request.id}">登録</a></li>
+            </ul>
+        </li>        <li{if $smarty.const.PAGE_NUM == 6} class="active"{/if}>{if $smarty.const.PAGE_NUM == 6}<font>{else}<a href="./product_reviewAddChange.php?id={$smarty.request.id}">{/if}レビュー{if $smarty.const.PAGE_NUM == 6}</font>{else}</a>{/if}</li>
+        <li><a href="./productList.php">製品一覧</a></li>
+        {*{if $smarty.const.CHENGE_FLG}<li{if $smarty.const.PAGE_NUM == 2} class="active"{/if}>{if $smarty.const.PAGE_NUM == 2}<font>{else}<a href="./{$smarty.const.FILE_CATEGORY}AddChange.php">{/if}{$smarty.const.PAGE_TITLE}詳細{if $smarty.const.PAGE_NUM == 2}</font>{else}</a>{/if}</li>{/if}*}
+
+       </ul>
+      </div>
+      <div class="clear"></div>
+     </div>

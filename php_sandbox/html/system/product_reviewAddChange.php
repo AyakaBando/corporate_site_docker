@@ -1,0 +1,127 @@
+<?php
+require_once( '../inc/auth.php' );
+require_once( './systemConsts.php' );
+require_once( '../inc/lib/DB/.systemProductReviewDB.class.php' );
+
+define( 'SQL_TABLE_NAME',    'product_review' );
+define( 'PAGE_TITLE',        'レビュー' );
+define( 'FILE_CATEGORY',     'product_review' );
+define( 'THE_FILE_NAME',     FILE_CATEGORY . 'AddChange' );
+define( 'FILE_SESSION_KEY',  FILE_CATEGORY . 'pdf' );
+define( 'IMG_SESSION_KEY',   FILE_CATEGORY . 'img' );
+define( 'PAGE_NUM',          6 );
+define( 'SUB_PAGE_NUM',      1 );
+define( 'SUB_CATEGORY_FLG',  null );
+
+if( !$_POST )unset( $_SESSION[FILE_SESSION_KEY], $_SESSION[IMG_SESSION_KEY] );
+
+//DBインスタンス
+$query       = new systemProductReviewDB();
+
+$evaluationArray   = evaluationArray();
+$reviewStatusArray = reviewStatusArray();
+
+$itemName   = $query->GetCulumnContents( 'product', 'name', 'id', $_REQUEST['id'], 1 );
+$itemName  .= ' / ' . $query->GetCulumnContents( 'product', 'subName', 'id', $_REQUEST['id'], 1 );
+
+$listCount = $query->listCount( SQL_TABLE_NAME, ' WHERE `id` = ' . $_GET['id'] );
+$limit     = 20;
+$ls        = 0;
+if( isset( $_REQUEST['ls'] ) ) $ls = $_REQUEST['ls'] * $limit - $limit;
+$cnt['start'] = $ls + 1;
+if( !$listCount ) $cnt['start'] = 0;
+$cnt['end']   = $cnt['start'] + $limit - 1;
+if( $cnt['end'] > $listCount ) $cnt['end'] = $listCount;
+
+
+$getLink  = createGetLink( array( 'mode', 'newsId', 'disp', 'd', 't', 'r', 'dispFlg', 'spotlight' ), $_GET );
+$sortLink = createGetLink( array( 'mode', 'newsId', 'disp', 'd', 't', 'r', 'dispFlg', 'cond', 'sort', 'spotlight' ), $_GET );
+
+//フォーム作成
+$form = new HTML_QuickForm( 'item', 'get' );
+$form->addElement( 'select',    'category',        'カテゴリ',             $whatsNewCategory );
+$form->addElement( 'submit',    'submitConf',      '絞り込む',             array() );
+
+
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // #表示切替処理
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+//通常サイト
+if( $_GET['mode'] == 'disp' )
+{
+    $dispChange = $query->DispChange( SQL_TABLE_NAME, $_GET, array( 'dispFlg' => 'dispFlg', 'title' => 'title', 'id' => 'newsId' ) );
+    $title = $query->GetCulumnContents( SQL_TABLE_NAME, 'title', 'newsId', $dispChange, null );
+    header( 'Location: ./' . THE_FILE_NAME . '.php' . $getLink['all'] . ( $getLink['all'] ? '&' : '?' ) . 'd=1&disp=' . $_GET['dispFlg'] . '&t=' . $title );
+    die;
+}
+
+
+
+    // #削除処理
+
+if( $_POST['mode'] )
+{
+    $title = $query->_setQuery( 'getOne', "SELECT `title` FROM `" . SQL_TABLE_NAME . "` WHERE `rId` = ? LIMIT 1", array( $_POST['rId'] ) );
+    if( isset( $_POST['unDisp'] ) )
+    {
+        $query->_setQuery( 'query', "UPDATE `" . SQL_TABLE_NAME . "` SET `dispFlg` = ? WHERE `rId` = ? LIMIT 1", array( 0, $_POST['rId'] ) );
+        $d = 1;
+    }
+    if( isset( $_POST['okDisp'] ) )
+    {
+        $query->_setQuery( 'query', "UPDATE `" . SQL_TABLE_NAME . "` SET `dispFlg` = ? WHERE `rId` = ? LIMIT 1", array( 1, $_POST['rId'] ) );
+        $d = 2;
+    }
+    if( isset( $_POST['del'] ) )
+    {
+        $query->_setQuery( 'query', "DELETE FROM `" . SQL_TABLE_NAME . "` WHERE `rId` = ? LIMIT 1", array( $_POST['rId'] ) );
+        $d = 99;
+    }
+
+    header( 'Location: ./' . THE_FILE_NAME . '.php' . $getLink['all']. ( $getLink['all'] ? '&' : '?' ) . 'd=' . $d . '&t=' . $title );
+    die;
+}
+
+
+$pageParam = array(
+    'totalItems' => $listCount, 
+    'delta'      => 4, 
+    'perPage'    => $limit, 
+    'mode'       => 'Sliding',
+    'httpMethod' => 'GET',
+    'altFirst'   => 'First', 
+    'altPrev'    => 'PrevPage', 
+    'prevImg'    => '&#139; PREV', 
+    'altNext'    => 'NextPage', 
+    'nextImg'    => 'NEXT &#155;', 
+    'altLast'    => 'Last', 
+    'altPage'    => '', 
+    'separator'  => ' | ', 
+    'append'     => 1, 
+    'urlVar'     => 'ls', 
+);
+
+
+$pager      = pager::factory( $pageParam );
+$pagerLinks = $pager->getLinks();
+
+
+$smarty = new Smarty;
+
+$renderer = new HTML_QuickForm_Renderer_ArraySmarty( $smarty );
+$form->accept( $renderer );
+$smarty->assign( 'form', $renderer->toArray() );
+
+$smarty->assign( 'data',              $query->DataList( $_GET['id'], $ls, $limit, $_GET ) );//DBデータ取得
+$smarty->assign( 'pagerLinks',        $pagerLinks );
+$smarty->assign( 'listCount',         $listCount );
+$smarty->assign( 'cnt',               $cnt );
+$smarty->assign( 'getLink',           $getLink );
+$smarty->assign( 'sortLink',          $sortLink );
+$smarty->assign( 'evaluationArray',   $evaluationArray );
+$smarty->assign( 'reviewStatusArray', $reviewStatusArray );
+$smarty->assign( 'itemName',          $itemName );
+
+
+$smarty->display( THE_FILE_NAME . '.html' );
+?>

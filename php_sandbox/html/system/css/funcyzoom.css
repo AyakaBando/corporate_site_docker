@@ -1,0 +1,10 @@
+div#zoom table{
+ border-collapse:collapse;
+ border-spacing:0;
+ border:0;
+}
+div#zoom th,div#zoom td{
+ margin:0;
+ padding:0;
+ border:0;
+}

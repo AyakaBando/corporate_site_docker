@@ -1,0 +1,249 @@
+{include file="./common/meta.html"}
+
+<!-- <link rel="stylesheet" type="text/css" href="./css/ui.all.css"/>
+<link rel="stylesheet" type="text/css" href="./css/ui.datepicker.css"/>
+<link rel="stylesheet" type="text/css" href="./css/mdp.css" />
+<script type="text/javascript" src="./js/ui.core.js"></script>
+<script type="text/javascript" src="./js/ui.datepicker.js"></script>
+<script type="text/javascript" src="./js/ui.datepicker-ja.js"></script> -->
+
+<script type="text/javascript" src="./js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="./js/ckfinder/ckfinder.js"></script>
+<script type="text/javascript" src="./js/setForm.js"></script>
+
+
+<script type="text/javascript">
+var prtJson{if $prtJson} = {$prtJson}{/if};
+
+var category{if $data.category} = {$data.category}{/if};
+
+{literal}
+$(function(){
+    if( category )setSelectBox( category );
+});
+
+{/literal}
+
+
+</script>
+{literal}
+<!-- <style type="text/css">
+.checkBox h3{
+    font-size:16px;
+    margin-bottom:8px;
+}
+.checkBox div{
+    margin-bottom:18px;
+}
+</style> -->
+
+{/literal}
+
+</head>
+ <body id="two-left-w">
+  <div id="wrapper">
+   <div id="header">
+    <div>
+     {include file="./common/head.html"}
+
+
+   </div><!-- /#header -->
+   <div id="container">
+    <div id="contents">
+     <div id="pan">
+      <a href="./login.php">{$smarty.const.TITLE}</a> / <a href="./{$smarty.const.FILE_CATEGORY}List.php">{$smarty.const.PAGE_TITLE}一覧</a> / {$smarty.const.PAGE_TITLE}{if $smarty.get.id}更新{else}編集{/if}     </div>
+
+{include file="./common/contentsMenu.html"}
+
+     <div id="data">
+
+       <div class="patternPan">
+       {$smarty.const.PAGE_TITLE}を{if $smarty.request.id}編集{else}登録{/if}します。<br />
+       <span style="color:#ff0000;">＊の項目は必ず入力・選択してください</span>
+       </div>
+
+<form{$form.attributes}>
+       {if $form.errors}
+       <div style="border:double 3px #ff0000;margin-bottom:10px;background-color:#ffffff;padding:6px;">
+       {foreach from=$form.errors item=value}
+       {$value}<br />
+       {/foreach}
+       </div>
+       {/if}
+
+       <table cellpadding="0" cellspacing="0" style="margin-bottom:20px;width:100%;">
+         <tr class="caption"><th colspan="2" class="center threg">概要</th></tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">絞込み用カテゴリ<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg checkBox">
+            {foreach from=$productCategoryArray item=value name=result key=key}
+                {if $categoryArray.$key}
+                <div>
+                    <h3 style="font-size:18px;font-weight:bold;margin-bottom:4px;color:#333">■{$value} <span style="font-size:14px;font-weight:normal;color:#000;">{$mvalue}</span></h3>
+                    <div style="margin-bottom:12px;padding-left:16px;">
+                    {foreach from=$categoryArray.$key item=svalue name=sresult key=skey}
+                    <p style="width:25%;">{$form.subCategory.$skey.html}</p>{if $smarty.foreach.sresult.iteration % 4 == 0}<br style="clear:both;" />{/if}
+                    {/foreach}
+                    </div>
+                    <br style="clear:both;" />
+                </div>
+                {/if}
+            {/foreach}
+            </td>
+          </tr>
+
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">ブランド名<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg">{$form.subName.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">製品名<span style="color:#ff0000;">＊</span></th>
+            <td class="tdreg">{$form.name.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">製品簡易説明用タイトル</th>
+            <td class="tdreg">{$form.subTitle.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">製品簡易説明</th>
+            <td class="tdreg">{$form.subComment.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">DLファイル名</th>
+            <td class="tdreg">{$form.dlfileName.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">フリーコンテンツタイトル1</th>
+            <td class="tdreg">{$form.commentTitle.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">フリーコンテンツ1</th>
+            <td class="tdreg">
+            {if $flg == 1}
+                <div class="confFCK">
+                    {$confComment}
+                </div>
+                <input type="hidden" name="comment" value="{$hiddenValue}" />
+            {else}
+                {$form.comment.html}
+                <script type="text/javascript">
+                  var news_text = CKEDITOR.replace( 'comment' );
+                  CKEDITOR.config.height = '600px';
+                  CKFinder.setupCKEditor( news_text, './js/ckfinder/' );
+                </script>
+            {/if}
+            </td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">フリーコンテンツタイトル2</th>
+            <td class="tdreg">{$form.otherTitle.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">フリーコンテンツ2</th>
+            <td class="tdreg">
+            {if $flg == 1}
+                <div class="confFCK">
+                    {$confOtherComment}
+                </div>
+                <input type="hidden" name="otherComment" value="{$hiddenOtherValue}" />
+            {else}
+                {$form.otherComment.html}
+                <script type="text/javascript">
+                  var news_text = CKEDITOR.replace( 'otherComment' );
+                  CKEDITOR.config.height = '600px';
+                  CKFinder.setupCKEditor( news_text, './js/ckfinder/' );
+                </script>
+            {/if}
+            </td>
+          </tr>
+
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">フリーコンテンツタイトル3</th>
+            <td class="tdreg">{$form.otherTitle2.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">フリーコンテンツ3</th>
+            <td class="tdreg">
+            {if $flg == 1}
+                <div class="confFCK">
+                    {$confOtherComment2}
+                </div>
+                <input type="hidden" name="otherComment2" value="{$hiddenOtherValue2}" />
+            {else}
+                {$form.otherComment2.html}
+                <script type="text/javascript">
+                  var news_text = CKEDITOR.replace( 'otherComment2' );
+                  CKEDITOR.config.height = '600px';
+                  CKFinder.setupCKEditor( news_text, './js/ckfinder/' );
+                </script>
+            {/if}
+            </td>
+          </tr>
+
+{assign var="sessionKey" value=$smarty.const.FILE_SESSION_KEY}
+{section name=cnt start=1 loop=$maxImageCnt+1}
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">詳細画像{$smarty.section.cnt.index}{if $smarty.section.cnt.index == 1}<span style="color:#ff0000;">＊</span>{/if}</th>
+            <td class="tdreg" style="padding-bottom:10px;">
+
+
+               {if $fileFlg[$smarty.section.cnt.index] == 1}
+                   {if !$smarty.post.imageDel[$smarty.section.cnt.index] && $smarty.session.$sessionKey[$smarty.section.cnt.index].fileName}
+                       <img src="./temp/{$smarty.session.$sessionKey[$smarty.section.cnt.index].fileName}" alt="アップ予定ファイル" width="{$smarty.session.$sessionKey[$smarty.section.cnt.index].img.width}" height="{$smarty.session.$sessionKey[$smarty.section.cnt.index].img.height}" /><br />
+                       <input type="hidden" name="fileName[{$smarty.section.cnt.index}]" value="{$smarty.session.$sessionKey[$smarty.section.cnt.index].fileName}" />
+
+                   {elseif !$smarty.post.imageDel[$smarty.section.cnt.index] && $data.image[$smarty.section.cnt.index].fileName && !$smarty.session.$sessionKey[$smarty.section.cnt.index].fileName}
+                       <img src="../upImage/{$smarty.const.FILE_CATEGORY}/{$data.image[$smarty.section.cnt.index].fileName}" alt="登録画像" width="{$data.image[$smarty.section.cnt.index].size.width}" /><br />
+                       <input type="hidden" name="fileName[{$smarty.section.cnt.index}]" value="{$data.image[$smarty.section.cnt.index].fileName}" />
+
+                   {/if}
+               {else}
+                   {if $data.image[$smarty.section.cnt.index].fileName && !$smarty.session.$sessionKey[$smarty.section.cnt.index].fileName}
+                       <img src="../upImage/{$smarty.const.FILE_CATEGORY}/{$data.image[$smarty.section.cnt.index].fileName}" alt="登録画像" width="{$data.image[$smarty.section.cnt.index].size.width}" height="{$data.image[$smarty.section.cnt.index].size.height}" /><br />
+                       <input type="hidden" name="fileName[{$smarty.section.cnt.index}]" value="{$data.image[$smarty.section.cnt.index].fileName}" />
+
+                   {elseif $smarty.session.$sessionKey[$smarty.section.cnt.index].fileName}
+                       <img src="./temp/{$smarty.session.$sessionKey[$smarty.section.cnt.index].fileName}" alt="登録画像" /><br />
+                       <input type="hidden" name="fileName[{$smarty.section.cnt.index}]" value="{$smarty.session.$sessionKey[$smarty.section.cnt.index].fileName}" width="{$smarty.session.$sessionKey[$smarty.section.cnt.index].img.width}" height="{$smarty.session.$sessionKey[$smarty.section.cnt.index].img.height}" />
+                   {/if}
+               {/if}
+                   {if !$flg}
+                   {$form[$smarty.section.cnt.index].html}
+                   <br /><span style="font-size:10px;color:#ff0000;">登録画像サイズ 横{$maxWidth[$smarty.section.cnt.index]}px×縦{$maxHeight[$smarty.section.cnt.index]}px</span>
+                   {/if}
+                   <br />{$form.imageDel[$smarty.section.cnt.index].html}
+            </td>
+          </tr>
+{/section}
+
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">関連製品</th>
+            <td class="tdreg">{$form.related.html}</td>
+          </tr>
+          <tr>
+            <th width="16%" style="text-align:right;" class="threg">公開設定</th>
+            <td class="tdreg">{$form.dispFlg.html}</td>
+          </tr>
+
+       </table>
+
+       <div id="naviBt03">
+        <ul>
+         <li>{if !$flg}{$form.submitConf.html}{else}{$form.submitReg.html}{/if}</li>
+         <li>{if !$flg}{$form.reset.html}{else}{$form.submitReturn.html}{/if}</li>
+         {$form.hidden}
+        </ul>
+       </div>
+</form>
+       <div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+    </div>
+   </div>
+
+   {include file="./common/menu.html"}
+   <div class="clear"></div>
+   {include file="./common/footer.html"}
+ </body>
+</html>
+

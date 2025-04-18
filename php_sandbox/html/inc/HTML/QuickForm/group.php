@@ -197,7 +197,7 @@ class HTML_QuickForm_group extends HTML_QuickForm_element
     {
         $value = null;
         foreach (array_keys($this->_elements) as $key) {
-            $element =& $this->_elements[$key];
+            $element = $this->_elements[$key];
             switch ($element->getType()) {
                 case 'radio': 
                     $v = $element->getChecked()? $element->getValue(): null;
@@ -301,7 +301,7 @@ class HTML_QuickForm_group extends HTML_QuickForm_element
     {
         //include_once('HTML/QuickForm/Renderer/Default.php');
         include_once('Renderer/Default.php');
-        $renderer =& new HTML_QuickForm_Renderer_Default();
+        $renderer = new HTML_QuickForm_Renderer_Default();
         $renderer->setElementTemplate('{element}');
         $this->accept($renderer);
         return $renderer->toHtml();
@@ -439,7 +439,7 @@ class HTML_QuickForm_group extends HTML_QuickForm_element
         $renderer->startGroup($this, $required, $error);
         $name = $this->getName();
         foreach (array_keys($this->_elements) as $key) {
-            $element =& $this->_elements[$key];
+            $element = $this->_elements[$key];
             
             if ($this->_appendName) {
                 $elementName = $element->getName();
